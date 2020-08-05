@@ -1,0 +1,39 @@
+/* pages/mainClass/IntegralDetail/IntegralDetail.wxss */
+page{
+  background-color: white
+}
+
+.sortImage{
+  width: 12px;
+  height: 12px;
+}
+.layout0 {
+  margin-top: 15px;
+  margin-left: 15px;
+  margin-right: 15px;
+  border-radius: 6px;
+  background-color: #ff4444;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.imageLayout1{
+  height: 45px;
+  width: 45px;
+  border: 0.5px solid #f1f1f1;
+}
+
+.note2_item text{
+    display: block;
+    font-size:28rpx;
+    color:#000000;
+    line-height: 40rpx;
+    height: 120rpx;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow:ellipsis;
+}

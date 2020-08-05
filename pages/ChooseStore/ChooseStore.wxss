@@ -1,0 +1,120 @@
+/* pages/mainClass/ChooseStore/ChooseStore.wxss */
+.pages {
+  margin-bottom: 20px;
+}
+.nodataview {
+  margin-top:50px;
+  width:100%;
+  height:135px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.nodataImage {
+  width: 150px;
+  height: 100%;
+}
+.stateView {
+  margin-top: 30px;
+  font-size: 16px;
+  color: #333;
+  text-align: center;
+}
+.desView {
+  width: 100%;
+  font-size: 12px;
+  color: #666;
+  text-align: center;
+}
+
+/* 有商品情况 */
+.topContenView {
+  width: 100%;
+  overflow-x:hidden;
+}
+.topContenView::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.student-item {
+  width: 100%;
+  height: 70px;
+  align-items: center;
+  display: flex;
+  margin-bottom:10px;
+  justify-content: space-between;
+}
+.productStatus {
+  margin-top:-2rem;
+  height:1.81rem;
+  width:1.81rem;
+  display:flex;
+  align-items:1.81rem solid transparent;
+}
+
+.productStatus span {
+  border-bottom:1.81rem solid transparent;
+}
+
+.productStatus em {
+  position:absolute;
+  margin-left:-1.8rem;
+  height:1.27rem;
+  width:1.27rem;
+  line-height:1.2rem;
+  text-align:center;
+  font-size:0.49rem;
+  color:#333;
+  transform:rotate(-45deg);
+  -webkit-transform:rotate(-45deg);
+}
+.iconImage {
+  width: 46px;
+  height: 46px;
+  border-radius: 23px;
+  background: #f5f5f5;
+}
+.studentName {
+  margin-left: 10px;
+  width: calc(100% - 220px);
+  color: #333;
+  font-size: 16px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.checkState {
+  color: #ccc;
+  font-size: 14px;
+  text-align: right;
+  width: 100px;
+}
+.arrowRight {
+  margin-right: 16px;
+}
+
+.addView {
+  font-size:16px;
+  height:46px;
+  text-align: center;
+  line-height: 46px;
+  border-radius:23px;
+  margin-top:30px;
+  width: 80%;
+  color:#fff;
+  margin-left:10%;
+}
+.jumpView {
+  font-size:16px;
+  height:46px;
+  text-align: center;
+  line-height: 46px;
+  border-radius:23px;
+  border: 1px solid #666;
+  margin-top:20px;
+  width: 80%;
+  color:#666;
+  margin-left: 10%;
+}

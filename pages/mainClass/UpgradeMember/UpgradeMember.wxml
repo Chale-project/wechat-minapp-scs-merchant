@@ -1,0 +1,43 @@
+<!--pages/mainClass/UpgradeMember/UpgradeMember.wxml-->
+<block wx:if="{{dataList.length>0}}">
+  <block wx:for="{{dataList}}" wx:key="item">
+    <view class='item-layout'>
+      <view class='flex justify-between bg-white align-center padding-left padding-top padding-bottom' bindtap="checkboxChange" data-index="{{item.id}}" data-item="{{item.checked}}">
+        <view class='text-black text-xl'>{{item.membershipName}}</view>
+        <view class='flex align-center justify-center  padding-right'>
+          <!-- <checkbox class="round blue" checked="{{item.checked}}"   bindtap="checkboxChange" data-item='{{item.checked}}' data-index="{{item.id}}"></checkbox> -->
+          <image class='imageCheck' src='{{item.checked?"/pages/images/icon_check.png":"/pages/images/icon_uncheck.png"}}'></image>
+        </view>
+      </view>
+    </view>
+    <view class='line'></view>
+  </block>
+</block>
+<block wx:if="{{dataList.length<=0}}">
+  <view class='blockHead'>
+     <emptyView salelistArr="{{dataList}}" emptycount='10' picheight='420px'>
+    </emptyView>
+     <button class="cu-btn round bg-main-color text-white" bindtap='toAddMenmberShip'>添加会员等级</button>
+  </view>
+</block>
+
+
+<view class="cu-modal {{modalName}}" bindtap='hideModal'>
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">提示</view>
+      <view class="action" bindtap="hideModal">
+        <text class="icon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-xl">
+      您确定要修改此用户的会员等级吗？
+    </view>
+    <view class="cu-bar bg-white justify-end">
+      <view class="action">
+        <button class="cu-btn line-grey text-grey" bindtap="hideModal">取消</button>
+        <button class="cu-btn bg-main-color margin-left text-white" bindtap="sureModal">确定</button>
+      </view>
+    </view>
+  </view>
+</view>

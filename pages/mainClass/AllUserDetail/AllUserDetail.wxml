@@ -1,0 +1,67 @@
+<!--pages/mainClass/AllUserDetail/AllUserDetail.wxml-->
+
+<view class="cu-bar search bg-white" >
+  <view class="search-form round">
+    <text class="icon-search"></text>
+    <input type="text" placeholder="搜索客户名称" confirm-type="search" bindinput="searchnameinput" bindconfirm="searchbutton"></input>
+  </view>
+</view>
+
+<view class='ListLine'></view>
+
+<view class="flex flex_row bg-white">
+  <view class="flex-sub flex padding-sm margin-xs justify-center  align-center" bindtap='btn1' data-item='{{sort1}}'>
+    <text class='text-lg align-center {{textColor1}}'>总交易额</text>
+    <view class='flex flex-direction padding-left-xs'>
+      <image class='sortImage' src='{{imageurl1}}'></image>
+    </view>
+  </view>
+  <view class="flex-sub flex padding-sm margin-xs  align-center" bindtap='btn2' data-item='{{sort2}}'>
+    <text class='text-lg align-center {{textColor2}}'>最近购买</text>
+    <view class='flex flex-direction padding-left-xs'>
+      <image class='sortImage' src='{{imageurl2}}'></image>
+    </view>
+  </view>
+  <view class="flex-sub flex padding-sm margin-xs  align-center" bindtap='btn3' data-item='{{sort3}}'>
+    <text class='text-lg align-center {{textColor3}}'>购买次数</text>
+    <view class='flex flex-direction padding-left-xs'>
+      <image class='sortImage' src='{{imageurl3}}'></image>
+    </view>
+  </view>
+</view>
+<view class='line'></view>
+<!-- <block wx:if="{{dataList.length>0}}"> -->
+
+<block wx:for="{{dataList}}" wx:key="item">
+  <view class="cu-list menu-avatar bg-white" bindtap='toUserDetail' data-item='{{item.userNumber}}'>
+    <view class="cu-item">
+      <view class="cu-avatar radius lg" style="background-image:url({{item.headPic.length>0?item.headPic:'/pages/images/storeManager/productIcon.png'}});"></view>
+      <view class="content van-ellipsis">
+        <view class="text-black">{{item.nickname==null?"":item.nickname}}
+          <text class='text-sm margin-left'>{{item.membershipName.length>0?item.membershipName:""}}</text>
+        </view>
+        <view class="text-gray text-sm margin-top-xs" wx:if="{{type==1}}">
+          <text class="text-cut">总交易额<text class='text-red margin-right'>  ￥{{item.sumPayment}}</text></text>
+        </view>
+        <view class="text-gray text-sm  margin-top-xs" wx:elif="{{type==2}}">
+          <text class="text-cut">最近购买于<text class='text-red margin-right'>  {{item.lastOrderTime==null?'暂未购买':item.lastOrderTime}}</text></text>
+        </view>
+        <view class="text-gray text-sm margin-top-xs" wx:elif="{{type==3}}">
+          <text class="text-cut">购买次数<text class='text-red margin-right'>  {{item.orderCount}}次</text></text>
+        </view>
+      </view>
+      <view>
+        <text class="icon-right lg text-gray"></text>
+      </view>
+    </view>
+  </view>
+  <view class='line'></view>
+</block>
+<!-- </block> -->
+<!-- <block wx:if="{{dataList.length<=0}}"> -->
+<!-- <view class='blockHead'> -->
+<!-- <image class='emityView' src='/pages/images/icon_emity.png'></image> -->
+<emptyView salelistArr="{{dataList}}" emptycount='5' picheight='420px'>
+</emptyView>
+<!-- </view> -->
+<!-- </block> -->

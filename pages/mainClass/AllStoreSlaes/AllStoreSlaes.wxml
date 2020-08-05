@@ -1,0 +1,98 @@
+<!--pages/mainClass/AllStoreSlaes/AllStoreSlaes.wxml-->
+<view class="padding-left padding-right padding-bottom padding-top-xl radius shadow-warp bg-white margin-top margin-left margin-right">
+  <view class='flex justify-between align-center'>
+    <view class='flex  align-center'>
+      <image src='/pages/images/icon_all_sales.png' class='imageNormal1'></image>
+      <text class='text-black text-lg'>销售额</text>
+      <text class='margin-left text-grey text-df'>总销售额（元）</text>
+    </view>
+    <text class='text-black text-lg'>￥0.00</text>
+  </view>
+  <view class='line margin-top-xl margin-bottom'></view>
+
+  <view class='flex justify-between align-center'>
+    <view>
+      <text class='text-black text-sm'>今日销售额：</text>
+      <text class='text-red text-sm'>￥0.00</text>
+    </view>
+    <view class='lineV'></view>
+    <view>
+      <text class='text-black text-sm'>本月销售额：</text>
+      <text class='text-red text-sm'>￥0.00</text>
+    </view>
+  </view>
+</view>
+
+
+<view class="padding-left padding-right padding-bottom padding-top-xl radius shadow-warp bg-white margin-top margin-left margin-right">
+  <view class='flex justify-between align-center'>
+    <view class='flex  align-center'>
+      <image src='/pages/images/icon_pay_order.png' class='imageNormal2'></image>
+      <text class='text-black text-lg'>支付订单</text>
+      <text class='margin-left text-grey text-df'>总支付订单数（笔）</text>
+    </view>
+    <text class='text-black text-lg'>0</text>
+  </view>
+  <view class='line margin-top-xl margin-bottom'></view>
+
+  <view class='flex justify-between align-center'>
+    <view>
+      <text class='text-black text-sm'>今日新增：</text>
+      <text class='text-red text-sm'>0笔</text>
+    </view>
+    <view class='lineV'></view>
+    <view>
+      <text class='text-black text-sm'>本月新增：</text>
+      <text class='text-red text-sm'>0笔</text>
+    </view>
+  </view>
+</view>
+
+
+<view class="padding-left padding-right padding-bottom padding-top-xl radius shadow-warp bg-white margin-top margin-left margin-right">
+  <view class='flex justify-between align-center'>
+    <view class='flex  align-center'>
+      <image src='/pages/images/icon_member_ship.png' class='imageNormal2'></image>
+      <text class='text-black text-lg'>会员</text>
+      <text class='margin-left text-grey text-df'>总会员人数（人）</text>
+    </view>
+    <text class='text-black text-lg'>0</text>
+  </view>
+  <view class='line margin-top-xl margin-bottom'></view>
+
+  <view class='flex justify-between align-center'>
+    <view>
+      <text class='text-black text-sm'>今日新增：</text>
+      <text class='text-red text-sm'>0人</text>
+    </view>
+    <view class='lineV'></view>
+    <view>
+      <text class='text-black text-sm'>本月新增：</text>
+      <text class='text-red text-sm'>0人</text>
+    </view>
+  </view>
+</view>
+
+<view class="padding-left padding-right padding-bottom padding-top-xl radius shadow-warp bg-white margin-top margin-left margin-right">
+  <view class='flex justify-between align-center'>
+    <view class='flex  align-center'>
+      <image src='/pages/images/icon_sales_product.png' class='imageNormal2'></image>
+      <text class='text-black text-lg'>商品</text>
+      <text class='margin-left text-grey text-df'>商品总数（件）</text>
+    </view>
+    <text class='text-black text-lg'>0</text>
+  </view>
+  <view class='line margin-top-xl margin-bottom'></view>
+
+  <view class='flex justify-between align-center'>
+    <view>
+      <text class='text-black text-sm'>在售：</text>
+      <text class='text-red text-sm'>0件</text>
+    </view>
+    <view class='lineV'></view>
+    <view>
+      <text class='text-black text-sm'>下架：</text>
+      <text class='text-red text-sm'>0件</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,224 @@
+<!--pages/mainClass/OrderSearchPage/OrderSearchPage.wxml-->
+<view class="cu-bar search bg-white toplayout">
+  <view class="search-form round">
+    <text class="icon-search"></text>
+    <input type="text" placeholder="搜索商品名称或手机号" confirm-type="search" bindinput="searchnameinput" bindconfirm="searchbutton" value='{{textValue}}'></input>
+  </view>
+
+  <view class="date-layout">
+    <picker mode="date" value="{{date}}" start="2019-01-01" end="2030-12-31" bindchange="DateChange">
+      <view class="picker flex align-center" style='height:35px;'>
+        {{isClear?"年/月/日":date}}
+      </view>
+    </picker>
+    <view class='text-red margin-left flex align-center justify-center' style='height:35px;' bindtap='clearTime'>清空</view>
+  </view>
+
+</view>
+
+<!-- <view class='flex date-search justify-between layout2'>
+  <view class="date-layout">
+    <picker mode="date" value="{{date}}" start="2019-01-01" end="2030-12-31" bindchange="DateChange">
+      <view class="picker flex align-center" style='height:35px;'>
+        {{isClear?"年/月/日":date}}
+      </view>
+    </picker>
+    <view class='text-red margin-left flex align-center justify-center' style='height:35px;' bindtap='clearTime'>清空</view>
+  </view>
+
+  <view class="date-layout margin-right" hidden='true'>
+    <view class='text-red  flex align-center' style='height:35px;'>全部</view>
+  </view>
+
+</view> -->
+<!-- 
+<view class='ListLine2'></view>
+<view class='line'></view> -->
+
+<view style='margin-top:60px;'>
+  <block wx:for="{{dataList}}" wx:key="item">
+    <view class='order-layout'>
+      <view class='allItem' bindtap='toOrderDetail' data-item='{{item.id}}'>
+        <view>
+          <text class='text-black text-df'>订单号:{{item.orderId}}</text>
+        </view>
+        <view>
+          <text class='text-orange text-df'>{{item.state=="unpay"?"未支付":item.state=="waitSending"?item.deliveryType=="home"?"待发货":"待自提":item.state=="waitReceiving"?item.deliveryType=="home"?"待收货":"待自提":item.state=="receipted"?"已签收/已取货":item.state=="cancel"?"已取消":item.state=="arrived"?"已送达":item.state=="waitGroup"?"待成团":item.state=="success"?"已完成":""}}</text>
+        </view>
+      </view>
+
+
+      <block wx:if="{{item.orderDescModelList.length>0}}">
+        <block wx:for="{{item.orderDescModelList}}" wx:for-item="itemChild" wx:key='itemChild'>
+
+          <view class='item_order' bindtap='toOrderDetail' data-item='{{item.id}}'>
+            <view class='image_layout'>
+              <image class='item_image' src='{{itemChild.itemImages==null?"/pages/images/icon_all_default.jpg":itemChild.itemImages}}' wx:if='{{item.orderType=="virtualGoods"}}'> </image>
+              <image class='item_image' src='{{itemChild.itemImages==null?"/pages/images/icon_all_default.jpg":itemChild.itemImages}}' wx:elif='{{item.orderType!="virtualGoods"}}'> </image>
+            </view>
+            <view class='item_right'>
+              <view class="item_right_title justify-between flex">
+                <view class="item_right_title van-ellipsis2 text-df">{{itemChild.goodsTitle}}</view>
+
+                <view class="item_price_number2 text-right">
+                  <view class="text-black text-df">￥{{itemChild.price}}
+                  </view>
+                  <view class='text-grey text-df justify-right'>x{{itemChild.num}}</view>
+                </view>
+              </view>
+              <view class="item_right_spec text-sm" hidden='{{itemChild.specificationItems==null}}'>{{itemChild.specificationItems}}</view>
+            </view>
+          </view>
+
+        </block>
+      </block>
+      <block wx:if="{{item.orderDescModelList<=0}}">
+        <view class='item_order' bindtap='toOrderDetail' data-item='{{item.id}}'>
+          <view class='image_layout'>
+            <image class='item_image' src='/pages/images/icon_dowm_buy.png'></image>
+          </view>
+          <view class='item_right'>
+            <view class="item_right_title justify-between flex">
+              <view class="item_right_title van-ellipsis2 text-df">门店收银订单</view>
+              <text class="text-cut text-black text-df">￥{{item.payment}}</text>
+            </view>
+          </view>
+        </view>
+      </block>
+
+      <view class='flex bg-white padding-left-sm padding-right-sm padding-bottom-xs padding-top-sm justify-between'>
+        <text class='text-grey text-df'> 下单时间：{{item.addDataTime}}</text>
+        <view>
+          <text class='text-black text-df' hidden='{{item.goodsNumber<=0}}'>共{{item.goodsNumber}}件</text>
+          <text class='text-df text-red'>         合计:￥{{item.payment}}</text>
+        </view>
+      </view>
+
+      <view class='flex bg-white padding-left-sm padding-right-sm padding-bottom padding-top-xs justify-between'>
+        <text class='text-grey'></text>
+        <view class="flex ">
+          <view class="cu-btn round bg-red sm padding-bottom-xs margin-right-xs text-df" data-item='{{item.verificationCode}}' bindtap='showCode' hidden='{{item.isShowOver}}'>取货码</view>
+          <view class="cu-btn round bg-red sm padding-bottom-xs text-df margin-right-xs" data-item='{{item.id}}' bindtap='pickGoods' hidden='{{item.isShowOver}}'>完成提货</view>
+
+ <view class="cu-btn round bg-red sm padding-bottom-xs text-df margin-right-xs" data-item='{{item.id}}' bindtap='arrivedGoods' hidden='{{item.isShowArrived}}'>已送达</view>
+
+          <view class="cu-btn round bg-red sm padding-bottom-xs text-df margin-right-xs" style='width:60px;' bindtap='toSend' data-item='{{item.id}}' hidden="{{item.isShowSend}}">发货</view>
+          
+          <button class="cu-btn round bg-red sm padding-bottom-xs text-df" bindtap='toOrderDetail' data-item='{{item.id}}'>查看订单</button>
+        </view>
+
+      </view>
+
+      <view class='ListLine'></view>
+    </view>
+  </block>
+
+  <emptyView salelistArr="{{dataList}}" emptycount='10' picheight='420px'>
+  </emptyView>
+
+</view>
+
+
+<van-popup show="{{ isShowSend }}" position="top" custom-class='sendLayout' overlay="{{ true }}" bind:close="onClose" close-on-click-overlay='true'>
+
+  <!-- <view class="cu-modal {{isShowSend}}" bindtap='hideModal'> -->
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">请选择配送人</view>
+      <view class="action" bindtap="hideModal">
+        <text class="icon-close text-red"></text>
+      </view>
+    </view>
+    <view class="layout_dialog bg-white padding-top-xs" style="width:100%;clear:both;overflow:hidden;_zoom:1">
+      <block wx:for="{{peoList}}" wx:for-item="item" wx:key='item' wx-index="index" wx:for-index="index">
+        <view class='flex justify-center align-center' style="width:25%;height:60px;float:left" bindtap="chooseThis"  data-index="{{index}}">
+          <text class="round {{item.chooseState?'bg-main-color':'bg-grey'}} text-white text-center" style="width:55px;height:55px;display:inline-block;text-align:center;line-height:55px;">{{item.deliverymanName}}</text>
+        </view>
+
+      </block>
+
+    </view>
+
+    <view hidden="{{isChooseOther}}">
+      <view class='cu-form-group'>
+        <view class="title">配送人：</view>
+        <input class="flex align-left justify-start" placeholder="请输入配送员姓名" bindinput='inputDeliveryMan'></input>
+      </view>
+      <view class='cu-form-group '>
+        <view class="title">手机号：</view>
+        <input class="flex align-left  justify-start" maxlength="11" bindinput='inputDeliveryPhone' placeholder="请输入配送员手机号" type='number'></input>
+      </view>
+    </view>
+
+    <view class="cu-bar bg-white justify-center">
+      <view class="action">
+        <button class="cu-btn bg-main-color text-white margin-left " style='width:160px;' bindtap="makeSureSend">确定</button>
+      </view>
+    </view>
+  </view>
+  <!-- </view> -->
+</van-popup>
+
+
+
+
+<van-popup show="{{ isShowTiHuo }}" position="top" custom-class='sendLayout' overlay="{{ true }}" bind:close="onClose" close-on-click-overlay='true'>
+
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">请输入取货码</view>
+      <view class="action" bindtap="hideModal">
+        <text class="icon-close text-red"></text>
+      </view>
+    </view>
+    <view class="layout_dialog bg-white">
+      <view class='cu-form-group '>
+        <!-- <view class="title">取货码：</view> -->
+        <input class="flex align-left justify-start inputQu" maxlength="8" bindinput='inputTiHuoMa' placeholder="请输入取货码" type='number'></input>
+      </view>
+    </view>
+    <view class="cu-bar bg-white justify-center">
+      <view class="action">
+        <button class="cu-btn bg-main-color text-white margin-left " style='width:160px;' bindtap="tiHuoSure">确定</button>
+      </view>
+    </view>
+  </view>
+</van-popup>
+
+
+<view class="cu-modal {{showVerificationCode}}" bindtap='hideModal'>
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">取货码</view>
+      <view class="action" bindtap="hideModal1">
+        <text class="icon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-xl text-sl">
+      {{verificationCode}}
+    </view>
+  </view>
+</view>
+
+
+
+
+<view class="cu-modal {{modalName}}" bindtap='hideModal'>
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">提示</view>
+      <view class="action" bindtap="hideModal">
+        <text class="icon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-xl">
+      是否完成取货
+    </view>
+    <view class="cu-bar bg-white justify-end">
+      <view class="action">
+        <button class="cu-btn line-grey text-grey" bindtap="hideModal">取消</button>
+        <button class="cu-btn bg-main-color text-white margin-left" bindtap="getAll">完成取货</button>
+      </view>
+    </view>
+  </view>
+</view>

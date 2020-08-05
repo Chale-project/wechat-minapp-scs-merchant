@@ -1,0 +1,30 @@
+<!--component/emptyView/emptyView.wxml-->
+<!-- 数据出来之前先出现占位图 -->
+<view class='publview' wx:if="{{ischooseStore=='choose'}}">
+  <view class='emptychoose-item' wx:for="{{emptycount}}" data-idx="{{idx}}" wx:for-index="idx" wx:key="{{idx}}" wx:if="{{!salelistArr}}">
+    <view class="emptyImage-1"></view>
+    <view class="emptyName-2"></view>
+    <view class="emptyName-3"></view>
+  </view>
+  <view class='emptyaddstoreview' wx:if="{{!salelistArr}}"></view>
+  <view class='emptyaddstoreview' wx:if="{{!salelistArr}}"></view>
+</view>
+<view class='publview' wx:else>
+  <view class='empty-item' wx:for="{{emptycount}}" data-idx="{{idx}}" wx:for-index="idx" wx:key="{{idx}}" wx:if="{{!salelistArr}}">
+    <view class="empty-1"></view>
+    <view class="empty-right">
+      <view class="empty-2"></view>
+      <view class="empty-3"></view>
+      <view class="empty-4"></view>
+      <view class="empty-5"></view>
+    </view>
+  </view>
+</view>
+
+
+    <view class='emityLayout' wx:if="{{salelistArr&&salelistArr.length<1&&!ischooseStore}}" style="height:{{picheight}}">
+
+    <image class='emityView1' src='/pages/images/icon_emity.png'></image>
+    <view style="color:#666">暂无数据</view>
+
+   </view>

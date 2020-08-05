@@ -1,0 +1,117 @@
+<!--pages/mainClass/Home/Home.wxml-->
+<view class='home_top'>
+
+  <!-- <view class='shopName'>
+    <image class='shopImage' src='{{shopLogo}}'></image>
+    <text class='tv_shopName'> {{shopName1}}</text>
+  </view> -->
+
+  <view class="middle_money">
+    <text class='text-xxl'>{{todayMoney}}</text>
+    <text class='text-df margin-top-xs'>今日营收</text>
+  </view>
+
+  <view class="layout_money">
+    <view class="flex-sub  padding-sm margin-xs flex flex-direction align-center">
+      <text class='text-lg'>{{weixinMoney}}</text>
+      <text class='text-lg'>微信</text>
+    </view>
+    <view class="flex-sub  padding-sm margin-xs flex flex-direction align-center">
+      <text class='text-lg'>{{alipaynMoney}}</text>
+      <text class='text-lg'>支付宝</text>
+    </view>
+    <view class="flex-sub  padding-sm margin-xs flex flex-direction align-center" >
+      <text class='text-lg' >{{remainingMoney}}</text>
+      <view class='flex justify-center align-center'>
+        <text class='text-lg'>余额</text>
+        <image class='tipImage margin-left-xs' bindtap='showTip' src='/pages/images/icon_show_tips.png'></image>
+      </view>
+    </view>
+  </view>
+
+
+  <view class='layout1' bindtap='toCustomerDataAnalysis'>
+    <view class="flex-sub  padding-sm margin-xs flex flex-direction align-center">
+      <text class='text-df '>{{totalCustomers}}</text>
+      <text class='text-sm margin-top-sm'>客户总数</text>
+    </view>
+    <view class="flex-sub  padding-sm margin-xs flex flex-direction align-center">
+      <text class='text-df'>{{recurrenceRate}}</text>
+      <text class='text-sm margin-top-sm'>回头率</text>
+    </view>
+    <view class="flex-sub  padding-sm margin-xs flex flex-direction align-center">
+      <text class='text-df'>{{visitors}}</text>
+      <text class='text-sm margin-top-sm'>访客数</text>
+    </view>
+    <view class="flex-sub  padding-sm margin-xs flex flex-direction align-center">
+      <text class='text-df'>{{ransactionOrder==null?"0":ransactionOrder}}</text>
+      <text class='text-sm margin-top-sm'>成交订单</text>
+    </view>
+  </view>
+
+</view>
+
+<view class='home_middle'>
+                                                                                 
+  <view class='layout2'>
+    <view class="flex-sub bg-fef7e7 padding-sm margin flex flex-direction align-center justify-center" bindtap='toUserManage'>
+      <image class='home_image' src='/pages/images/home/home_icon1.png'></image>
+      <text class='text-df margin-top-sm'>客户</text>
+    </view>
+    <view class="flex-sub bg-fff3f2 padding-sm margin flex flex-direction align-center justify-center" bindtap='toProductManage'>
+      <image class='home_image' src='/pages/images/home/home_icon2.png'></image>
+      <text class='text-df margin-top-sm'>商品</text>
+    </view>
+    <view class="flex-sub bg-e9f7fa padding-sm margin flex flex-direction align-center justify-center" bindtap='toOrderManage'>
+      <image class='home_image' src='/pages/images/home/home_icon3.png'></image>
+      <text class='text-df margin-top-sm'>订单</text>
+    </view>
+  </view>
+
+  <view class='layout3'>
+    <view class="flex-sub bg-fbf9f3 padding-sm margin-bottom margin-left margin-right flex flex-direction align-center justify-center" bindtap='toMoneyManage'>
+      <image class='home_image' src='/pages/images/home/home_icon4.png'></image>
+      <text class='text-df margin-top-sm'>资金</text>
+    </view>
+    <view class="flex-sub bg-e8fdec padding-sm margin-bottom margin-left margin-right flex flex-direction align-center justify-center" bindtap='toSaleManage'>
+      <image class='home_image' src='/pages/images/home/home_icon5.png'></image>
+      <text class='text-df margin-top-sm'>营销</text>
+    </view>
+    <view class="flex-sub bg-fef7e7 padding-sm margin-bottom margin-left margin-right flex flex-direction align-center justify-center" bindtap='toShopManage'>
+      <image class='home_image' src='/pages/images/home/home_icon6.png'></image>
+      <text class='text-df margin-top-sm'>店铺</text>
+    </view>
+  </view>
+
+</view>
+
+<view class='home_bottom'>
+  <view class="bottom1 flex-sub" bindtap='toCoupon'>
+    <image class='bottom_bg' src='/pages/images/home/home_bg_1.png'></image>
+    <text class='bottom_tv1'>优惠券</text>
+    <view class='flex'>
+      <text class='bottom_tv2'>{{totalCoupons}}</text>
+      <text class='bottom_tv3'>张</text>
+    </view>
+  </view>
+  <view class="bottom2 flex-sub" bindtap='toMembershipCard'>
+    <image class='bottom_bg' src='/pages/images/home/home_bg_2.png'></image>
+    <text class='bottom_tv1'>会员卡</text>
+  </view>
+</view>
+
+
+
+<view class="cu-modal {{tip}}" bindtap='hideModal'>
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">余额说明</view>
+      <view class="action " bindtap="hideModal">
+        <text class="icon-close text-red padding-xs"></text>
+      </view>
+    </view>
+    <view class="padding-xl bg-white">
+      余额不计入营业收入内
+    </view>
+  </view>
+</view>

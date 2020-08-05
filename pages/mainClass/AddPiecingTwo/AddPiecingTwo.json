@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "timePicker": "../../pages/timePicker/timePicker"
+  },
+  "navigationBarTitleText": "添加拼团活动"
+}

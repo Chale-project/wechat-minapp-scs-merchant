@@ -1,0 +1,55 @@
+<!--pages/mainClass/StoredValue/StoredValue.wxml-->
+<view class='top_layout'>
+  <!-- <scroll-view scroll-x class="bg-white nav">
+    <view class="flex text-center">
+      <view class="cu-item flex-sub {{index==TabCur?'text-orange cur':''}}" wx:for="{{dataTitle}}" wx:key='item' bindtap="tabSelect" data-id="{{index}}">
+        {{item.name}}
+      </view>
+    </view>
+  </scroll-view> -->
+
+  <van-tabs sticky swipeable bind:change="onChange">
+    <van-tab title="全部"></van-tab>
+    <van-tab title="已启用"></van-tab>
+    <van-tab title="已停用"></van-tab>
+  </van-tabs>
+
+
+  <!-- <block wx:if="{{dataList.length>0}}"> -->
+    <block wx:for="{{dataList}}" wx:key="item">
+      <view class='item-layout'>
+        <view class="cu-list menu {{menuBorder?'sm-border':''}} {{menuCard?'card-menu margin-top':''}}" bindtap='showDetail1' data-id='{{item.id}}'>
+          <view class="cu-item {{menuArrow?'arrow':''}}">
+            <view class="content">
+              <text class="text-black">{{item.cardMoney/100}}元</text>
+            </view>
+            <view class="action">
+              <text class="text-black text-sm">已售{{item.cardCount}}</text>
+            </view>
+          </view>
+        </view>
+        <view class="cu-list menu {{menuBorder?'sm-border':''}} {{menuCard?'card-menu margin-top':''}}">
+          <view class="cu-item {{menuArrow?'arrow':''}}" bindtap='showDetail2' data-id='{{item.id}}'>
+            <view class="content">
+              <text class="text-black">{{item.presentMoney>0?"赠送金额":""}}   {{item.presentIntegral==null?"":"赠送积分"}}   {{item.presentCoupon==null?"":"赠送优惠卷"}}</text>
+            </view>
+            <view class="action" catchtap>
+              <switch bindchange="switch1Change" checked="{{item.cardState=='enabled'?true:false}}" data-item='{{item}}'></switch>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+  <!-- </block> -->
+  <!-- <block wx:if="{{dataList.length<=0}}"> -->
+    <!-- <view class='blockHead'> -->
+      <emptyView salelistArr="{{dataList}}" emptycount='10' picheight='420px'>
+      </emptyView>
+    <!-- </view> -->
+  <!-- </block> -->
+</view>
+
+
+<view class="bottomLayout">
+  <view class="bg-main-color lg text-white flex align-center justify-center" style='height:44px;' bindtap='addStoredValue'>新建</view>
+</view>

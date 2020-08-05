@@ -1,0 +1,11 @@
+<!--pages/mainClass/ShopChangeInfo/ShopChangeInfo.wxml-->
+
+<!-- 店铺名称 店铺公告 客服电话 法人 手机 -->
+<view class="changeview">
+
+ <textarea wx:if="{{placename=='请填写公告信息'}}" class="areaclass" bindinput="bindTextAreaBlur" placeholder="{{placename}}" value='{{inputname}}'/>
+<input wx:else placeholder="{{placename}}" placeholder-class="placeholder" class="editInput" bindinput="inputnametap" type="{{placename=='请填写客服电话'||placename=='请填写手机号'?'number':'text'}}" value='{{inputname}}' maxlength="{{placename=='请填写客服电话'||placename=='请填写手机号'?'11':'1000'}}"></input>
+</view>
+<view class="change-btn shadow-blur" style='background:#ff4444' bindtap='sureChangeTap'>确认修改</view>
+
+

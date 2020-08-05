@@ -1,0 +1,67 @@
+/* pages/mainClass/SkillSetDetail/SkillSetDetail.wxss */
+.rightitemview {
+  background: #fff;
+  height: 100px;
+}
+.userIconImg {
+  background: #f5f5f5;
+  width:80px;
+  height:80px;
+  left:10px;
+  top:10px;
+}
+.productName {
+  margin-left:100px;
+  margin-top:-60px;
+  color:#333;
+  font-size: 14px;
+  width: calc(100% - 100px);
+  max-height: 36px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2;
+  display:-webkit-box;
+}
+.placeholder {
+  color: #9a9a9a;
+}
+.productPrice {
+  margin-left:100px;
+  color:#666;
+  font-size: 12px;
+  margin-top:12px;
+}
+.productPrice text{
+  color: red;
+  font: bold;
+  font-size: 14px;
+}
+.oripriceview {
+  margin-left:100px;
+  color:#666;
+  font-size: 12px;
+  margin-top:2px;
+}
+.totalsale {
+  margin-top: 5px;
+  margin-left:100px;
+  color:#ccc;
+  font-size: 12px;
+  width:calc(100% - 110px);
+}
+.totalsale text {
+  color: green;
+}
+
+.cu-form-group .title {
+  min-width: calc(4em + 30rpx);
+  
+}
+
+.guigenumview{
+  box-sizing: content-box;
+  padding:0 10px;
+  padding-top:10px;
+  border-radius:10px;
+}

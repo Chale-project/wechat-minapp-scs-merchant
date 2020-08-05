@@ -1,0 +1,22 @@
+<!--pages/mainClass/InputAddress/InputAddress.wxml-->
+
+<view class="cu-form-group">
+    <view class="title">所在地区</view>
+    <view bindtap='getlocationwithmap' style="width:100%;text-align:left;color:#666">{{shencity.length>0?shencity:'请选择所在区域'}}</view>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">详细地址</view>
+    <input placeholder="请填写门店号等详细信息" bindinput="addressdetailinput" value='{{inputdetailaddress}}' style='font-size:12px;color:#000' placeholder-class="placeholder"></input>
+  </view>
+
+<view class="change-btn shadow-blur" style='background:#ff4444' bindtap='sureChangeTap'>确认修改</view>
+
+  <van-popup show="{{ addressshow }}" bind:close="addressonClose">
+  <view class="addressContentView">
+   <view class='addresspoptitle'>检测到您没有打开定位权限,是否去设置打开?</view>
+   <view class='bottomview'>
+    <button class='canclbutton' bindtap="addressonClose">取消</button>
+    <button class='surebutton' bindtap='surebuttontap'>确认</button>
+   </view>
+  </view>
+</van-popup>

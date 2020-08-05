@@ -1,0 +1,53 @@
+<!--pages/mainClass/GoShopGet/GoShopGet.wxml-->
+
+
+  <view class="cu-form-group">
+    <view class="title">自提点</view>
+    <input placeholder="请填写自提点名称" bindinput="inputnametap" style='color:#000' value='{{shopnameStr}}' placeholder-class="placeholder"></input>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">所在地区</view>
+    <view bindtap='getlocationwithmap' style="width:100%;text-align:left;color:#666">{{shencity.length>0?shencity:'请选择所在区域'}}</view>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">详细地址</view>
+    <input placeholder="请填写门店号等详细信息" bindinput="addressdetailinput" value='{{inputdetailaddress}}' style='font-size:12px;color:#000' placeholder-class="placeholder"></input>
+  </view>
+
+<view class="cu-form-group margin-top">
+    <view class="title">联系电话</view>
+    <input type="number" bindinput="inputnumbertap" style='color:#000' placeholder="请输入自提点联系电话" maxlength='11' value='{{phonenumber}}' type='digit' placeholder-class="placeholder"></input>
+  </view>
+
+<view class="cu-form-group">
+  <view class="title">营业日期</view>
+  <view class="rightweekview">
+   <view class='itemweek' wx:for="{{weekdata}}" data-idx="{{idx}}" wx:for-index="idx" wx:for-item="item" wx:key="{{idx}}" bindtap='weekdaytap' style="{{item.select?'background:#ff4444;color:#fff':'background:#fff;color:#000'}}">{{item.name}}</view>
+  </view>
+</view>
+
+<view class="cu-form-group">
+    <view class="title">营业时间</view>
+    <picker
+    mode="multiSelector"
+    bindchange="bindMultiPickerChange"
+    value="{{multiIndex}}"
+    range="{{multiArray}}"
+  >
+    <view class="picker">
+      {{hourdata}}
+    </view>
+  </picker>
+  </view>
+
+<view class="saveview" bindtap='savebuttontap'>保存</view>
+
+<van-popup show="{{ addressshow }}" bind:close="addressonClose">
+  <view class="addressContentView">
+   <view class='addresspoptitle'>检测到您没有打开定位权限,是否去设置打开?</view>
+   <view class='bottomview'>
+    <button class='canclbutton' bindtap="addressonClose">取消</button>
+    <button class='surebutton' bindtap='surebuttontap'>确认</button>
+   </view>
+  </view>
+</van-popup>

@@ -1,0 +1,19 @@
+<!--pages/mainClass/ShopUploadInfo/ShopUploadInfo.wxml-->
+<view class='contentview' hidden="{{showimage}}">
+  <view class="emptyview" bindtap="uploadtap">
+    <image class='imageupload' wx:if="{{iconfilePath.length<1}}"  src="/pages/images/addStore/Touploadpictures.png" binderror="avatarError" mode="aspectFit"></image>
+    <image class='imageview' wx:if="{{iconfilePath.length>0}}" src="{{iconfilePath}}" mode="aspectFill"></image>
+
+  </view>
+
+  <view style="margin-top:20px">{{name}}</view>
+  <view class="completview" bindtap="completap">完成</view>
+  
+</view>
+
+<!-- 图片放大 -->
+<!-- <view class="picShow" wx:if="{{showimage}}">
+  <view class='showpic' bindtap='cancleshowpictap'>
+    <image class='showImageView' wx:if="{{iconfilePath.length>0}}" src="{{iconfilePath}}" mode="aspectFill"></image>
+  </view>
+</view> -->

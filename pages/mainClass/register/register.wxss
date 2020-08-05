@@ -1,0 +1,92 @@
+/* pages/mainClass/register/register.wxss */
+.container {
+  background: #f5f5f5;
+} 
+.usericonimage {
+  width: 90px;
+  height: 90px;
+  margin-bottom: 50px;
+}
+.loginOne {
+  background:#fff;
+  width: 320px;
+  height: 46px;
+  border-radius: 23px;
+  display: flex;
+  align-items: center;
+}
+input {
+  margin-left: 10px;
+  width: 300px;
+  min-height: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+}
+.loginTwo {
+  background:#fff;
+  margin-top: 10px;
+  width: 320px;
+  height: 46px;
+  border-radius: 23px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.messageInput {
+  margin-left: 10px;
+  width: 220px;
+  color: #000;
+  min-height: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+}
+.verButton {
+  margin-right: 10px;
+  width: 80px;
+  height: 26px;
+  border-radius: 13px;
+  border: 1px solid #ff4444;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loginThree {
+  background:#fff;
+  margin-top: 10px;
+  width: 320px;
+  height: 46px;
+  border-radius: 23px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.placeholdertwo {
+  margin-left: 10px;
+  width: calc(100% - 56px);
+}
+.signhidepassword {
+  margin-right: 10px;
+  width: 26px;
+  height: 26px;
+}
+.placeholder {
+  color: #9a9a9a;
+}
+.confirm-btn {
+  margin-top: 50px;
+  font-size: 13pt;
+  height: 46px;
+  background: #ff4444;
+  color: #ffffff;
+  border-radius: 23px;
+  width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.confirm-btn:active {
+  opacity: .8;
+}

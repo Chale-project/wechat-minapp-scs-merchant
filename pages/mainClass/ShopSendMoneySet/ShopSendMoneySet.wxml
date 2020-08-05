@@ -1,0 +1,21 @@
+<!--pages/mainClass/ShopSendMoneySet/ShopSendMoneySet.wxml-->
+<view class="sendcontent">
+<view class="firview">
+ <view >配送费</view>
+ <input type="digit" placeholder="请输入金额" placeholder-class="placeholder" class="editInput" bindinput="inputnametap" value='{{sendprice}}'></input>
+</view>
+
+<view class="secview">
+ <view class="onetextview">消费满</view>
+ <input type="digit" placeholder="请输入金额" placeholder-class="placeholder" class="twoeditInput" bindinput="inputfullnametap" value='{{fullprice}}'></input>
+ <view class="twotextview">元包邮</view>
+</view>
+
+<view class="firview" style='margin-top:20px'>
+ <view >最低起购金额</view>
+ <input type="digit" placeholder="请输入金额" placeholder-class="placeholder" class="editInput" bindinput="inputnametaptwo" value='{{littlePrice}}'></input>
+</view>
+
+</view>
+
+<view class="complet" bindtap="completetap">完成</view>

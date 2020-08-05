@@ -1,0 +1,195 @@
+<!--pages/mainClass/Coupon/Coupon.wxml-->
+<view class='top_layout'>
+  <van-tabs sticky bind:change="onChange">
+    <van-tab title="可领用">
+      <!-- <block wx:if="{{dataList.length>0}}"> -->
+      <block wx:for="{{dataList}}" wx:key="item">
+        <view class='item-layout'>
+          <view class='flex justify-between'>
+            <view class='flex align-center justify-center flex-direction padding-left padding-right' bindtap='toCouponDetail' data-id='{{item.id}}'>
+              <view>
+                <text class='text-red text-xs'>￥</text>
+                <text class='text-red text-xxl'>{{item.usedAmount}}</text>
+              </view>
+              <view class='padding-top-sm'>满{{item.meetAmount/100}}元可用</view>
+            </view>
+            <view class='flex flex-direction padding-top padding-bottom padding-right-xs' bindtap='toCouponDetail' data-id='{{item.id}}'>
+              <view class='text-lg text-black'>{{item.title==null?"任性领劵，任性买":item.title}}</view>
+              <view class='text-sm padding-top-xs padding-bottom-xs text-grey'>共{{item.couponQuota}}张 / 剩余{{item.residueCount}}张</view>
+              <view class='text-sm text-grey'>{{item.validStartTime}}至{{item.validEndTime}}</view>
+              <!-- <view class='text-df'>{{item.validStartTime}}至{{item.validEndTime}}</view> -->
+            </view>
+            <view class='flex'>
+              <view class='line6'></view>
+              <view class='flex align-center justify-center  padding-left padding-right' bindtap='SendCoupons' data-item='{{item.id}}'>
+                <text class='text-red'>立即\n发送</text>
+              </view>
+
+            </view>
+          </view>
+          <view class='line'></view>
+          <view class='flex align-center justify-center padding-top padding-bottom' bindtap='deleteCoupon' data-item='{{item.id}}'>
+            <text class="icon-deletefill lg text-red padding-right-xs"></text>
+            <text class='text-red'>删除</text>
+          </view>
+        </view>
+      </block>
+      <!-- </block> -->
+      <!-- <block wx:if="{{dataList.length<=0}}"> -->
+      <!-- <view class='blockHead'> -->
+      <emptyView salelistArr="{{dataList}}" emptycount='10' picheight='420px'>
+      </emptyView>
+      <!-- </view> -->
+      <!-- </block> -->
+    </van-tab>
+    <van-tab title="未开始">
+      <!-- <block wx:if="{{dataList2.length>0}}"> -->
+      <block wx:for="{{dataList2}}" wx:key="item">
+        <view class='item-layout'>
+          <view class='flex justify-between'>
+            <view class='flex align-center justify-center flex-direction padding-left padding-right' bindtap='toCouponDetail' data-id='{{item.id}}'>
+              <view>
+                <text class='text-red text-xs'>￥</text>
+                <text class='text-red text-xxl'>{{item.usedAmount}}</text>
+              </view>
+              <view class='padding-top-sm'>满{{item.meetAmount/100}}元可用</view>
+            </view>
+            <view class='flex flex-direction padding-top padding-bottom'>
+              <view class='text-lg '>{{item.title==null?"任性领劵，任性买":item.title}}</view>
+              <view class='text-xs padding-top-xs padding-bottom-xs text-grey'>剩余{{item.residueCount}}张</view>
+              <view class='text-df text-grey'>{{item.validStartTime}}至{{item.validEndTime}}</view>
+              <!-- <view class='text-df'>{{item.validStartTime}}至{{item.validEndTime}}</view> -->
+            </view>
+
+            <view class='flex'>
+              <view class='line6'></view>
+              <view class='flex align-center justify-center  padding-left padding-right' bindtap='SendCoupons' data-item='{{item.id}}'>
+                <text class='text-red'>立即\n发送</text>
+              </view>
+
+            </view>
+            <!-- 
+            <view class='line6'></view>
+            <view class='flex align-center justify-center  padding-right' bindtap='SendCoupons' data-item='{{item.id}}'>
+              <text class='text-red'>立即\n发送</text>
+            </view> -->
+          </view>
+          <view class='line'></view>
+          <view class='flex align-center justify-center padding-top padding-bottom' bindtap='deleteCoupon' data-item='{{item.id}}'>
+            <text class="icon-deletefill lg text-red padding-right-xs"></text>
+            <text class='text-red'>删除</text>
+          </view>
+        </view>
+      </block>
+      <!-- </block> -->
+      <!-- <block wx:if="{{dataList2.length<=0}}"> -->
+      <!-- <view class='blockHead'> -->
+      <emptyView salelistArr="{{dataList2}}" emptycount='10' picheight='420px'>
+      </emptyView>
+      <!-- </view> -->
+      <!-- </block> -->
+    </van-tab>
+    <van-tab title="已领完">
+      <!-- <block wx:if="{{dataList3.length>0}}"> -->
+      <block wx:for="{{dataList3}}" wx:key="item">
+        <view class='item-layout'>
+          <view class='flex justify-between' bindtap='toCouponDetail' data-id='{{item.id}}'>
+            <view class='flex align-center justify-center flex-direction padding-left ' >
+              <view>
+                <text class='text-red text-xs'>￥</text>
+                <text class='text-red text-xxl'>{{item.usedAmount}}</text>
+              </view>
+              <view class='padding-top-sm'>满{{item.meetAmount/100}}元可用</view>
+            </view>
+            <view class='flex flex-direction padding-top padding-bottom padding-right'>
+              <view class='text-lg'>{{item.title==null?"任性领劵，任性买":item.title}}</view>
+              <view class='text-xs padding-top-xs padding-bottom-xs text-grey'>剩余{{item.residueCount}}张</view>
+              <view class='text-df text-grey'>{{item.validStartTime}}至{{item.validEndTime}}</view>
+              <!-- <view class='text-df'>{{item.validStartTime}}至{{item.validEndTime}}</view> -->
+            </view>
+            <!-- <view class='line6'></view> -->
+            <!-- <view class='flex align-center justify-center  padding-right' bindtap='SendCoupons' data-item='{{item.id}}'>
+                <text class='text-red'>立即\n发送</text>
+              </view> -->
+          </view>
+          <view class='line'></view>
+          <view class='flex align-center justify-center padding-top padding-bottom' bindtap='deleteCoupon' data-item='{{item.id}}'>
+            <text class="icon-deletefill lg text-red padding-right-xs"></text>
+            <text class='text-red'>删除</text>
+          </view>
+        </view>
+      </block>
+      <!-- </block> -->
+      <!-- <block wx:if="{{dataList3.length<=0}}"> -->
+      <!-- <view class='blockHead'> -->
+      <emptyView salelistArr="{{dataList3}}" emptycount='10' picheight='420px'>
+      </emptyView>
+      <!-- </view> -->
+      <!-- </block> -->
+    </van-tab>
+    <van-tab title="已过期">
+      <!-- <block wx:if="{{dataList4.length>0}}"> -->
+      <block wx:for="{{dataList4}}" wx:key="item">
+        <view class='item-layout'>
+          <view class='flex justify-between' bindtap='toCouponDetail' data-id='{{item.id}}'>
+            <view class='flex align-center justify-center flex-direction padding-left padding-right' >
+              <view>
+                <text class='text-red text-xs'>￥</text>
+                <text class='text-red text-xxl'>{{item.usedAmount}}</text>
+              </view>
+              <view class='padding-top-sm'>满{{item.meetAmount/100}}元可用</view>
+            </view>
+            <view class='flex flex-direction padding-top padding-bottom padding-right'>
+              <view class='text-lg'>{{item.title==null?"任性领劵，任性买":item.title}}</view>
+              <view class='text-xs padding-top-xs padding-bottom-xs text-grey'>剩余{{item.residueCount}}张</view>
+              <view class='text-df text-grey'>{{item.validStartTime}}至{{item.validEndTime}}</view>
+              <!-- <view class='text-df'>{{item.validStartTime}}至{{item.validEndTime}}</view> -->
+            </view>
+            <!-- <view class='line6'></view>
+              <view class='flex align-center justify-center  padding-right' bindtap='SendCoupons' data-item='{{item.id}}'>
+                <text class='text-red'>立即\n发送</text>
+              </view> -->
+          </view>
+          <view class='line'></view>
+          <view class='flex align-center justify-center padding-top padding-bottom' bindtap='deleteCoupon' data-item='{{item.id}}'>
+            <text class="icon-deletefill lg text-red padding-right-xs"></text>
+            <text class='text-red'>删除</text>
+          </view>
+        </view>
+      </block>
+      <!-- </block> -->
+      <!-- <block wx:if="{{dataList4.length<=0}}"> -->
+      <!-- <view class='blockHead'> -->
+      <emptyView salelistArr="{{dataList4}}" emptycount='10' picheight='420px'>
+      </emptyView>
+      <!-- </view> -->
+      <!-- </block> -->
+    </van-tab>
+  </van-tabs>
+</view>
+
+<view class="bottomLayout">
+  <button class="cu-btn bg-main-color margin-tb-sm lg text-white" bindtap='toAddCoupon'>添加优惠劵</button>
+</view>
+
+
+
+<view class="cu-modal {{modalName}}" bindtap='hideModal'>
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">提示</view>
+      <view class="action" bindtap="hideModal">
+        <text class="icon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-xl">
+      是否删除此优惠劵？
+    </view>
+    <view class="cu-bar bg-white justify-end">
+      <view class="action">
+        <button class="cu-btn line-grey text-grey" bindtap="hideModal">取消</button>
+        <button class="cu-btn bg-main-color text-white margin-left" bindtap="deleteModal">删除</button>
+      </view>
+    </view>
+  </view>
+</view>

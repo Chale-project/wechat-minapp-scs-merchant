@@ -1,0 +1,132 @@
+/* pages/mainClass/Home/Home.wxss */
+
+.home_top {
+  height: 180px;
+  width: 100%;
+  background-color: #f6cf46;
+  position: relative;
+}
+
+.shopImage{
+  width: 25px;
+  height: 25px;
+}
+
+.home_middle {
+  height: 225px;
+  margin-left: 15px;
+  margin-right: 15px;
+  background-color: white;
+  border-radius: 6px;
+}
+
+.layout1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: absolute;
+  height: 85px;
+  width: calc(100% - 30px);
+  box-sizing: border-box;
+  background-color: white;
+  border-radius: 6px;
+  z-index: 5;
+  left: 15px;
+  top: 160px;
+}
+
+.layout2 {
+  margin-top: 80px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.layout3 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.shopName {
+  position: absolute;
+  top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 15px;
+}
+
+.tv_shopName {
+  margin-left: 5px;
+  margin-top: 5px;
+  font-size: 16px;
+}
+
+.layout_money {
+  width: 100%;
+  position: absolute;
+  top: 90px;
+  display: flex;
+  flex-direction: row;
+}
+
+.middle_money {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  position: absolute;
+  top: 30px;
+  flex-direction: column;
+}
+
+.home_image {
+  height: 30px;
+  width: 30px;
+}
+
+.home_bottom {
+  height: 92px;
+  display: flex;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 15px;
+}
+
+.bottom_bg {
+  height: 92px;
+  width: 100%;
+  z-index: 1;
+  position: absolute;
+}
+
+.bottom1 {
+  position: relative;
+}
+
+.bottom2 {
+  position: relative;
+}
+
+.bottom_tv1 {
+  position: absolute;
+  z-index: 3;
+  top: 8px;
+  left: 15px;
+}
+
+.bottom_tv2 {
+  font-size: 20px;
+  position: absolute;
+  z-index: 4;
+  top: 30px;
+  left: 15px;
+}
+
+.bottom_tv3 {
+  font-size: 10px;
+  position: absolute;
+  z-index: 4;
+  top: 38px;
+  left: 32px;
+}

@@ -1,0 +1,60 @@
+/* pages/mainClass/UserDetail/UserDetail.wxss */
+
+.layout_money {
+  display: flex;
+  flex-direction: row;
+}
+.imageDefault{
+  width: 100px;
+  height: 50px;
+}
+
+.imageHead {
+  width: 96rpx;
+  height: 96rpx;
+  font-size: 2em;
+  border-radius: 3px;
+}
+
+.item_image1 {
+  width: 70px;
+  height: 70px;
+  border-radius: 5px;
+}
+
+.image11 {
+  width: 110rpx;
+  height: 110rpx;
+}
+
+.content1 {
+  display: flex;
+  align-items: left;
+  justify-content: left;
+  flex-direction: column;
+  position: absolute;
+  left: 146rpx;
+}
+
+.bottomLine {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 51px;
+  height: 1px;
+  background-color: #f1f1f1;
+}
+
+.bottomLayout {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+}
+
+.top_layout {
+  padding-bottom: 70px;
+}

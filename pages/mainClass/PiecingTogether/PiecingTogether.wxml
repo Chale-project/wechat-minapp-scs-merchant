@@ -1,0 +1,87 @@
+<!--pages/mainClass/PiecingTogether/PiecingTogether.wxml-->
+<view class='main' hidden='{{showAdd}}'>
+
+  <image style='height:120px;width:120px;margin-top:40px;' src='/pages/images/icon_emity.png'></image>
+  <view class='margin-top'>您还没有拼团活动！</view>
+
+  <view class='button text-white' bindtap='addPiecing' style="height:35px;width:160px;">+ 添加拼团活动</view>
+</view>
+
+
+<view hidden='{{showList}}'>
+  <view style='margin-bottom:60px;'>
+    <van-tabs active="{{ active }}" bind:change="onChange">
+      <van-tab title="全部"></van-tab>
+      <van-tab title="未开始"></van-tab>
+      <van-tab title="进行中"></van-tab>
+      <van-tab title="已结束"></van-tab>
+    </van-tabs>
+
+    <block wx:for="{{dataList}}" wx:key="item">
+      <view class='item_order' bindtap='showGropuDetail' data-item='{{item.id}}' data-id='{{item.id}}'>
+        <view class='image_layout'>
+          <image class='item_image' src='{{item.coverImage==null?"/pages/images/icon_all_default.jpg":item.coverImage}}'> </image>
+        </view>
+        <view class='item_right justify-between flex'>
+          <view class="flex flex-direction">
+            <view class="item_right_title van-ellipsis2 text-df">{{item.title}}</view>
+            <view class="text-red text-df">￥{{item.groupPrice/100}}</view>
+            <!-- <view class="text-grdy text-sm">添加时间:{{item.addDataTime}}</view> -->
+            <view class="text-sm margin-top-sm">
+              <text class='text-grey text-sm'>{{item.startTime}} - {{item.endTime}}</text>
+              <!-- <text class='text-green margin-right-sm text-sm'>{{item.stockCount}}</text> 库存
+              <text class='text-green text-sm'>{{item.num}}</text> -->
+            </view>
+          </view>
+          <view class=" align-center justify-center flex">
+            <text class="icon-right text-grey"></text>
+          </view>
+        </view>
+      </view>
+      <view class='line'></view>
+      <view class='flex flex-direction-row padding-left padding-right bg-white margin-bottom-xs'>
+        <view class='flex-sub flex flex-direction-row align-center justify-left padding-top padding-bottom' bindtap='editGroup' data-id='{{item.id}}'>
+          <image style='width:20px;height:20px;margin-right:5px;' src='/pages/images/icon_group_edit.png'></image>
+          <view>编辑</view>
+        </view>
+
+        <view class='flex-sub flex flex-direction-row align-center justify-center padding-top padding-bottom' bindtap='deleteGroup' data-id='{{item.id}}'>
+          <image style='width:20px;height:20px;margin-right:5px;' src='/pages/images/skilldelete.png'></image>
+          <view>删除</view>
+        </view>
+
+        <view class='flex-sub flex flex-direction-row align-center justify-end padding-top padding-bottom' bindtap='detailGroup' data-id='{{item.id}}'>
+          <image style='width:20px;height:20px;margin-right:5px;' src='/pages/images/skillDataShow.png'></image>
+          <view>报表</view>
+        </view>
+      </view>
+    </block>
+  </view>
+  <emptyView salelistArr="{{dataList}}" emptycount='10' picheight='320px'>
+  </emptyView>
+  <view class='bottomLayout'>
+    <view class="savebtn" bindtap='addPiecing'>添加拼团活动</view>
+  </view>
+</view>
+
+
+
+<view class="cu-modal {{modalName}}" bindtap='hideModal'>
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">提示</view>
+      <!-- <view class="action" bindtap="hideModal">
+        <text class="icon-close text-red"></text>
+      </view> -->
+    </view>
+    <view class="padding-xl bg-white">
+      删除后将无法继续开团或者参团，确定删除?
+    </view>
+    <view class="cu-bar bg-white justify-end">
+      <view class="action">
+        <button class="cu-btn line-grey text-grey" bindtap="hideModal2">取消</button>
+        <button class="cu-btn bg-main-color text-white margin-left" bindtap="sureModal">确定</button>
+      </view>
+    </view>
+  </view>
+</view>

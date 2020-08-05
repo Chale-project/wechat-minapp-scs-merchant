@@ -1,0 +1,31 @@
+<!--pages/mainClass/ShopShipUser/ShopShipUser.wxml-->
+<view class='top_layout'>
+  <!-- <block wx:if="{{dataList.length>0}}"> -->
+  <block wx:for="{{dataList}}" wx:key="item">
+
+    <view class="item-layout" bindtap='toShipDetail' data-item='{{item.id}}'>
+      <view class="{{item.membershipLevel}} shadow-warp">
+        <view class='tvLvName'>{{item.membershipName}}</view>
+        <view class='tv2'>累计消费满{{item.moneyQuota/100}}元</view>
+        <view class='margin-bottom margin-left'>
+          <view class="cu-tag radius bg-white" hidden='{{!item.discount}}'>全店{{item.discount}}折</view>
+          <view class="cu-tag radius bg-white margin-left-xs margin-right-xs" hidden='{{item.freePostage<=0}}'>满{{item.freePostage/100}}包邮</view>
+          <view class="cu-tag radius bg-white" hidden='true'>升级送劵</view>
+        </view>
+      </view>
+
+      <view class='padding-left padding-top padding-bottom'>{{item.shopMembershipCount>0?"共":""}}{{item.shopMembershipCount>0?item.shopMembershipCount:'还没有客户符合该级别条件'}}{{item.shopMembershipCount>0?"个用户":""}}</view>
+    </view>
+  </block>
+  <!-- </block> -->
+  <!-- <block wx:if="{{dataList.length<=0}}"> -->
+  <!-- <view class='blockHead'> -->
+  <emptyView salelistArr="{{dataList}}" emptycount='10' picheight='420px'>
+  </emptyView>
+  <!-- </view> -->
+  <!-- </block> -->
+</view>
+
+<view class="bottomLayout">
+  <button class="cu-btn bg-main-color margin-tb-sm lg text-white" bindtap='toAddMemberShip'>添加会员等级</button>
+</view>

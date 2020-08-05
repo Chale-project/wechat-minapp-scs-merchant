@@ -1,0 +1,62 @@
+<!--pages/mainClass/ShopManage/ShopManage.wxml-->
+<view class='layout0'>
+  <image class="image margin-bottom" src="{{shopLogo?shopLogo:'/pages/images/login/user_icon5.png'}}" mode="aspectFill"></image>
+  <text>{{shopName}}</text>
+  <image class="qrcodeimage" src="/pages/images/login/icon_Qrcode.png" bindtap="qrcodetap"></image>
+
+</view>
+
+<view class='layout1'>
+  <view class="cu-form-group" bindtap='toShopLanmuTap'>
+    <view class="title">首页栏目设置</view>
+    <text class='icon-right text-gray'></text>
+  </view> 
+</view>
+
+<view class='layout1'>
+  <view class="cu-form-group" bindtap='toShopData'>
+    <view class="title">店铺资料</view>
+    <text class='icon-right text-gray'></text>
+  </view>
+  <view class="cu-form-group" bindtap='toTransactionSetup'>
+    <view class="title">店铺配置</view>
+    <text class='icon-right text-gray'></text>
+  </view>
+   <view class="cu-form-group" bindtap='toShopAdministratorSet'>
+    <view class="title">店员设置</view>
+    <text class='icon-right text-gray'></text>
+  </view>
+  <view class="cu-form-group" bindtap='toGuangErGaoSetup'>
+    <view class="title">店铺广告</view>
+    <text class='icon-right text-gray'></text>
+  </view>
+   <view class="cu-form-group" bindtap='toIntegralDetail'>
+    <view class="title">积分发放明细</view>
+    <text class='icon-right text-gray'></text>
+  </view>
+  <view class="cu-form-group" bindtap='toShopSaleTap'>
+    <view class="title">营业状态</view>
+    <text class='icon-right text-gray'></text>
+  </view>
+</view>
+
+
+
+<view class='layout1'>
+  <view class="cu-form-group" bindtap='toWeixinCode'>
+    <view class="title">上传微信群二维码</view>
+    <text class='icon-right text-gray'></text>
+  </view>
+  <view class="cu-form-group" bindtap='toShopIntroduct'>
+    <view class="title">店铺介绍</view>
+    <text class='icon-right text-gray'></text>
+  </view>
+  <view class="cu-form-group" bindtap='toUserProtocol'>
+    <view class="title">用户协议</view>
+    <text class='icon-right text-gray'></text>
+  </view>
+  <!-- <view class="cu-form-group" bindtap='cutShopTap'>
+    <view class="title">店铺切换</view>
+    <text class='icon-right text-gray'></text>
+  </view> -->
+</view>

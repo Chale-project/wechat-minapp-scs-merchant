@@ -1,0 +1,98 @@
+<!--pages/StoreManager/NewAddProduct/NewAddProduct.wxml-->
+  
+  <view class='outview'>
+  <!-- 提示10个商品一组选择 -->
+    <view class='choosetishi' wx:if="{{xianshitishi}}">
+    <image class="tishipic" src="/pages/images/storeManager/tishipic.png" mode="aspectFill"></image>
+     <view class='tishiview'>建议10个商品一组进行导入</view>
+     <view class='tishilineview'></view>
+     <view class='tishirightview' bindtap='tishiclosetap'>
+      <image class="tishiclose" src="/pages/images/storeManager/tishiclose.png" mode="aspectFill"></image>
+     </view>
+    </view>
+      <view class="prosearchview">
+      <view class="alltitleview" bindtap='allProTap' >{{choosename}}        <text class="icon-triangledownfill" wx:if="{{!proshow}}"></text>
+      <text class="icon-triangleupfill" wx:else></text>
+      </view>
+      <input placeholder="请输入商品名称" placeholder-class="placeholder" class="searchinput" bindinput="searchnameinput" bindconfirm="searchbutton" value="{{searchtitle}}"></input>
+      </view>
+  </view>
+<view hidden="{{proshow}}">
+  <!-- 列表分页 -->
+<scroll-view scroll-y="true" bindscrolltolower="scrolower" style="height:{{screenHeighth-50-50}}px;width:100%">
+
+<!-- <view class="cu-bar search bg-white">
+    <view class="search-form round">
+      <text class="icon-search"></text>
+      <input type="text" placeholder="搜索商品名称" confirm-type="search" bindinput="searchnameinput" bindconfirm="searchbutton"></input>
+    </view>
+  </view> -->
+
+
+<!-- 添加列表信息-->
+<checkbox-group bindchange="checkboxChange">
+ <view class='sale-item' wx:for="{{guigedetailarr}}" data-idx="{{idx}}" wx:for-index="idx" wx:for-item="item" wx:key="{{idx}}" >
+    <view class="checkchooseview">
+    <!-- <radio data-idx="{{idx}}" class='red' bindtap='checktap'></radio> -->
+    <checkbox class="round red" value="{{idx}}" checked="{{item.proSelecte}}"></checkbox>
+    </view>
+    <view class="rightitemview">
+      <image class="userIconImg" src="{{item.coverImage.length>0?item.coverImage:'/pages/images/storeManager/productIcon.png'}}" binderror="avatarError" data-idx="{{idx}}" mode="aspectFill"></image>
+      <view class='rightallview'>
+          <view class="productName">{{item.title}}</view>
+          <view class="productguige">
+           <view class='guigeall' wx:for="{{item.goodsDesc}}" data-ida="{{ida}}" wx:for-index="ida" wx:for-item="itea" wx:key="{{ida}}">
+              <view class="guigesingle">
+                <view class='guigesinglename' data-idx="{{idx}}" data-ida="{{ida}}" bindtap='chakanguigetapname'>{{itea.specificationItems}}</view>
+                <view class='lingshouview'>
+                <view style="{{itea.descPrice?'color:#000':'color:#ccc'}};margin-left:5px;font-size:12px;margin-right:2px">¥ </view>
+                <input type='digit' class='guigesingleprice' placeholder-class="placeholder" placeholder='零售价' bindinput="guigepriceinput" data-idx="{{idx}}" data-ida="{{ida}}" value="{{itea.descPrice}}"></input>
+                </view>
+                <input type='number' class='guigesingleprices' placeholder-class="placeholder" placeholder='库存' bindinput="guigenuminput" data-idx="{{idx}}" data-ida="{{ida}}" value="{{itea.number}}"></input>
+              </view>
+           </view>
+          </view>
+      </view>
+    </view>
+  </view>
+  </checkbox-group>
+
+  <emptyView
+      salelistArr = "{{guigedetailarr}}"
+      emptycount = '5'
+      picheight = '400px'>
+  </emptyView>
+
+<view class="cu-load {{scrolowerLoad?'loading':'over'}}" wx:if="{{guigedetailarr.length>0}}"></view>
+
+</scroll-view>
+
+  <!-- <view class='bottomview'>
+    <view class="bottomsecview">全选 共{{selids.length}}件商品</view>
+    <view class="bottomsubview" bindtap='nextBrnTap' hidden='{{guigeshow}}'>下一步</view>
+  </view> -->
+<view class="bottomview" wx:if="{{guigedetailarr.length>0}}">
+  <view class="checkchooseviews" bindtap="allchoosetap">
+    <checkbox class='round red' checked="{{isAllChoose}}"/>
+      </view>
+  <view class="bottomsecview">全选 共{{selids.length}}件商品</view>
+  <view class="bottomsubview" bindtap="nextBrnTap">分类至</view>
+</view>
+
+</view>
+
+<!-- 全部分类 -->
+ <scroll-view class='allCaterview' hidden="{{!proshow}}" bindscrolltolower="caterscrolower" scroll-y="true" style="height:{{screenHeighth-50}}px">
+    <view class='topcater'>
+  <!-- 全部分类和未分类 -->
+     <view class='topcater-item' wx:for="{{topcaterdata}}" data-idx="{{idx}}" wx:for-index="idx" wx:for-item="item" wx:key="{{idx}}" bindtap='topcatertap' style="{{!chooseid&&idx==0?'color:#ff4444':chooseid=='noCate'&&idx==1?'color:#ff4444':'color:#333'}}">{{item}}</view>
+    </view>
+   <!-- 一级分类 -->
+    <view class='onecaterview' wx:for="{{caterdata}}" data-ida="{{ida}}" wx:for-index="ida" wx:for-item="itea" wx:key="{{ida}}" wx:if="{{itea.id}}" >
+        <view class='fircater'>{{itea.name}}</view>
+        <view class='twocater'>
+          <view class='secondcater-item' wx:for="{{itea.sublevels}}" data-idx="{{idx}}" wx:for-index="idx" wx:for-item="item" wx:key="{{idx}}" data-ida="{{ida}}" bindtap='twocatertap' style="{{item.id==chooseid?'color:#ff4444':'color:#333'}}">{{idx==0?'所有':item.name}}</view>
+        </view>
+    </view>
+<view class="cu-load {{caterscrolowerLoad?'loading':'over'}}" wx:if="{{caterdata.length>0}}"></view>
+  </scroll-view>

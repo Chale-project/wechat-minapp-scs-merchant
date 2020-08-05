@@ -1,0 +1,55 @@
+/* pages/mainClass/OrderManage/OrderManage.wxss */
+.layout_dialog{
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
+.inputQu{
+  border: 1px solid #f1f1f1;
+  margin-right: 20px;
+  padding-left: 4px;
+  margin-left: 20px;
+}
+
+
+.sendLayout{
+  align-items: center;
+  justify-content: center;
+  margin-top: 100px;
+  display: flex;
+}
+
+.line5{
+  height: 100%;
+  width: 4px;
+}
+
+.bottomLayout {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  margin-left: 15px;
+  width: calc(100% - 30px);
+  flex-direction: row;
+}
+
+.imageDefault{
+  width: 100px;
+  height: 50px;
+}
+
+.receive_layout{
+  margin-bottom: 60px;
+}
+
+.allItem{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 45px;
+  background-color: white
+}

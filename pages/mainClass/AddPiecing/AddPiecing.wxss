@@ -1,0 +1,20 @@
+/* pages/mainClass/AddPiecing/AddPiecing.wxss */
+.image_layout {
+  position: relative;
+  width: 98px;
+  height: 98px;
+  margin-right: 10px;
+  overflow: hidden;
+}
+
+.toplayout {
+  position: fixed;
+  left: 0;
+  top: 0; 
+  right: 0;
+  z-index: 5;
+}
+
+.inputLayout{
+  border: 1px solid #f1f1f1;
+}

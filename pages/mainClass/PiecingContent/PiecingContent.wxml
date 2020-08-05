@@ -1,0 +1,53 @@
+<!--pages/mainClass/PiecingContent/PiecingContent.wxml-->
+<view class='margin-bottom'>
+  <view class='item_order'>
+
+    <view class="rightTopLayout">
+      <text class="text-white text-xs">{{number}}人团</text>
+    </view>
+
+    <view class='image_layout'>
+      <image class='item_image' src='{{coverImage==null?"/pages/images/icon_all_default.jpg":coverImage}}'> </image>
+    </view>
+    <view class='item_right justify-between flex'>
+      <view class="flex flex-direction">
+        <view class="item_right_title van-ellipsis2 text-df">{{title}}</view>
+        <view class="text-red text-df">￥{{groupPrice}}</view>
+      </view>
+      <!-- <view class=" align-center justify-center flex">
+        <text class="icon-right text-grey"></text>
+      </view> -->
+    </view>
+  </view>
+
+  <view class='ListLine'></view>
+
+  <van-tabs active="0" bind:change="onChange">
+    <van-tab title="待成团"></van-tab>
+    <van-tab title="已成团"></van-tab>
+    <van-tab title="拼团失败"></van-tab>
+  </van-tabs>
+
+  <view class="ListLine"></view>
+
+  <block wx:for="{{dataList}}" wx:key="item" wx:for-item="item">
+    <view class='flex flex-direction-row align-center justify-between bg-white' style='height:50px;' bindtap='showAllUser' data-id="{{item.groupOrderId}}">
+      <view class=' flex flex-direction-row'>
+        <block wx:for="{{item.userList}}" wx:for-item="itemChild" wx:key='itemChild'>
+          <view class="item12" style='height:50px;'>
+          <!-- <view class="itemIMageLayout"> -->
+          <view  class="itemIMageLayout text-white text-xs" hidden="{{itemChild.isMaster=='false'}}">团长</view>
+            <!-- </view> -->
+            <image class="round image2" style='height:30px;width:30px;margin-left:13px;position: relative;' src='{{itemChild.headPic}}'></image>
+          </view>
+          <view style="width:10px;"></view>
+        </block>
+      </view>
+      <view class='text-black text-df margin-right'>{{state}}</view>
+    </view>
+    <view class='line'></view>
+  </block>
+
+  <emptyView salelistArr="{{dataList}}" emptycount='10' picheight='420px'>
+  </emptyView>
+</view>

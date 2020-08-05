@@ -1,0 +1,20 @@
+<!--pages/mainClass/ChooseUser/ChooseUser.wxml-->
+<view>
+  <block wx:for="{{dataList}}" wx:key="item">
+    <view class='flex justify-between align-center bg-white' style='height:60px;' bindtap='toUserList' data-type='{{item.type}}'>
+      <view class='flex align-center justify-center margin-left-sm' catchtap>
+        <checkbox class="round red" checked="{{item.flagCheck}}" bindtap="checkboxChange" data-item='{{item.flagCheck}}' data-index="{{index}}"></checkbox>
+        <view class='text-black text-df margin-left-xs'>{{item.name}}</view>
+      </view>
+      <text class="icon-right lg text-gray margin-right-sm"></text>
+    </view>
+
+    <view class='line'></view>
+  </block>
+</view>
+
+
+<form bindsubmit='sendCoupons' bindreset="formReset" report-submit='true' class='flex-sub'>
+  <button  class='f-btn' class="addView shadow-blur text-white margin-left margin-right" style='background:#ff4444;margin-top:100px;text-color:#ffffff' form-type="submit" >发送优惠券</button>
+    <!-- <button form-type="submit" class='f-btn'></button> -->
+</form>

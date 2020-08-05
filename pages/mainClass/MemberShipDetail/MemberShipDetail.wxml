@@ -1,0 +1,101 @@
+<!--pages/mainClass/ShopShipSetting/ShopShipSetting.wxml-->
+<view>
+
+  <view class="cu-form-group margin-top">
+    <view class="title">会员级别</view>
+    <input placeholder="请填写会员级别名称" bindinput='inputShipName' value='{{shipName!=""?shipName:""}}'></input>
+  </view>
+
+  <view class="cu-form-group margin-top">
+    <view class="title">会员条件</view>
+  </view>
+  <view class='line'></view>
+  <view class='flex justify-between bg-white'>
+    <view class='layout'>
+      <view class="cu-form-group">
+        <view class="title">累计消费满</view>
+        <input placeholder="请填写金额" bindinput='inputMoneyQuota' value='{{moneyQuota!=""?moneyQuota:""}}'></input>
+        <text class="text-orange">元</text>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">累计消费满</view>
+        <input placeholder="请填写数字" bindinput='inputOrderQuota' value='{{orderQuota!=""?orderQuota:""}}'></input>
+        <text class="text-orange">次</text>
+      </view>
+    </view>
+    <view class='flex align-center padding-right'>或</view>
+  </view>
+
+  <view class="cu-form-group margin-top">
+    <view class="title">会员享受的权益(可多选)</view>
+  </view>
+  <view class='line'></view>
+  <view class='bg-white'>
+    <view class='flex justify-left align-center padding-left padding-top-xs padding-bottom-xs'>
+      <checkbox-group bindchange="onChange1">
+        <checkbox class='round red  margin-right-sm' checked="{{ checked1 }}" value="{{ checked1 }}" bind:change="onChange1"></checkbox>
+      </checkbox-group>
+      满包邮
+    </view>
+    <view class="cu-form-group" hidden='{{!checked1}}'>
+      <view class="title">消费满</view>
+      <input placeholder="请填写金额" bindinput='inputFreePostage' value='{{freePostage>0?freePostage:""}}'></input>
+      <text class="text-orange padding-right">元，可免邮</text>
+    </view>
+  </view>
+  <view class='line'></view>
+  <view class='bg-white'>
+    <view class='flex justify-left align-center padding-left padding-top padding-bottom-xs'>
+      <checkbox-group bindchange="onChange2">
+        <checkbox class='round red margin-right-sm' checked="{{ checked2 }}" value="{{ checked2 }}" bind:change="onChange2"></checkbox>
+      </checkbox-group>
+      折扣
+    </view>
+    <view class="cu-form-group" hidden='{{!checked2}}'>
+      <view class="title">会员享</view>
+      <input placeholder="请填写数字" bindinput='inputDiscount' value='{{discount!=""?discount:""}}'></input>
+      <text class="text-orange padding-right">折</text>
+    </view>
+  </view>
+  <view class='line'></view>
+  <view class='bg-white'>
+    <view class="cu-form-group flex justify-between">
+      <view class='flex justify-left align-center'>
+        <checkbox-group bindchange="onChange3">
+          <checkbox class='round red margin-right-sm' checked="{{ checked3 }}" value="{{ checked3}}" bind:change="onChange3"></checkbox>
+        </checkbox-group>
+        送优惠券
+      </view>
+      <button class="cu-btn bg-main-color shadow sm text-white" bindtap='addCoupon' hidden='{{!checked3}}'>添加优惠劵</button>
+    </view>
+    <block wx:if="{{dataList.length>0}}">
+      <block wx:for="{{dataList}}" wx:key="item" wx:for-index="index">
+        <view class='layout_outside'>
+          <view class='couponLayout'>
+            <view>
+              <image class='couponImage' src='/pages/images/coupons.png'></image>
+            </view>
+            <view class='couponDetail margin-right'>
+              <text class='text-lg text-black'>￥{{item.usedAmount/100}}</text>
+              <text class='text-sm margin-top-xs'>满￥{{item.meetAmount/100}}元可用</text>
+            </view>
+          </view>
+          <image class='couponDelete' src='/pages/images/delete.png' bindtap='deleteCoupon' data-item='{{index}}'></image>
+        </view>
+      </block>
+    </block>
+    <block wx:if="{{dataList.length<=0}}">
+
+    </block>
+    <view class='padding'>若优惠券过期、发完或被删除，则不再为会员自动发券</view>
+  </view>
+
+   <view class="cu-form-group margin-top">
+    <view class="title">会员卡使用范围</view>
+    <button class="cu-btn line-black text-black" bindtap='btn2'>不可用商品</button>
+  </view>
+
+  <view class="padding flex flex-direction" bindtap='addCard'>
+    <button class="cu-btn bg-main-color margin-tb-sm lg text-white">完成</button>
+  </view>
+</view>

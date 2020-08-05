@@ -1,0 +1,197 @@
+/* pages/StoreManager/ProAddCater/ProAddCater.wxss */
+/* 分类内容 */
+.catercontentview {
+  margin-bottom: 110px;
+}
+.fircater-item {
+  margin-bottom: 10px;
+  background: #fff;
+}
+.firstview {
+height: 50px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+margin: 16px;
+border-bottom: 1px solid #f5f5f5;
+}
+.firstview {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 16px;
+  border-bottom: 1px solid #f5f5f5;
+}
+.secview {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 16px;
+  border-bottom: 1px solid #f5f5f5;
+}
+.firstnameview {
+  width: calc(100% - 100px);
+  text-align: left;
+}
+.rightitemview {
+  height: 50px;
+  display:flex;
+  align-items:center;
+}
+.mostUpview {
+  width: 30px;
+  height: 20px;
+}
+.topmoveview {
+  width: 30px;
+  height: 20px;
+}
+.editcurview {
+  width: 30px;
+  height: 20px;
+}
+.horlineview {
+  width: 1px;
+  height: 16px;
+  background: #ccc;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+.deletview {
+  width: 30px;
+  height: 20px;
+}
+.addsecondcater {
+  width:100%;
+  line-height:40px;
+  padding-left: 16px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+.delRight {
+  width: 20px;
+  color: #ff4444;
+  border: 2px solid #ff4444;
+  border-radius: 10px;
+  text-align: center;
+  height: 20px;
+  line-height: 16px;
+}
+.addRight {
+  text-align: right;
+  font-size: 14px;
+  padding-left: 2px;
+  color: #ff4444;
+}
+.emityLayout {
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.emityView1 {
+  height: 130px;
+  width: 139px;
+}
+
+.editview {
+  background:#fff; 
+  height:100px;
+  bottom:0;
+  z-index:999;
+  position:fixed;
+  left:0;
+  right:0;
+}
+.addcatereview {
+  color: #000;
+  text-align: center;
+  font-size: 16px;
+  line-height: 50px;
+}
+.savebtn {
+  color: #fff;
+  text-align: center;
+  font-size: 16px;
+  line-height: 50px;
+  background: #ff4444;
+}
+.vanContentView {
+  width: 300px;
+  height: 160px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  flex-direction:column;
+  padding: 16px;
+  border-radius: 5px;
+}
+.catertoptitle {
+  width: 100%;
+  height: 33%;
+  text-align: left;
+}
+.shurucater {
+  width: 100%;
+  height: 33%;
+  border-bottom: 1px solid #f5f5f5;
+  color: #000;
+}
+.placeholder {
+  color: #9a9a9a;
+}
+.cancleorsure {
+  margin-top: 16px;
+  width: 100%;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+.cancleview {
+  width: 55px;
+  color: #000;
+  text-align: center;
+  margin-left: calc(100% - 120px);
+  border: 1px solid #000;
+  line-height: 30px;
+  border-radius: 5px;
+}
+.sureview {
+  width: 55px;
+  color: #fff;
+  text-align: center;
+  background: #ff4444;
+  margin-left: 10px;
+  line-height: 30px;
+  border-radius: 5px;
+}
+.outview {
+  background: #fff;
+  padding: 10px;
+}
+.prosearchview {
+  height: 40px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; 
+}
+.alltitleview {
+  color: #000;
+  width: 100px;
+  padding-left: 10px;
+  display: flex;
+}
+.searchinput {
+  width: calc(100% - 90px);
+  padding-right: 10px;
+  text-align: left;
+}
+.placeholder {
+  color: #ccc;
+}

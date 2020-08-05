@@ -1,0 +1,91 @@
+<!--pages/mainClass/StoreValueDetail/StoreValueDetail.wxml-->
+<view class='margin-left margin-top margin-bottom'>
+  <text class='text-grey'>销售数据</text>
+</view>
+<view class="cu-form-group">
+  <view class="title text-black">销售金额</view>
+  <text class='text-grey'>{{countMoney/100}}元</text>
+</view>
+
+<view class="cu-form-group">
+  <view class="title">销售量</view>
+  <text class='text-grey'>{{cardCount}}次</text>
+</view>
+
+<view class='margin-left margin-top margin-bottom'>
+  <text class='text-grey'>基本信息</text>
+</view>
+
+<view class="cu-form-group">
+  <view class="title">储值卡名称</view>
+  <text class='text-grey'>{{cardName}}</text>
+</view>
+
+<view class="cu-form-group">
+  <view class="title">储值卡金额</view>
+  <text class='text-grey'>{{cardMoney/100}}元</text>
+</view>
+
+<view class='margin-left margin-top margin-bottom'>
+  <text class='text-grey'>充值赠送</text>
+</view>
+
+<view class="cu-form-group">
+  <view class="title">赠送金额</view>
+  <text class='text-grey'>{{presentMoney/100}}元</text>
+</view>
+
+<view class="cu-form-group">
+  <view class="title">赠送积分</view>
+  <text class='text-grey'>{{presentIntegral==null?"0":presentIntegral}}积分</text>
+</view>
+
+<view class="cu-form-group">
+  <view class="title">赠优惠券</view>
+   <text class='text-grey'>{{dataList.length>0?"":"无"}}</text>
+</view>
+
+<block wx:if="{{dataList.length>0}}">
+  <block wx:for="{{dataList}}" wx:key="item" wx:for-index="index">
+    <view class='layout_outside'>
+      <view class='couponLayout'>
+        <view>
+          <image class='couponImage' src='/pages/images/coupons.png'></image>
+        </view>
+        <view class='couponDetail margin-right'>
+          <text class='text-lg text-black'>￥{{item.usedAmount/100}}</text>
+          <text class='text-sm margin-top-xs'>满￥{{item.meetAmount/100}}元可用</text>
+        </view>
+      </view>
+    </view>
+  </block>
+</block>
+<block wx:if="{{dataList.length<=0}}">
+
+</block>
+
+
+<view class="bottomLayout">
+  <button class="cu-btn bg-main-color margin-tb-sm lg text-white" bindtap='deleteStoreValue' hidden='{{isCanDelete}}'>删除储值卡</button>
+</view>
+
+
+<view class="cu-modal {{modalName}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">提示</view>
+      <view class="action" bindtap="hideModal">
+        <text class="icon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-xl">
+      确定要删除此储值卡吗？
+    </view>
+    <view class="cu-bar bg-white justify-end">
+      <view class="action">
+        <button class="cu-btn line-grey text-green" bindtap="hideModal">取消</button>
+        <button class="cu-btn bg-main-color margin-left text-white" bindtap="deleteModal">确定</button>
+      </view>
+    </view>
+  </view>
+</view>

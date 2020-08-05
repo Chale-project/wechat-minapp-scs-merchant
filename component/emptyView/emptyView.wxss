@@ -1,0 +1,91 @@
+/* component/emptyView/emptyView.wxss */
+/* 空态图 */
+.emityLayout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.emityView1 {
+  height: 130px;
+  width: 139px;
+}
+.emptychoose-item {
+  background: #fff;
+  margin-bottom: 10px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.emptyImage-1 {
+  margin-left: 34px;
+  width: 46px;
+  height: 46px;
+  border-radius: 23px;
+  background: #f5f5f5;
+}
+.emptyName-2 {
+  margin-left: 10px;
+  width: 120px;
+  height: 26px;
+  background: #f5f5f5;
+}
+.emptyName-3 {
+  width: 80px;
+  height: 20px;
+  margin-right: 10px;
+  background: #f5f5f5;
+}
+.emptyaddstoreview {
+  font-size:16px;
+  height:46px;
+  text-align: center;
+  line-height: 46px;
+  border-radius:23px;
+  margin-top:30px;
+  width: 80%;
+  background: #fff;
+  margin-left:10%;
+}
+.empty-item {
+  background: #fff;
+  margin-bottom: 10px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  padding: 0 10px;
+}
+.empty-1 {
+  width: 80px;
+  height: 80px;
+  background: #f5f5f5;
+}
+.empty-right {
+  width: calc(100% - 100px); 
+  margin-left: 10px;
+}
+.empty-2 {
+  width: 200px;
+  height: 15px;
+  background: #f5f5f5;
+}
+.empty-3 {
+  width: 60px;
+  margin-top: 5px;
+  height: 12px;
+  background: #f5f5f5;
+}
+.empty-4 {
+  margin-top: 5px;
+  width: 160px;
+  height: 12px;
+  background: #f5f5f5;
+}
+.empty-5 {
+  margin-top: 5px;
+  width: 100px;
+  height: 12px;
+  background: #f5f5f5;
+}

@@ -1,0 +1,38 @@
+/* pages/mainClass/ShopBusinessDetail/ShopBusinessDetail.wxss */
+.itemview {
+  height: 50px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  padding: 0 10px;
+  margin-bottom: 10px;
+}
+.picker {
+  width: 375px;
+  height: 50px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.nameview {
+  width: calc(100% - 180px);
+  font-size: 15px;
+  color: 000;
+}
+.business {
+  width: 180px;
+  text-align: right;
+  padding-right: 10px;
+  color: #ccc;
+}
+.guigenumview{
+  box-sizing: content-box;
+  background: #fff;
+  height: 50px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #666;
+}

@@ -1,0 +1,79 @@
+<!--pages/mainClass/SecKillSetting/SecKillSetting.wxml-->
+
+<view class="rightitemview" bindtap='modifyguigetap'>
+  <view class="leftitemview">
+    <image class="userIconImg" src="{{chooseProduct.coverImage.length>0?chooseProduct.coverImage:'/pages/images/storeManager/productIcon.png'}}" data-idx="{{idx}}" mode="aspectFill"></image>
+    <view class="productName">{{chooseProduct.title}}</view>
+    <view class="productPrice"><text> ¥ {{smallskillprice}}</text></view>
+    <view class="totalsale">原价 <text style='color:#666;text-decoration:line-through;font-size: 10px'> ¥ {{originalprice}}</text></view>
+  </view>
+  <view class="rightarrowview">
+   <view class='icon-right' style='width:20px;height:20px'></view>
+  </view>
+
+  </view>
+
+  <view class="cu-form-group">
+    <view class="title">开始时间</view>
+    <view style="color:#666;width:100%;text-align:left" bindtap='timechoosepickertap'>{{startTime.length>0?startTime:'请选择开始时间'}}</view>
+  </view>
+
+  <view class="cu-form-group">
+    <view class="title">持续时间</view>
+    <view style="color:#666;width:100%;text-align:left" bindtap='continuetimetap'>{{continutime.length>0?continutime:'请选择持续时间'}}</view>
+  </view>
+
+  <view class="cu-form-group">
+    <view class="title">结束时间</view>
+    <view style="color:#666;width:100%;text-align:left">{{endtime.length>0?endtime:'结束时间自动计算生成'}}</view>
+  </view>
+
+  <view class="cu-form-group">
+    <view class="title">限购数量</view>
+    <input type='number' placeholder="每人最多可购买的商品数量，为空则不限购" placeholder-class="placeholder" style='font-size:12px' bindinput='limitinput' style='color:#000'></input>
+  </view>
+
+  <view class="savebtn" bindtap='saveprotap'>保存</view>
+
+
+<timePicker pickerShow="{{isPickerShow}}" bind:hidePicker="pickerHide" bind:setPickerTime="setPickerTime"
+  config="{{pickerConfig}}"></timePicker>
+
+  <van-popup
+    show="{{ continueshow }}"
+    position="bottom"
+  >
+    <van-picker
+      show-toolbar
+      columns="{{ columns }}"
+      default-index="{{ 2 }}"
+      bind:cancel="continuetimeClose"
+      bind:confirm="continuetimeConfirm"
+    />
+  </van-popup>
+
+  <!-- 选择规格 -->
+<van-popup show="{{ guigeshow }}" bind:close="onClose">
+  <view class="vanContentView">
+    <view class="catertoptitle">{{chooseProduct.title}}</view>
+    <scroll-view scroll-y='true' class="guigecenterview">
+    <view class='guigenumview' wx:for="{{inputArr}}" data-idx="{{idx}}" wx:for-index="idx" wx:for-item="item" wx:key="{{idx}}">
+        <view class="guigesingleview" data-idx="{{idx}}">
+          <view class='guigenameview'>{{item.specificationItems}}</view>
+          <view class='guigepriceview'>¥ {{item.descPrice}}</view>
+          <view class='lingshouview'>
+                <view style="{{item.seckillPrice?'color:#000':'color:#ccc'}};margin-left:5px;font-size:12px;margin-right:2px">¥ </view>
+                <input type='digit' class='guigesingleprice' placeholder-class="placeholder" placeholder='设置秒杀价' bindinput="guigepriceinput" data-idx="{{idx}}" value="{{item.seckillPrice}}"></input>
+                </view>
+                <input type='number' class='guigesingleprices' placeholder-class="placeholder" placeholder='设置活动库存' bindinput="guigenuminput" data-idx="{{idx}}" value="{{item.seckillNum}}"></input>
+
+        </view>
+      </view>
+    </scroll-view>
+    <view class="cancleorsure">
+    <view class="cancleview" bindtap="hideModal">取消</view>
+    <view class='guigeverlineview'></view>
+    <view class="sureview" bindtap="hideModalsure">确定</view>
+    </view>
+  </view>
+</van-popup>

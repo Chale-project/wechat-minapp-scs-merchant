@@ -1,0 +1,51 @@
+<!--pages/mainClass/PiecingDetail/PiecingDetail.wxml-->
+<view>
+  <view class='item_order'>
+    <view class='image_layout'>
+      <image class='item_image' src='{{coverImage==null?"/pages/images/icon_all_default.jpg":coverImage}}'> </image>
+    </view>
+    <view class='item_right justify-between flex flex-direction'>
+      <!-- <view class="flex flex-direction"> -->
+      <view class="item_right_title van-ellipsis2 text-df">{{title}}</view>
+      <view class="text-red text-df">￥{{groupPrice}}</view>
+      <!-- </view> -->
+      <!-- <view class=" align-center justify-center flex">
+        <text class="icon-right text-grey"></text>
+      </view> -->
+    </view>
+  </view>
+
+  <block wx:for="{{dataList}}" wx:key="item" wx-index="index" wx:for-index="index">
+    <view class='white_layout'>
+      <view class='flex flex-direction-row align-center justify-between margin-left margin-right' style='height:45px'>
+        <view class='text-grey text-df'>商品规格</view>
+        <view class='text-black text-df'>{{item.specificationItems}}</view>
+      </view>
+      <view class='line'></view>
+      <view class='flex flex-direction-row align-center justify-between margin-left margin-right' style='height:45px'>
+        <view class='text-grey text-df'>原价</view>
+        <view class='text-black text-df'>{{item.groupNum}}</view>
+      </view>
+      <view class='line'></view>
+      <view class='flex flex-direction-row align-center justify-between margin-left margin-right' style='height:45px'>
+        <view class='text-grey text-df'>拼团价</view>
+        <view class='text-black text-df flex flex-direction-row algin-center justify-center'>
+          <view class="flex algin-center justify-center padding-top-xs">￥</view>
+          <view class="in_layout">
+            <input value="{{item.groupPrice}}" style="width:60px;padding-left:4px;" placeholder="拼团价" type="digit" data-index="{{index}}"   bindinput="getGroupPrice"></input>
+          </view>
+        </view>
+      </view>
+      <view class='line'></view>
+      <view class='flex flex-direction-row align-center justify-between margin-left margin-right' style='height:45px'>
+        <view class='text-grey text-df'>库存</view>
+        <view class='text-black text-df flex flex-direction-row'>
+          <view class="in_layout">
+            <input value="{{item.groupNum}}" style="width:60px;padding-left:4px;" placeholder="" type="number" data-index="{{index}}"  bindinput="getStock"></input>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+
+</view>

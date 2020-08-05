@@ -1,0 +1,12 @@
+/* pages/mainClass/ChooseUser/ChooseUser.wxss */
+.addView {
+  font-size:16px;
+  height:46px;
+  text-align: center;
+  line-height: 46px;
+  border-radius:23px;
+  margin-top:30px;
+  width: 80%;
+  color:#fff;
+  margin-left:10%;
+}

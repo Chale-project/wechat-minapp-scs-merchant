@@ -1,0 +1,184 @@
+<!--pages/mainClass/Integration/Integration.wxml-->
+<view class="cu-list menu {{menuBorder?'sm-border':''}} {{menuCard?'card-menu margin-top':''}}">
+  <!-- <view class="cu-item arrow" hidden='true'>
+    <view class="content" bindtap='chooseData1'>
+      <text class="text-black">积分有效期</text>
+      <text class="text-grey margin-left-xl">永久有效</text>
+    </view>
+  </view>
+  <view class='padding-left padding-top padding-bottom'>
+    <text class='text-sm text-grey '>如2018年5月20日获取的积分截止到2019年12月31日有效</text>
+  </view> -->
+  <view class="cu-form-group">
+    <view class="title">购物送积分</view>
+    <switch bindchange="switch1Change" checked='{{sppIntStatus=="enabled"?true:false}}'></switch>
+  </view>
+  <view class='line'></view>
+  <!-- <view class="cu-item"> -->
+    <view class="content flex align-center bg-white padding-left padding-top padding-bottom-xs">
+      <text class="text-black" style='width:100px;'>赠送比例</text>
+      <input class="inputLayout text-red" placeholder="范围1-100" bindinput='integral1' type='number' value='{{choose1}}'></input>
+      <text class="text-black" >%</text>
+    </view>
+  <!-- </view> -->
+  <view class='padding-left padding-bottom bg-white' hidden='{{choose1==""?true:false}}'>
+    <text class='text-sm text-grey' hidden='{{choose1==""?true:false}}'>实付款金额的{{choose1}}%作为赠送积分(小数全部舍弃)</text>
+  </view>
+
+<view class="line"></view>
+
+  <!-- <view class="cu-item"> -->
+    <view class="content flex align-center bg-white padding-left padding-top padding-bottom-xs">
+      <text class="text-black" style='width:100px;'>1个积分等于</text>
+      <input class="inputLayout text-red " bindinput='integral2'  placeholder="最小为0.01" type='digit' value='{{choose2}}'></input>
+      <text class="text-black">元</text>
+    </view>
+  <!-- </view> -->
+  <view class='padding-left  padding-bottom bg-white' hidden='{{choose0=="Infinity"?true:false}}'>
+    <text class='text-sm text-grey' hidden='{{choose0=="Infinity"?true:false}}'>1元等于{{choose0}}积分</text>
+  </view>
+<view class="line"></view>
+
+  <!-- <view class="cu-item"> -->
+    <view class="content flex align-center bg-white padding-left padding-top padding-bottom-xs">
+      <text class="text-black" style='width:100px;'>抵扣最高比例</text>
+      <input class="inputLayout text-red " bindinput='integral3'   placeholder="范围1-100"  type='number' value='{{choose3}}'></input>
+      <text class="text-black">%</text>
+    </view>
+  <!-- </view> -->
+  <view class='padding-left  padding-bottom bg-white' hidden='{{choose3==""?true:false}}'>
+    <text class='text-sm text-grey ' hidden='{{choose3==""?true:false}}'>积分抵扣金额不超过订单金额的{{choose3}}%</text>
+  </view>
+
+<view class="ListLine"></view>
+
+  <view class="cu-form-group">
+    <view class="title">签到领取积分</view>
+    <switch bindchange="switch2Change" checked='{{signIntegral=="enabled"?true:false}}'></switch>
+  </view>
+  <view class='padding bg-white'>
+    <text class='text-grey text-sm'>消费者签到1天领1积分，连续签到2天领2积分，依次类推，到连续签到7天领7积分，连续签到超过7天可领取7积分。</text>
+  </view>
+
+  <view class='padding bg-white'>
+    <text class='text-red text-df'>注：点击保存后，修改的内容才会生效</text>
+  </view>
+</view>
+
+<view class="bottomLayout">
+  <view class="flex" style='width:100%;'>
+    <!-- <view class="flex flex-sub bg-grey padding-sm  justify-center aling-center" bindtap='closed' hidden='{{!isModify}}'>关闭
+    </view> -->
+    <view class="flex flex-sub bg-main-color padding-sm text-white justify-center aling-center" bindtap='save'>{{btnName}}
+    </view>
+  </view>
+</view>
+
+
+<view class="cu-modal {{modalName1}}" bindtap='hideModal'>
+  <view class="cu-dialog" catchtap>
+    <radio-group class="block" bindchange="radioChange1">
+      <view class="cu-list menu text-left">
+        <view class="cu-item" wx:for="{{dataList1}}" wx:key='item'>
+          <label class="flex justify-between align-center flex-sub" bindtap="hideModal">
+            <view class="flex-sub">{{item.name}}</view>
+            <radio class="round" value='{{item.name}}'></radio>
+          </label>
+        </view>
+      </view>
+    </radio-group>
+  </view>
+</view>
+
+<view class="cu-modal {{modalName2}}" bindtap='hideModal'>
+  <view class="cu-dialog" catchtap>
+    <radio-group class="block" bindchange="radioChange2">
+      <view class="cu-list menu text-left">
+        <view class="cu-item" wx:for="{{dataList2}}" wx:key='item'>
+          <label class="flex justify-between align-center flex-sub" bindtap="hideModal">
+            <view class="flex-sub">{{item.name/100}}</view>
+            <radio class="round" value='{{item.name}}'></radio>
+          </label>
+        </view>
+      </view>
+    </radio-group>
+  </view>
+</view>
+
+<view class="cu-modal {{modalName3}}" bindtap='hideModal'>
+  <view class="cu-dialog" catchtap>
+    <radio-group class="block" bindchange="radioChange3">
+      <view class="cu-list menu text-left">
+        <view class="cu-item" wx:for="{{dataList3}}" wx:key='item'>
+          <label class="flex justify-between align-center flex-sub" bindtap="hideModal">
+            <view class="flex-sub">{{item.name}}</view>
+            <radio class="round" value='{{item.name}}'></radio>
+          </label>
+        </view>
+      </view>
+    </radio-group>
+  </view>
+</view>
+
+<view class="cu-modal {{modalName2}}" bindtap='hideModal'>
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">确定关闭购物送积分?</view>
+      <!-- <view class="action" bindtap="hideModal">
+        <text class="icon-close text-red"></text>
+      </view> -->
+    </view>
+    <view class="padding-xl bg-white">
+      关闭后，已获得的积分可继续使用，不再发放新的积分！
+    </view>
+    <view class="cu-bar bg-white justify-end">
+      <view class="action">
+        <button class="cu-btn line-grey text-grey" bindtap="hideModal2">取消</button>
+        <button class="cu-btn bg-main-color text-white margin-left" bindtap="sureModal2">确定</button>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<view class="cu-modal {{modalName3}}" bindtap='hideModal'>
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">确定关闭签到送积分?</view>
+      <!-- <view class="action" bindtap="hideModal">
+        <text class="icon-close text-red"></text>
+      </view> -->
+    </view>
+    <view class="padding-xl bg-white">
+      关闭后，消费者不能再进行签到积分！
+    </view>
+    <view class="cu-bar bg-white justify-end">
+      <view class="action">
+        <button class="cu-btn line-grey text-grey" bindtap="hideModal3">取消</button>
+        <button class="cu-btn bg-main-color text-white margin-left" bindtap="sureModal3">确定</button>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+
+<view class="cu-modal {{modalName}}" bindtap='hideModal'>
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">提示</view>
+      <!-- <view class="action" bindtap="hideModal">
+        <text class="icon-close text-red"></text>
+      </view> -->
+    </view>
+    <view class="padding-xl bg-white">
+      关闭后，已获得的积分可继续使用，不再发放新的积分（包括签到、会员卡和商家送积分）
+    </view>
+    <view class="cu-bar bg-white justify-end">
+      <view class="action">
+        <button class="cu-btn line-grey text-grey" bindtap="hideModal">取消</button>
+        <button class="cu-btn bg-main-color text-white margin-left" bindtap="sureModal">确定</button>
+      </view>
+    </view>
+  </view>
+</view>

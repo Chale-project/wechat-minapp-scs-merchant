@@ -1,0 +1,34 @@
+/* pages/mainClass/MoneyManage/MoneyManage.wxss */
+.chooseMonty1{
+  background-color: white;
+  border-radius: 15px;
+  width: 75px;
+  height: 32px;
+  position: relative;
+}
+
+.showChooseImage{
+  position: absolute;
+  right: 2px;
+  top: 10px;
+  z-index: 4;
+}
+
+.text1{
+  position: absolute;
+  left: 22px;
+  top: 7px;
+  z-index: 2;
+}
+
+.picker1{
+  position: absolute;
+  left: 12px;
+  top: 10px;
+  height: 20px;
+  z-index: 1;
+}
+
+.topLayout{
+  background-color: #ff4444;
+}

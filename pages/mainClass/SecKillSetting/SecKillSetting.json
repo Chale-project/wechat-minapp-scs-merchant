@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "秒杀设置",
+  "usingComponents": {
+    "timePicker": "../../pages/timePicker/timePicker"
+  }
+}

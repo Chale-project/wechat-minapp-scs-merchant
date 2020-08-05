@@ -1,0 +1,106 @@
+<!--pages/mainClass/OrderDetail/OrderDetail.wxml-->
+<view class='orderTop bg-main-color'>
+
+  <view class="padding">
+    <view class="cu-steps">
+      <view class="cu-item {{index>num?'text-white':'text-black'}}" wx:for="{{basicsList}}" wx:key>
+        <text class="num {{err}}" data-index="{{index + 1}}"></text> {{item.name}}
+      </view>
+    </view>
+  </view>
+
+  <view class='orderAddress' hidden='{{isShowAddress}}'>
+    <view class='addressName'>
+      收货人： {{receiver}}
+      <text bindtap='call' style='color:#429AF0;'>{{receiverMobile}}</text>
+      <image src='/pages/images/icon_make_phone.png' style='height:16px;width:16px;'></image>
+    </view>
+    <view class='addressDetail padding-bottom-xs '>
+      收货地址：{{receiverAddress}}
+    </view>
+  </view>
+
+  <view class='orderAddress' hidden='{{!isShowAddress}}'>
+    <view class='addressName'>
+      {{nickname==null?"订单来源：门店支付":"昵称："}} {{nickname==null?"":nickname}}
+    </view>
+    <view class='addressDetail padding-bottom-xs ' wx:if="{{orderType=='virtualGoods'}}">{{account==null?"":"充值账号："}}
+      <text bindtap='call' style='color:#429AF0;'>  {{account==null?"":account}}</text>
+      <image src='/pages/images/icon_make_phone.png' style='height:16px;width:16px;'></image>
+    </view>
+    <view class='addressDetail padding-bottom-xs ' wx:elif="{{orderType!='virtualGoods'}}">{{pickPhoneNumber==null?"":"手机号："}}
+      <text bindtap='call' style='color:#429AF0;'>  {{pickPhoneNumber==null?"":pickPhoneNumber}}</text>
+      <image src='/pages/images/icon_make_phone.png' style='height:16px;width:16px;' hidden='{{pickPhoneNumber==null}}'></image>
+    </view>
+  </view>
+
+</view>
+
+<view class='orderMiddle'>
+  <block wx:for="{{dataList}}" wx:key="item">
+
+    <view class='item_order' bindtap='toOrderDetail' data-item='{{item.id}}'>
+      <view class='image_layout'>
+        <image class='item_image' src='{{item.operation==1?"/pages/images/icon_10086.jpg":item.operation==0?"/pages/images/icon_10010.jpg":"/pages/images/icon_10000.jpg"}}' wx:if='{{orderType=="virtualGoods"}}'> </image>
+        <image class='item_image' src='{{item.itemImages==null?"/pages/images/icon_all_default.jpg":item.itemImages}}' wx:elif='{{orderType!="virtualGoods"}}'> </image>
+      </view>
+      <view class='item_right'>
+        <view class="item_right_title van-ellipsis2">{{item.goodsTitle}}</view>
+        <view class="item_right_spec" hidden='{{item.specificationItems==null}}'>规格：{{item.specificationItems}}</view>
+        <view class="item_price_number">
+          <text class="text-cut text-red">￥{{item.price}} 
+                  </text>
+          <text class='margin-right'>x {{item.num}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class='line'></view>
+  </block>
+  <van-cell-group>
+    <van-cell title="商品总价" value="￥{{goodsPrice==null?'0':goodsPrice}}" />
+    <van-cell title="配送费" value="￥{{deliveryCost==null?'0':deliveryCost}}" />
+    <van-cell title="会员折扣" value="{{memberAmount>0?'- ':''}}￥{{memberAmount==null?'0':memberAmount}}" />
+    <van-cell title="优惠券" value="{{couponAmount>0?'- ':''}}￥{{couponAmount==null?'0':couponAmount}}" />
+    <van-cell title="积分抵扣" value="{{pointsDeduction>0?'- ':''}}￥{{pointsDeduction==null?'0':pointsDeduction}}" />
+  </van-cell-group>
+  <view class='line'></view>
+  <view class='flex justify-end text-xl text-orange padding-right padding-top padding-bottom'>{{state=="unpay"?"需付款":"实付"}} ￥{{payment==null?'0':payment}}</view>
+</view>
+
+<view class='remark' hidden='{{buyerMessage==null||buyerMessage==""}}'>
+  <view class='padding'>备注：
+    <text class="text-black">{{buyerMessage==null||buyerMessage==""?"":buyerMessage}}</text>
+  </view>
+</view>
+
+<view class='orderSend' hidden='{{deliveryman==null}}'>
+  <view class='item_order'>
+    <view>
+      <image class='item_image1' src='/pages/images/icon_send_image.png'> </image>
+    </view>
+    <view class='item_right'>
+      <view class="text-black van-ellipsis2 text-df padding-left padding-top-xs">配送人：{{deliveryman}}</view>
+      <view class="text-gray text-sm flex padding-left margin-bottom-xs">
+        <text class="text-cut text-black text-df"><text class="margin-right-xs text-black"></text>联系方式：{{deliverymanPhone}}
+        </text>
+      </view>
+    </view>
+  </view>
+
+</view>
+
+
+<view class='orderBottom'>
+  <view>订单编号：{{orderId}}</view>
+  <view class='margin-top' hidden='{{paymentTime==null}}'>支付方式：{{payType}}</view>
+  <view class='margin-top'>下单时间：{{addDataTime}}</view>
+  <view class='margin-top' hidden='{{paymentTime==null}}'>支付时间：{{paymentTime}}</view>
+  <view class='margin-top' hidden='{{onsignTime==null}}'>发货时间：{{onsignTime}}</view>
+  <view class='margin-top' hidden='{{arrivedTime==null}}'>送达时间：{{arrivedTime}}</view>
+
+</view>
+
+<view class='flex justify-end text-xl padding-right padding-bottom'>
+  <button class="cu-btn round lines-red shadow" hidden='!{{state=="waitSending"}}'>发货</button>
+</view>

@@ -1,0 +1,42 @@
+<!--pages/mainClass/ChooseCoupon/ChooseCoupon.wxml-->
+<view class='top_layout'>
+  <block wx:if="{{dataList.length>0}}">
+    <block wx:for="{{dataList}}" wx:key="item" wx:for-index="index">
+      <view class='item-layout'>
+        <view class='flex justify-between' >
+          <view class='flex align-center justify-center flex-direction padding-left padding-right' bindtap='toCouponDetail' data-id='{{item.id}}'>
+            <view>
+              <text class='text-red text-xs'>￥</text>
+              <text class='text-red text-xxl'>{{item.usedAmount/100}}</text>
+            </view>
+            <view class='padding-top-sm'>满{{item.meetAmount/100}}元可用</view>
+          </view>
+          <view class='flex flex-direction padding-top padding-bottom'bindtap='toCouponDetail' data-id='{{item.id}}'>
+            <view class='text-lg'>{{item.title==null?"任性领劵，任性买":item.title}}</view>
+            <view class='text-xs padding-top-xs padding-bottom-xs'>剩余{{item.residueCount}}张</view>
+            <view class='text-df'>{{item.validStartTime}}至{{item.validEndTime}}</view>
+            <!-- <view class='text-df'>{{item.validStartTime}}至{{item.validEndTime}}</view> -->
+          </view>
+          <view class='line6'></view>
+          <view class='flex align-center justify-center  padding-right'>
+            <checkbox class="round red" checked="{{item.checked}}" bindtap="checkboxChange" data-item='{{item.checked}}' data-index="{{index}}"></checkbox>
+          </view>
+        </view>
+      </view>
+    </block>
+  </block>
+  <block wx:if="{{dataList.length<=0}}">
+    <view class='blockHead'>
+      <emptyView salelistArr="{{dataList}}" emptycount='10' picheight='420px'>
+      </emptyView>
+    </view>
+  </block>
+</view>
+
+<view class="bottomLayout">
+  <button class="cu-btn shadow line-black margin-tb-sm lg text-black flex-sub" bindtap='addCoupon'>添加优惠券</button>
+
+  <view style='width:10px;'></view>
+
+  <button class="cu-btn bg-main-color margin-tb-sm lg text-white flex-sub" bindtap='chooseOver'>确定</button>
+</view>

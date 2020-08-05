@@ -1,0 +1,49 @@
+<!--pages/StoreManager/ProDetail/ProDetail.wxml-->
+
+<!-- 添加文本和图片两种 -->
+<view class='contentview'>
+  <view class='content-item' wx:for="{{contentdata}}" data-idf="{{idf}}" wx:for-index="idf" wx:for-item="item" wx:key="{{idf}}">
+
+    <view class="addtextview">
+      <textarea class='addtextinput' wx:if="{{item.id==1}}" placeholder="多行文本输入框" value='{{item.textdetail}}' data-idf="{{idf}}" bindinput='textareatap'></textarea>
+
+      <!-- <view class="cu-form-group" wx:else> -->
+          <view class="imagegroup grid col-4 grid-square flex-sub" wx:else>
+            <view class="padding-xs bg-img" style="background-image:url({{contentdata[idf].imgList[index]}})" wx:for="{{contentdata[idf].imgList}}" wx:key="{{index}}" data-idf="{{idf}}" bindtap="ViewImage" data-url="{{contentdata[idf].imgList[index]}}">
+              <view class="cu-tag bg-red" data-idf="{{idf}}" catchtap="DelImg" data-index="{{index}}">
+                <text class="icon-close"></text>
+              </view>
+            </view>
+            <view class="padding-xs solids" data-idf="{{idf}}" bindtap="ChooseImage" wx:if="{{contentdata[idf].imgList.length<8}}">
+              <text class="icon-cameraadd"></text>
+            </view>
+          </view>
+        <!-- </view> -->
+
+      <!-- 编辑 -->
+        <view class="editcurview">
+          <view class='edit-item' wx:for="{{editdata}}" data-idy="{{idy}}" wx:for-index="idy" wx:for-item="itey" wx:key="{{idy}}" data-idf="{{idf}}" bindtap="editviewtap">
+          <view class="deleteview">{{itey}}</view>
+        </view>
+      </view>
+    </view>
+
+  </view>
+
+  <view class='savebrn' bindtap='savebtntap'>保存</view>
+</view>
+<!-- <view class="addpicview">
+
+</view> -->
+
+<!-- 弹窗 -->
+<van-popup show="{{ show }}" position="bottom" bind:close="onClose">
+  <view class="vanContentView">
+    <view class='addtpic-item' wx:for="{{popdata}}" data-idx="{{idx}}" wx:for-index="idx" wx:for-item="item" wx:key="{{idx}}" bindtap="textandpictap">
+
+      <image src="{{item.pic}}" class="addsinglepic"></image>
+      <view class="addsinglepro">{{item.title}}</view>
+
+    </view>
+  </view>
+</van-popup>

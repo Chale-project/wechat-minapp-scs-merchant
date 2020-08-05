@@ -1,0 +1,38 @@
+/* pages/mainClass/ShopChangeInfo/ShopChangeInfo.wxss */
+
+.changeview {
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+}
+.areaclass {
+  width: 80%;
+  height: 100px;
+  border-bottom: 1px solid #f5f5f5;
+}
+.editInput {
+  height: 30px;
+  width: 80%;
+  border-bottom: 1px solid #f5f5f5;
+  color: #000;
+}
+.placeholder {
+  color: #9a9a9a;
+}
+.change-btn {
+  font-size:14px;
+  height:46px;
+  border-radius:5px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  margin-top: 30px;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+.change-btn:active {
+  opacity: .8;
+}

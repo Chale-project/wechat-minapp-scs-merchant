@@ -1,0 +1,45 @@
+<!--pages/StoreManager/ProChooseCater/ProChooseCater.wxml-->
+<view class="pageschoose">
+<radio-group style='width:100%'>
+<!-- 一级分类 -->
+<view class='fir-item' wx:for="{{secdata}}" data-idx="{{idx}}" wx:for-index="idx" wx:for-item="item" wx:key="{{idx}}">
+<view class="firstcater" data-idx="{{idx}}" bindtap='shoutap'>
+ <view class="checkchooseview">
+  <radio data-idx="{{idx}}" class='red' bindtap='checkchooseviewChange' wx:if="{{secdata[idx].sublevels.length<1}}" checked="{{choosecaterdic.id==secdata[idx].id?true:false}}"></radio>
+</view>
+<view class="onecater" style="{{item.sublevels.length>0?'width:calc(100% - 80px)':'max-width:50%'}}">{{item.name}}</view>
+<!-- 判断是否有子分类,有就显示展开/收起 有子分类一级分类不能跳转 无就可跳转 -->
+<view class="shouview" wx:if="{{item.sublevels.length>0}}" style="width:30px"><view class='picview'><image src="{{item.showorhide?'/pages/images/storeManager/shopcaterzhankai.png':'/pages/images/storeManager/shopcatershouqi.png'}}" mode="aspectFit" style='width:20px;height:20px'></image></view></view>
+<view class="shouview" wx:else style="max-width:50%">{{item.goodsNumber}}件商品 </view>
+</view>
+
+<!-- 二级分类 -->
+<view class='sec-item' wx:for="{{item.sublevels}}" data-idy="{{idy}}" wx:for-index="idy" wx:for-item="iten" wx:key="{{idy}}">
+ <view class="secondcater" wx:if="{{!secdata[idx].showorhide}}">
+ <view class="checktwochooseview">
+ <radio data-idy="{{idy}}" data-idx="{{idx}}" class='red' bindtap='checktwochooseviewChange' checked='{{choosecaterdic.id==iten.id?true:false}}'></radio>
+
+ </view>
+ <view class="twocater">{{iten.name}}</view>
+ <view class="twoshouview">{{iten.goodsNumber}}件商品</view>
+ </view>
+</view>
+
+</view>
+</radio-group>
+
+</view>
+
+
+<!-- 创建分类,管理分类 -->
+  <view class="editcater">
+    <view class="managerview icon-edit" bindtap='managercatertap'> 新建分类</view>
+    <view class="saveview flex">
+          <view class="give flex-sub margin-xs" bindtap='canclechoose'>取消</view>
+          <view class="upstore flex-sub margin-xs" bindtap='surechoosetap'>确认</view>
+  </view>
+
+</view>
+
+
+

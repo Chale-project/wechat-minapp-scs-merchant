@@ -1,0 +1,127 @@
+<!--pages/mainClass/CustomerDataAnalysis/CustomerDataAnalysis.wxml-->
+<view class='padding-top bg-white'>
+  <van-tabs type="card" bind:change="onChange">
+    <van-tab title="今日">
+    </van-tab>
+    <van-tab title="近7天">
+    </van-tab>
+    <van-tab title="近30天">
+    </van-tab>
+  </van-tabs>
+</view>
+<view class='bg-white'>
+  <view class='flex align-center justify-center padding'>
+    <picker mode="date" value="{{date}}" start="2015-09-01" end="2020-09-01" bindchange="DateChange">
+      <view class="picker">
+        {{date}}
+      </view>
+    </picker>
+  </view>
+  <view class='line'></view>
+  <view class='flex flex_row'>
+    <view class='flex-sub flex flex-direction padding-top padding-bottom padding-left'>
+      <text>访客(人)</text>
+      <text class='margin-top-xs margin-bottom-xs'>{{visitPeopleCount}}</text>
+      <view>较前一天
+        <text class="{{visitCountChange>=0?'text-red':'text-green'}}">    {{visitPeopleCountChange>=0?'↑':'↓'}}{{visitPeopleCountChange1}}%</text>
+      </view>
+    </view>
+    <view class='line2 background-color'></view>
+    <view class='flex-sub flex flex-direction margin-left padding-top padding-bottom'>
+      <text>浏览(次)</text>
+      <text class='margin-top-xs margin-bottom-xs'>{{visitCount}}</text>
+      <view>较前一天
+        <text class="{{visitCountChange>=0?'text-red':'text-green'}}">    {{visitCountChange>=0?'↑':'↓'}}{{visitCountChange1}}%</text>
+
+      </view>
+    </view>
+  </view>
+  <view class='line'></view>
+  <view class='flex flex_row'>
+    <view class='flex-sub flex flex-direction padding-top padding-bottom padding-left'>
+      <text>成交客户(人)</text>
+      <text class='margin-top-xs margin-bottom-xs'>{{orderPeopleCount}}</text>
+      <view>较前一天
+        <text class="{{visitCountChange>=0?'text-red':'text-green'}}">    {{orderPeopleCountChange>=0?'↑':'↓'}}{{orderPeopleCountChange1}}%</text>
+      </view>
+    </view>
+    <view class='line2 background-color'></view>
+    <view class='flex-sub flex flex-direction margin-left padding-top padding-bottom'>
+      <text>新客户(次)</text>
+      <text class='margin-top-xs margin-bottom-xs'>{{newCustomerCount}}</text>
+      <view>较前一天
+       <text class="{{visitCountChange>=0?'text-red':'text-green'}}">    {{newCustomerCountChange>=0?'↑':'↓'}}{{newCustomerCountChange1}}%</text>
+      </view>
+    </view>
+  </view>
+  <view class='line'></view>
+  <view class='flex flex_row'>
+    <view class='flex-sub flex flex-direction padding-top padding-bottom padding-left'>
+      <text>回头客(人)</text>
+      <text class='margin-top-xs margin-bottom-xs'>{{repeatCustomerCount}}</text>
+      <view>较前一天
+      <text class="{{repeatCustomerCountChange>=0?'text-red':'text-green'}}">    {{repeatCustomerCountChange>=0?'↑':'↓'}}{{repeatCustomerCountChange1}}%</text>
+      </view>
+    </view>
+    <view class='line2 background-color'></view>
+    <view class='flex-sub flex flex-direction margin-left padding-top padding-bottom'>
+      <text>客单价(元)</text>
+      <text class='margin-top-xs margin-bottom-xs'>{{avgPayment}}</text>
+      <view>较前一天
+      <text class="{{avgPaymentChange>=0?'text-red':'text-green'}}">    {{avgPaymentChange>=0?'↑':'↓'}}{{avgPaymentChange1}}%</text>
+      </view>
+    </view>
+  </view>
+
+  <view class='ListLine'></view>
+  <view class='middle_layout padding-left'>
+    <view>成交客户
+      <text>8人</text>
+    </view>
+    <view class="container2">
+      <ff-canvas id="guage-dom" canvas-id="guage" opts="{{ opts }}"></ff-canvas>
+    </view>
+  </view>
+  <view class='ListLine'></view>
+  <view class='middle_layout padding-left'>
+    <view>成交订单笔数
+      <text>8笔</text>
+    </view>
+    <view class="container2">
+      <ff-canvas id="guage-dom" canvas-id="guage" opts="{{ opts4 }}"></ff-canvas>
+    </view>
+  </view>
+  <view class='ListLine'></view>
+  <view class='middle_layout padding-left'>
+    <view>访客统计
+      <text>8人</text>
+    </view>
+
+    <view class="container2">
+      <ff-canvas id="area" canvas-id="area" opts="{{ opts1 }}"></ff-canvas>
+    </view>
+  </view>
+
+  <view class='ListLine'></view>
+  <view class='middle_layout padding-left'>
+    <view>回头客
+      <text>8人</text>
+    </view>
+
+    <view class="container2">
+      <ff-canvas id="area" canvas-id="area" opts="{{ opts2 }}"></ff-canvas>
+    </view>
+  </view>
+
+  <view class='ListLine'></view>
+  <view class='middle_layout padding-left'>
+    <view>客单价
+      <text>8人</text>
+    </view>
+
+    <view class="container2">
+      <ff-canvas id="area" canvas-id="area" opts="{{ opts3 }}"></ff-canvas>
+    </view>
+  </view>
+
+</view>

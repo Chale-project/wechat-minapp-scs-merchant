@@ -1,0 +1,13 @@
+<!--pages/mainClass/ShopTimeOutPay/ShopTimeOutPay.wxml-->
+<radio-group class="block" bindchange="onChange">
+    <view wx:for="{{placenamearr}}" data-idx="{{idx}}" wx:for-index="idx" wx:for-item="item" wx:key="{{idx}}">
+    <view class="cu-form-group">
+      <view class="title">{{item}}</view>
+      <radio class="red" value="{{ idx }}" checked="{{idx==currentchooseidx?true:''}}">
+      </radio>
+    </view>
+    </view>
+  </radio-group>
+
+  <view class="textshow" wx:if="{{toastshow.length>0}}">{{toastshow}}</view>
+  <view class="surebtn" bindtap='compeletap'>完成</view>

@@ -1,0 +1,78 @@
+<!--pages/StoreManager/StoreHome/StoreHome.wxml-->
+
+
+<view class='outview'>
+      <view class="prosearchview">
+        <view class="alltitleview" bindtap='allProTap' >{{choosename}}        <text class="icon-triangledownfill" wx:if="{{!proshow}}"></text>
+        <text class="icon-triangleupfill" wx:else></text>
+        </view>
+        <input placeholder="请输入商品名称" placeholder-class="placeholder" class="searchinput" bindinput="searchnameinput" bindconfirm="searchbutton" value="{{searchtitle}}"></input>
+      </view>
+  </view>
+<view hidden="{{proshow}}">
+<!-- <view class="promanager" hidden='{{!proshowOrInvent}}'> -->
+<scroll-view scroll-y="true" bindscrolltolower="scrolower" style="height:{{screenHeighth-60-50}}px;width:100%">
+
+<import src="/pages/StoreManager/StoreSale/StoreSale.wxml"/>
+<!-- <view class="cu-bar search bg-white">
+    <view class="search-form round">
+      <text class="icon-search"></text>
+      <input type="text" placeholder="搜索商品名称" confirm-type="search" bindinput="searchnameinput" bindconfirm="searchbutton"></input>
+    </view>
+  </view> -->
+
+<view class="topview">
+  <view class="firstView">
+  <image src="/pages/images/storeManager/dataFenxi.png" class='dataImage'></image>
+  <view class="topTitle">商品数据分析</view>
+ </view>
+
+ <view class="secondView">
+  <view class='student-item' wx:for="{{titledata}}" data-idx="{{idx}}" wx:for-index="idx" wx:for-item="item" wx:key="{{idx}}">
+  <view class="studentName">
+   <text >{{item.name}}</text>
+   <view >{{item.descrip}}</view>
+  </view>
+  </view>
+
+</view>
+</view>
+
+<van-tabs swipeable color='#C4091C' active="{{saleorlowindex}}" bind:change="onClickindex">
+  <van-tab title="出售中({{wheredata.put?wheredata.put:0}})">
+    <template is="StoreSale" data="{{navtitledata:navtitledata,kucunSel:kucunSel,shengOrJiang0:shengOrJiang0,shengOrJiang1:shengOrJiang1,shengOrJiang2:shengOrJiang2,shengOrJiang3:shengOrJiang3,salelistArr:salelistArr,wheredata:wheredata,pageNumber:pageNumber,isRefreshing:isRefreshing,scrolowerLoad:scrolowerLoad}}" />
+  </van-tab>
+  <van-tab title="已下架({{wheredata.out?wheredata.out:0}})">
+  <template is="StoreSale" data="{{navtitledata:navtitledata,kucunSel:kucunSel,shengOrJiang0:shengOrJiang0,shengOrJiang1:shengOrJiang1,shengOrJiang2:shengOrJiang2,shengOrJiang3:shengOrJiang3,salelistArr:salelistArr,wheredata:wheredata,pageNumber:pageNumber,isRefreshing:isRefreshing,scrolowerLoad:scrolowerLoad}}" />
+  </van-tab>
+  
+</van-tabs>
+
+</scroll-view>
+
+
+<view class="bottomview">
+  <view class='bottom-item' wx:for="{{bottomtitledata}}" data-idx="{{idx}}" wx:for-index="idx" wx:for-item="item" wx:key="{{idx}}" bindtap='addproducetap'>
+  <view class='bottomitem-top'>
+    <image src='{{item.name}}' class='iconimages' style="margin-right:2px"></image>
+  </view>
+  <view class="bottomName">{{item.descrip}}</view>
+  </view>
+</view>
+
+</view>
+
+<!-- 全部分类 -->
+ <scroll-view class='allCaterview' hidden="{{!proshow}}" scroll-y="true" style="height:{{screenHeighth-50}}px">
+    <view class='topcater'>
+     <view class='topcater-item' wx:for="{{topcaterdata}}" data-idx="{{idx}}" wx:for-index="idx" wx:for-item="item" wx:key="{{idx}}" bindtap='topcatertap' style="{{!chooseid&&idx==0?'color:#ff4444':chooseid=='noCate'&&idx==1?'color:#ff4444':'color:#333'}}">{{item}}</view>
+    </view>
+    <view class='onecaterview' wx:for="{{caterdata}}" data-ida="{{ida}}" wx:for-index="ida" wx:for-item="itea" wx:key="{{ida}}" wx:if="{{itea.name!='未分类'}}" >
+        <view class='fircater'>{{itea.name}}</view>
+        <view class='twocater'>
+          <view class='secondcater-item' wx:for="{{itea.sublevels}}" data-idx="{{idx}}" wx:for-index="idx" wx:for-item="item" wx:key="{{idx}}" data-ida="{{ida}}" bindtap='twocatertap' style="{{item.id==chooseid?'color:#ff4444':'color:#333'}}">{{idx==0?'所有':item.name}}</view>
+        </view>
+    </view>
+
+  </scroll-view>
+  

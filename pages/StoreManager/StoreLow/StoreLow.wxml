@@ -1,0 +1,43 @@
+<!--pages/StoreManager/StoreLow/StoreLow.wxml-->
+<template name="StoreLow">
+
+<view style='width:100%;height:100%'>
+<!-- 添加列表信息-->
+<checkbox-group bindchange="checkboxChange">
+ <view class='sale-itemstore' wx:for="{{storesalelistArr}}" data-idx="{{idx}}" wx:for-index="idx" wx:for-item="item" wx:key="{{idx}}">
+ <view class="checkchooseviewstore">
+  <checkbox class="round red" value="{{idx}}" checked="{{item.proSelecte}}"></checkbox>
+ </view>
+
+ <view class="rightitemviewstore">
+  <image class="userIconImgstore" src="{{item.coverImage.length>0?item.coverImage:'/pages/images/storeManager/productIcon.png'}}" mode="aspectFill" data-idx="{{idx}}" binderror="avatarErrorstore"></image>
+   <view class='rightproall' style="{{isallcaterorNocater?'margin-top:0':'margin-top:-15px'}}">
+    <view class='rightproallFir'>
+        <view class="productNamestore">{{item.title}}</view>
+        <view class="productPricestore">¥{{item.price}}</view>
+      </view>
+      <!-- <view class='rightproallSec'> -->
+        <view class="addtimeviewstore" style="margin-top:2px">添加时间 {{item.addDataTime}}</view>
+        <view class="totalsalestore" style="margin-top:0px" style="{{idx==0?'width:calc(100% - 50px)':'width:calc(100% - 100px)'}}">总销量 {{item.stockCount}} 库存 {{item.num}}</view>
+     <view class='paixuview' wx:if="{{!isallcaterorNocater}}">
+            <view style="{{idx==0?'width:calc(100% - 50px)':'width:calc(100% - 100px)'}}"></view>
+            <view class='moveclass' data-idx="{{idx}}" bindtap='moveuptap' wx:if="{{idx>0}}">置顶</view>
+            <view class='moveclass' data-idx="{{idx}}" bindtap='movetoptap' wx:if="{{idx>0}}">上移</view>
+            <view class='moveclass' data-idx="{{idx}}" bindtap='moveloworuptap'>下移</view>
+          </view>
+    </view>
+  </view>
+</view>
+</checkbox-group>
+
+<view class="cu-load {{scrolowerLoadstore?'loading':'over'}}" wx:if="{{storesalelistArr.length>0}}"></view>
+
+<emptyView
+      salelistArr = "{{storesalelistArr}}"
+      emptycount = '5'
+      picheight = '400px'>
+  </emptyView>
+
+</view>
+
+</template>

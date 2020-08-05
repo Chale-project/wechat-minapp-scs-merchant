@@ -1,0 +1,65 @@
+/* pages/mainClass/cutInside/cutInside.wxss */
+.cropper{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.cropper-buttons{
+    background-color: rgba(0, 0, 0, 0.95);
+}
+
+.btn{
+    height: 30px;
+    line-height: 30px;
+    padding: 0 24rpx;
+    border-radius: 2px;
+    color: #ffffff;
+}
+.cropper-wrapper{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    background-color: #e5e5e5;
+}
+
+.cropper-buttons{
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    right: 0;
+    height: 50px;
+    padding: 0 20rpx;
+}
+
+/* .cropper-buttons .upload, .cropper-buttons .getCropperImage{
+    
+} */
+.imageloadbtn {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    right: 0;
+    height: 50px;
+    padding: 0 20rpx;
+    background: #000;
+    z-index: 999;
+}
+.upload {
+    text-align: center;
+    height:40px;
+    line-height:40px;
+    border-radius:2px;
+    color:#ffffff;
+    background:#666;
+    width:100px;
+}

@@ -1,0 +1,31 @@
+<!--pages/mainClass/SkillDataShow/SkillDataShow.wxml-->
+<view class="secondView">
+  <view class='student-item' wx:for="{{titledata}}" data-idx="{{idx}}" wx:for-index="idx" wx:for-item="item" wx:key="{{idx}}">
+  <view class="studentName">
+   <text >{{item.name}}</text>
+   <view >{{item.descrip}}</view>
+  </view>
+  </view>
+</view>
+
+<view style='height:50px;padding-left:15px;display:flex;align-items:center'>下单客户列表</view>
+
+<scroll-view scroll-y="true" bindscrolltolower="scrolower" style="height:{{screenHeighth-70-50}}px;width:100%">
+
+  <view class='sale-item' wx:for="{{buyOrderlistArr}}" data-idx="{{idx}}" wx:for-index="idx" wx:for-item="item" wx:key="{{idx}}">
+  
+   <image class='iconimage' src="{{item.headPic?item.headPic:'/pages/images/addStore/chooseStoreLogo.png'}}" mode="aspectFit" data-idx="{{idx}}" binderror="avatarError"></image>
+   <view class='nameview'>{{item.nickname}}</view>
+   <view class='rightview'>于{{item.buyTime}}购买<text>{{item.buyNum}}</text>件</view>
+
+  </view>
+
+<view class="cu-load {{scrolowerLoad?'loading':'over'}}" wx:if="{{buyOrderlistArr.length>0}}"></view>
+
+<emptyView
+      salelistArr = "{{buyOrderlistArr}}"
+      emptycount = '0'
+      picheight = '400px'>
+  </emptyView>
+
+</scroll-view>

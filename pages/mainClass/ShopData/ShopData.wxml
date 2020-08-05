@@ -1,0 +1,93 @@
+<!--pages/mainClass/ShopData/ShopData.wxml-->
+<view class='padding padding-top-sm padding-bottom-sm'>基本信息</view>
+
+<view class="cu-form-group" bindtap="tupiantap">
+  <view class="title">店铺LOGO</view>
+  <view class='flex align-center justify-center'>
+    <image class='shopImage' src="{{iconfilePath.length>0?iconfilePath:'/pages/images/login/user_icon5.png'}}" binderror="avatarError" mode="aspectFill"></image>
+    <text class='icon-right text-gray padding-left-xs'></text>
+  </view>
+</view>
+
+<view class="cu-form-group" bindtap="shopnametap">
+  <view class="title">店铺名称</view>
+  <view class='flex align-center justify-center'>
+    <text>{{infodic.shopName?infodic.shopName:'未填写'}}</text>
+    <text class='icon-right text-gray padding-left-xs'></text>
+  </view>
+</view>
+
+<view class="cu-form-group" bindtap="shopPublicinfotap">
+  <view class="title">店铺公告</view>
+  <view class='flex align-center justify-center'>
+    <text style="max-width:200px;overflow:hidden;-webkit-line-clamp:1;-webkit-box-orient:vertical;display:-webkit-box">{{infodic.shopNotice?infodic.shopNotice:'未填写'}}</text>
+    <text class='icon-right text-gray padding-left-xs'></text>
+  </view>
+</view>
+
+<view class="cu-form-group" bindtap='shopAddresstap'>
+  <view class="title">店铺地址</view>
+  <view class='flex align-center justify-center'>
+    <text>{{infodic.shopAddress?'已设置':'未填写'}}</text>
+    <text class='icon-right text-gray padding-left-xs'></text>
+  </view>
+</view>
+
+<view class="cu-form-group" bindtap="shopkefutap">
+  <view class="title">客服电话</view>
+  <view class='flex align-center justify-center'>
+    <text>{{infodic.phoneNumber?infodic.phoneNumber:'未填写'}}</text>
+    <text class='icon-right text-gray padding-left-xs'></text>
+  </view>
+</view>
+
+<!-- <view class='padding padding-top-sm padding-bottom-sm'>基本信息</view>
+
+<view class="cu-form-group" bindtap="shopbusinesstap">
+  <view class="title">营业执照</view>
+  <view class='flex align-center justify-center'>
+    <text>{{infodic.businessLicense?'已上传':'未上传'}}</text>
+    <text class='icon-right text-gray padding-left-xs'></text>
+  </view>
+</view>
+
+<view class="cu-form-group" bindtap="shopsfztap">
+  <view class="title">身份证正面</view>
+  <view class='flex align-center justify-center'>
+    <text>{{infodic.pidFront?'已上传':'未上传'}}</text>
+    <text class='icon-right text-gray padding-left-xs'></text>
+  </view>
+</view>
+
+<view class="cu-form-group" bindtap="shopsfzbacktap">
+  <view class="title">身份证反面</view>
+  <view class='flex align-center justify-center'>
+    <text>{{infodic.pidBack?'已上传':'未上传'}}</text>
+    <text class='icon-right text-gray padding-left-xs'></text>
+  </view>
+</view>
+
+<view class="cu-form-group" bindtap="shopsfzhandletap">
+  <view class="title">手持身份证</view>
+  <view class='flex align-center justify-center'>
+    <text>{{infodic.pidInhand?'已上传':'未上传'}}</text>
+    <text class='icon-right text-gray padding-left-xs'></text>
+  </view>
+</view>
+
+<view class="cu-form-group" bindtap="shopfarentap">
+  <view class="title">法人</view>
+  <view class='flex align-center justify-center'>
+    <text>{{infodic.legalPersom?infodic.legalPersom:'未填写'}}</text>
+    <text class='icon-right text-gray padding-left-xs'></text>
+  </view>
+</view>
+
+<view class="cu-form-group margin-bottom" bindtap="shopiphonetap">
+  <view class="title">手机号</view>
+  <view class='flex align-center justify-center'>
+    <text>{{infodic.legalPhoneNumber?infodic.legalPhoneNumber:'未填写'}}</text>
+    <text class='icon-right text-gray padding-left-xs'></text>
+  </view>
+</view> -->
+

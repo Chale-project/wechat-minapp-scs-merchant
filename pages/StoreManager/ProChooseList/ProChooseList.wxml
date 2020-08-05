@@ -1,0 +1,34 @@
+<!--pages/StoreManager/ProChooseList/ProChooseList.wxml-->
+<view class="pageschoose">
+
+  <!-- 一级分类 -->
+  <view class='fir-item' wx:for="{{secdata}}" data-idx="{{idx}}" wx:for-index="idx" wx:for-item="item" wx:key="{{idx}}">
+    <view class="firstcater" data-idx="{{idx}}" bindtap="shoutap" style="{{item.sublevels.length>0?'justify-content: space-between':'justify-content:'}}">
+      <view class="onecater">{{item.name}}</view>
+      <!-- 判断是否有子分类,有就显示展开/收起 有子分类一级分类不能跳转 无就可跳转 -->
+      <view class="shouview" wx:if="{{item.sublevels.length>0}}">
+        <view class='picview'>
+          <image src="{{item.showorhide?'/pages/images/storeManager/shopcaterzhankai.png':'/pages/images/storeManager/shopcatershouqi.png'}}" mode="aspectFit" style='width:20px;height:20px'></image>
+        </view>
+      </view>
+      <view class="shouview" wx:else>{{item.goodsNumber}}件商品</view>
+    </view>
+
+    <!-- 二级分类 -->
+    <view class='sec-item' wx:for="{{item.sublevels}}" data-idy="{{idy}}" wx:for-index="idy" wx:for-item="iten" wx:key="{{idy}}">
+      <view class="secondcater" wx:if="{{!item.showorhide}}" data-idx="{{idx}}" data-idy="{{idy}}" bindtap="shousectap">
+        <view class="twocater">{{iten.name}}</view>
+        <view class="twoshouview">{{iten.goodsNumber}}件商品</view>
+      </view>
+    </view>
+
+  </view>
+
+</view>
+
+<view class='emityLayout' wx:if="{{secdata&&secdata.length<1}}" style="height:400px">
+
+  <image class='emityView1' src='/pages/images/icon_emity.png'></image>
+  <view style="color:#666">暂无数据</view>
+
+</view>

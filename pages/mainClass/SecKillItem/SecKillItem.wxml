@@ -1,0 +1,51 @@
+<!--pages/mainClass/SecKillItem/SecKillItem.wxml-->
+<template name="SecKillItem">
+<view style='width:100%;height:100%'>
+<!-- 添加列表信息-->
+ <view class='sale-item' wx:for="{{salelistArr}}" data-idx="{{idx}}" wx:for-index="idx" wx:for-item="item" wx:key="{{idx}}" >
+  <view class="saletopitem" data-idx="{{idx}}" bindtap='skillgoodsdetaitap'>
+   
+    <image class="userIconImg" src="{{item.coverImage.length>0?item.coverImage:'/pages/images/storeManager/productIcon.png'}}" binderror="avatarError" data-idx="{{idx}}" mode="aspectFill"></image>
+    <view class='saletopRight'>
+      <view class='saletopfir'> 
+        <view class="productName">{{item.title}}</view>
+      </view>
+      <view class='saletopSec'>
+        <view class="productPrice">秒杀价:<text> ¥ {{item.seckillPrice}}</text></view>
+        <view class="oripriceview">原 价: 
+        <text style='color:#666;text-decoration:line-through;font-size: 10px'>¥ {{item.originalPrice}}</text>
+        </view>
+        <view class="totalsale">单人限购:{{item.limitation}}                 活动库存:{{item.num}}</view>
+      </view>
+    </view>
+    <view class="detailarrow icon-right"></view>
+
+  </view>
+
+  <view class="powerview">
+    <view class="addtimeview">
+{{item.startTime}} ~ {{item.endTime}}</view>
+    <view class='rightdeletclass' data-idx="{{idx}}" bindtap='deletetapview'>
+    <image class="silldeletImg" src="/pages/images/skilldelete.png" mode="aspectFill"></image>
+    <view style='padding-left:2px;font-size:12px'>删除</view>
+    </view>
+    <view class='rightdeletclass' data-idx="{{idx}}" bindtap='datashowtapview'>
+    <image class="silldeletImg" src="/pages/images/skillDataShow.png" mode="aspectFill"></image><view style='padding-left:2px;font-size:12px'>报表</view>
+    </view>
+
+  </view>
+
+  </view>
+  <view class="cu-load {{scrolowerLoad?'loading':'over'}}" wx:if="{{salelistArr.length>0}}"></view>
+
+  <emptyViewTwo
+      salelistArr = "{{salelistArr}}"
+      emptycount = '5'
+      picheight = '400px'>
+  </emptyViewTwo>
+
+  </view>
+
+
+
+</template>

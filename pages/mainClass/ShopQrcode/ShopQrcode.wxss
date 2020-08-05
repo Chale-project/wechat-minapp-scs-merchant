@@ -1,0 +1,47 @@
+/* pages/mainClass/ShopQrcode/ShopQrcode.wxss */
+
+.layoutone {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 60px;
+}
+.qrcodeimage {
+  width: 200px;
+  height: 200px;
+  background: #f5f5f5;
+}
+.shareOrSave {
+  width: 120px;
+  height: 34px;
+  margin-top: 30px;
+  line-height: 34px;
+  font-size: 15px;
+  color: #fff;
+  background: #ff4444;
+  border-radius: 17px;
+  text-align: center;
+}
+
+.emityLayout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.emityView1 {
+  margin-top: 50px;
+  height: 130px;
+  width: 139px;
+}
+.qrcode-btn {
+  color: #fff;
+  border: 1px solid #ff4444;
+  border-radius: 20px;
+  width: 200px;
+  height: 40px;
+  margin-top: 30px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}

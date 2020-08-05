@@ -1,0 +1,14 @@
+<!--pages/mainClass/ShopWeixinCode/ShopWeixinCode.wxml-->
+
+<view class='contentview'>
+  <view class="emptyview" bindtap="uploadtap">
+    <image class='imageupload' wx:if="{{groupQrCodePic.length<1}}"  src="/pages/images/addStore/Touploadpictures.png" binderror="avatarError" mode="aspectFit"></image>
+    <image class='imageview' wx:if="{{groupQrCodePic.length>0}}" src="{{groupQrCodePic}}" mode="aspectFit"></image>
+
+  </view>
+
+  <view style="margin-top:20px;padding-left:10px;width:80%">描述说明</view>
+  <textarea class="areaclass" bindinput="bindTextAreaBlur" placeholder="选填 300字内" maxlength='300' value='{{groupQrDescription}}'/>
+  <view class="completview" bindtap="completap">提交</view>
+  
+</view>

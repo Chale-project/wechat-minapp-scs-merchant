@@ -1,0 +1,63 @@
+<!--pages/mainClass/TransactionSetup/TransactionSetup.wxml-->
+<view class="cu-form-group" bindtap="sendmoneysetuptap">
+  <view class="title">配送费设置</view>
+  <view class='flex align-center justify-center'>
+    <text>{{shopinfodetail.deliveryCost>0?'已设置':'未设置'}}</text>
+    <text class='icon-right text-gray padding-left-xs'></text>
+  </view>
+</view>
+
+<view class="cu-form-group" bindtap="autusureshoptimetap">
+  <view class="title">自动确认收货时间</view>
+  <view class='flex align-center justify-center'>
+    <text>{{shopinfodetail.receiptedTime>0?shopinfodetail.receiptedTime+'天':'未设置'}}</text>
+    <text class='icon-right text-gray padding-left-xs'></text>
+  </view>
+</view>
+
+
+<view class="cu-form-group" bindtap="pingjiatimetap">
+  <view class="title">评价超时时间</view>
+  <view class='flex align-center justify-center'>
+    <text>{{shopinfodetail.commentTime>0?shopinfodetail.commentTime+'天':'未设置'}}</text>
+    <text class='icon-right text-gray padding-left-xs'></text>
+  </view>
+</view>
+
+<view class="cu-form-group" bindtap="timeoutpaytap">
+  <view class="title">支付超时时间</view>
+  <view class='flex align-center justify-center'>
+    <text>{{shopinfodetail.cancelTime>0?shopinfodetail.cancelTime>60?shopinfodetail.cancelTime/60+'小时':shopinfodetail.cancelTime+'分钟':'未设置'}}</text>
+    <text class='icon-right text-gray padding-left-xs'></text>
+  </view>
+</view>
+
+<view class="cu-form-group" bindtap="GoShoptap">
+  <view class="title">到店自提</view>
+  <view class='flex align-center justify-center'>
+    <text>{{shopinfodetail.selfpickRuleFlag=='true'?'已设置':'未设置'}}</text>
+    <text class='icon-right text-gray padding-left-xs'></text>
+  </view>
+</view>
+
+<view class="cu-form-group" bindtap="placesendsettingtap">
+  <view class="title">配送范围</view>
+  <view class='flex align-center justify-center'>
+    <text>{{shopinfodetail.deliveryRange>0?shopinfodetail.deliveryRange<1?shopinfodetail.deliveryRange*1000+'米':shopinfodetail.deliveryRange+'公里':'未设置'}}</text>
+    <text class='icon-right text-gray padding-left-xs'></text>
+  </view>
+</view>
+
+<view class="cu-form-group">
+    <view class="title">指定配送时间</view>
+    <picker
+    mode="multiSelector"
+    bindchange="bindMultiPickerChange"
+    value="{{multiIndex}}"
+    range="{{multiArray}}"
+  >
+    <view class="picker">
+      {{hourdata=='00:00--00:00'?'未填写':hourdata}}
+    </view>
+  </picker>
+  </view>

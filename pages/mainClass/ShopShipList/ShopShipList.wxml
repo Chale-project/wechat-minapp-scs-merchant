@@ -1,0 +1,41 @@
+
+<view class="cu-bar search bg-white" >
+  <view class="search-form round">
+    <text class="icon-search"></text>
+    <input type="text" placeholder="搜索客户名称" confirm-type="search" bindinput="searchnameinput" bindconfirm="searchbutton"></input>
+  </view>
+</view>
+
+<view class='ListLine'></view>
+
+
+
+<block wx:if="{{dataList.length>0}}">
+  <block wx:for="{{dataList}}" wx:key="item">
+    <view class="cu-list menu-avatar bg-white" bindtap='toUserDetail' data-item='{{item.userNumber}}'>
+      <view class="cu-item">
+        <view class="cu-avatar radius lg" style="background-image:url({{item.headPic.length>0?item.headPic:'/pages/images/storeManager/productIcon.png'}});"></view>
+        <view class="content van-ellipsis">
+          <view class="text-grey">{{item.nickname==null?"":item.nickname}}
+            <text class='text-sm margin-left'>{{item.membershipName.length>0?item.membershipName:""}}</text>
+          </view>
+
+          <view class="text-gray text-sm">
+            <text class="text-cut">{{item.lastOrderTime==null?'暂未购买商品':'最近购买于'}}<text class='text-red margin-right'>  {{item.lastOrderTime==null?'':item.lastOrderTime}}</text></text>
+          </view>
+
+        </view>
+        <view>
+          <text class="icon-right lg text-gray"></text>
+        </view>
+      </view>
+    </view>
+    <view class='line'></view>
+  </block>
+</block>
+<block wx:if="{{dataList.length<=0}}">
+  <view class='blockHead'>
+    <emptyView salelistArr="{{dataList}}" emptycount='10' picheight='420px'>
+    </emptyView>
+  </view>
+</block>

@@ -1,0 +1,64 @@
+<!--pages/mainClass/AddPiecing/AddPiecing.wxml-->
+<view class="cu-bar search bg-white toplayout">
+  <view class="search-form round">
+    <text class="icon-search"></text>
+    <input type="text" placeholder="请输入商品名称" confirm-type="search" bindinput="searchnameinput" bindconfirm="searchbutton" value='{{textValue}}'></input>
+  </view>
+</view>
+
+<view class='ListLine' style='margin-top:55px;'></view>
+
+<block wx:for="{{salelistArr}}" wx:key="item">
+  <view class='item_order margin-bottom-xs' bindtap='toChooseSize' data-item='{{item.id}}'>
+    <view class='image_layout'>
+      <image class='item_image' src='{{item.coverImage==null?"/pages/images/icon_all_default.jpg":item.coverImage}}'> </image>
+    </view>
+    <view class='item_right justify-between flex'>
+      <view class="flex flex-direction">
+        <view class="item_right_title van-ellipsis2 text-df">{{item.title}}</view>
+        <view class="text-red text-df">￥{{item.price/100}}</view>
+        <view class="text-grdy text-sm">添加时间:{{item.addDataTime}}</view>
+        <view class="text-sm">总销量
+          <text class='text-green margin-right-sm text-sm'>{{item.stockCount}}</text> 库存
+          <text class='text-green text-sm'>{{item.num}}</text>
+        </view>
+      </view>
+      <view class=" align-center justify-center flex">
+        <text class="icon-right text-grey"></text>
+      </view>
+    </view>
+  </view>
+</block>
+
+<emptyView salelistArr="{{salelistArr}}" emptycount='10' picheight='420px'>
+</emptyView>
+
+
+<view class="cu-modal {{modalName}}">
+  <view class="cu-dialog bg-white">
+    <view class='flex flex-direction' style='height:50px;'>
+      <view class='item_right_title van-ellipsis2 text-lg margin-top-sm'>{{productName}}</view>
+    </view>
+
+    <view>
+      <block wx:for="{{dataList}}" wx:key="item" wx-index="index" wx:for-index="index">
+        <view class='flex flex-direcion-row margin-top-sm margin-bottom-sm justify-between align-center'>
+          <view class='flex flex-direcion-row margin-left-sm'>
+            <view class='van-ellipsis' style='width:60px;'>{{item.specificationItems}}</view>
+            <view class='margin-left-xs'>￥{{item.descPrice}}</view>
+          </view>
+          <view class='flex flex-direcion-row justify-center align-center margin-right'>
+            <input class='inputLayout line-grey flex justify-center align-center margin-right' style='width:86px;height:38px;' value='{{price}}' placeholder="输入拼团价" data-index="{{index}}" type="digit"  bindinput="getGroupPrice"></input>
+            <input class='inputLayout line-grey flex justify-center align-center' style='width:86px;height:38px;' value="{{stock}}" placeholder="输入库存" data-index="{{index}}" type="number" bindinput="getStock"></input>
+          </view>
+        </view>
+      </block>
+    </view>
+
+
+    <view class="bg-white flex flex-direcion-row" style='height:44px; '>
+      <view class="flex-sub text-black bg-grey flex align-center justify-center" bindtap="hideModal" style='height:44px; '>取消</view>
+      <view class="flex-sub bg-main-color text-white  flex align-center justify-center" bindtap="nextStep" style='height:44px; '>下一步</view>
+    </view>
+  </view>
+</view>

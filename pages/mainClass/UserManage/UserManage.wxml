@@ -1,0 +1,115 @@
+<!--pages/mainClass/UserManage/UserManage.wxml-->
+<view style='background-color:#f1f1f1'>
+  <view class='bg_radius_white' bindtap='toCustomerDataAnalysis'>
+    <view class="cu-form-group">
+      <view class='flex layout_12'>
+        <image class='image1' src='/pages/images/storeManager/dataFenxi.png'></image>
+        <view class="title margin-left-xs">客户数据分析</view>
+      </view>
+      <view class='flex'>
+        <view class="action" hidden='true'>
+          <text class="icon-right lg text-gray"></text>
+        </view>
+      </view>
+    </view>
+    <view class='line'></view>
+    <view class="layout_money">
+      <view class="flex-sub padding-top padding-bottom  flex flex-direction align-center">
+        <text class='text-lg'>{{customerCount}}</text>
+        <text class='text-sm margin-top text-df'>客户总数</text>
+      </view>
+      <view class="flex-sub padding-top padding-bottom  flex flex-direction align-center">
+        <text class='text-lg'>{{repeatBuy}}</text>
+        <view class='flex justify-center align-center'>
+          <text class='text-sm margin-top text-df'>回头率</text>
+          <image class='tipImage1 margin-left-xs margin-top' bindtap='showTip1' src='/pages/images/icon_show_tips.png'></image>
+        </view>
+      </view>
+      <view class="flex-sub padding-top padding-bottom flex flex-direction align-center">
+        <text class='text-lg'>{{avgPayment}}</text>
+        <view class='flex justify-center align-center'>
+          <text class='text-sm margin-top text-df'>7日客单价(元)</text>
+          <image class='tipImage1 margin-left-xs margin-top' bindtap='showTip5' src='/pages/images/icon_show_tips.png'></image>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view>
+    <block wx:for="{{dataList}}" wx:key="item">
+      <view class="cu-list menu-avatar bg-white" bindtap='toUserDetail' data-item='{{item}}'>
+        <view class="cu-item">
+          <image class="cu-avatar radius lg bg-white" src="{{item.imageUrl}}"></image>
+          <view class="content">
+            <view class='flex'>
+              <view class="text-black">{{item.name}}</view>
+              <view catchtap>
+                <image class='tipImage1 margin-left-xs' bindtap='showTip2' src='/pages/images/icon_show_tips.png' data-indexs='{{item.index}}'></image>
+              </view>
+            </view>
+            <view class="text-gray text-sm" wx:if="{{item.isComment==3}}">
+              <text class="text-cut">好评<text class='text-red'>{{item.goods}}</text>条 ，中评
+              <text class='text-red'>{{item.middle}}</text>条，差评
+              <text class='text-red'>{{item.bad}}</text>条</text>
+            </view>
+            <view class="text-gray text-sm" wx:elif="{{item.isComment==2}}">
+            </view>
+            <!-- <view class="text-gray text-sm" wx:elif="{{item.isComment==1}}">
+              7日新增
+              <text class='text-red'>{{item.sevenDayNew}}</text>人 ，30日新增
+              <text class='text-red'>{{item.thirtyDayNew}}</text>人
+            </view> -->
+          </view>
+          <view>
+            <text class="icon-right lg text-gray"></text>
+          </view>
+        </view>
+      </view>
+      <view class='line'></view>
+    </block>
+  </view>
+
+  <view class='margin-top bg-white margin-bottom'>
+    <view class="cu-form-group" bindtap='toAllCoustom'>
+      <view class="title text-black">全部客户</view>
+      <view class='flex '>
+        <view class="picker">
+          {{customerCount}}
+        </view>
+        <view class="action">
+          <text class="icon-right lg text-gray"></text>
+        </view>
+      </view>
+    </view>
+    <view class="cu-form-group" bindtap='toMyCoustom'>
+      <view class="title text-black">我的会员</view>
+      <view class='flex '>
+        <view class="picker">
+          {{membershipCount}}
+        </view>
+        <view>
+          <text class="icon-right lg text-gray"></text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+</view>
+
+
+
+
+
+<view class="cu-modal {{tip}}" bindtap='hideModal'>
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">{{tipName}}</view>
+      <view class="action " bindtap="hideModal">
+        <text class="icon-close text-red padding-xs"></text>
+      </view>
+    </view>
+    <view class="padding-xl bg-white">
+      {{tipContent}}
+    </view>
+  </view>
+</view>

@@ -1,0 +1,88 @@
+/* pages/mainClass/HomeNew/HomeNew.wxss */
+
+page {
+  height: 100%;
+}
+
+.form-layout {
+  position: relative;
+}
+
+.child-layout {
+  top: 0;
+  left: 0;
+  position: absolute;
+  z-index: 1;
+}
+
+.f-btn:after {
+  border: none
+}
+
+.f-btn {
+  color: white;
+  background: transparent;
+  font-size: 15px;
+  line-height: normal;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 5;
+}
+
+.top_white {
+  background: white;
+  width: 100%;
+  height: 36%;
+  padding: 12px;
+}
+
+.top_red {
+  background-color: #f44;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+}
+
+.text-normal {
+  font-size: 14px;
+  color: white;
+}
+
+.sales_layout {
+  display: flex;
+  margin-left: 10px;
+}
+
+.v-line {
+  height: 40px;
+  width: 1px;
+  background-color: #f1f1f1;
+}
+
+.layout2 {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.layout3 {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.home_image {
+  height: 30px;
+  width: 30px;
+}
+
+.item_image {
+  height: 25px;
+  width: 25px;
+  margin-right: 5px;
+}

@@ -1,0 +1,188 @@
+<!--pages/mainClass/UserDetail/UserDetail.wxml-->
+<view class='top_layout'>
+  <view class='bg_radius_white'>
+    <view class="cu-list menu-avatar bg-white" bindtap='toUserDetail'>
+      <view class="cu-item">
+        <view class="cu-avatar radius lg">
+          <image class='imageHead' src='{{headPic.length>0?headPic:"/pages/images/storeManager/productIcon.png"}}'></image>
+        </view>
+        <view class="content">
+          <view class="text-black text-df">
+            {{nickname==null?"":nickname}}
+          </view>
+          <view class="text-gray text-sm">
+            <text class="text-cut">{{membershipName}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class='bg-white padding'>
+    <text class='margin-bottom padding-top padding-left'>在本店的购买数据</text>
+    <view class="layout_money">
+      <view class="flex-sub  padding-sm margin-xs flex flex-direction align-center">
+        <text class='text-lg text-black'>{{orderCount}}次</text>
+        <text class='text-df margin-top-xs'>累计购买</text>
+      </view>
+      <view class="flex-sub  padding-sm margin-xs flex flex-direction align-center">
+        <text class='text-lg text-black'>{{lastOrderCount
+}}次</text>
+        <text class='text-df margin-top-xs'>最近购买</text>
+      </view>
+      <view class="flex-sub  padding-sm margin-xs flex flex-direction align-center">
+        <text class='text-lg text-black'>￥{{sumPayment}}</text>
+        <text class='text-df margin-top-xs'>总交易额</text>
+      </view>
+    </view>
+  </view>
+  <view class='margin-top-xs'>
+    <van-cell-group>
+      <van-cell title="会员等级" value="{{membershipName}}" />
+      <view class="cu-form-group" bindtap='toCoupon'>
+        <view class="title" style='padding-left:4px;font-size:14px;'>优惠券</view>
+        <view class='flex '>
+          <view class="picker text-black text-df">
+            {{couponCount}}张
+          </view>
+          <view class="action">
+            <text class="icon-right lg text-gray"></text>
+          </view>
+        </view>
+      </view>
+    </van-cell-group>
+  </view>
+  <view class='margin-top-xs'></view>
+
+  <van-tabs sticky bind:change="onChange">
+    <van-tab title="客户动态">
+
+      <view class="cu-timeline">
+        <block wx:if="{{UserDynamic.length>0}}">
+          <block wx:for="{{UserDynamic}}" wx:key="item" wx:for-item='item'>
+            <view class="cu-time">{{item.statisticsDate}}</view>
+            <block wx:for="{{item.customerStep}}" wx:key="itemChild" wx:for-item='itemChild'>
+              <view class="cu-item">
+                <view class="content">
+                  <text>{{itemChild.statisticsTime}} 浏览了{{itemChild.recordTarget=='shop'?'您的店铺':itemChild.goodsName}}</text>
+                </view>
+              </view>
+            </block>
+          </block>
+        </block>
+        <block wx:if="{{UserDynamic.length<=0}}">
+          <view class='blockHead'>
+            <emptyView salelistArr="{{UserDynamic}}" emptycount='10' picheight='300px'>
+            </emptyView>
+          </view>
+        </block>
+      </view>
+      
+    </van-tab>
+
+
+    <van-tab title="订单记录">
+      <block wx:if="{{orderList.length>0}}">
+        <block wx:for="{{orderList}}" wx:key="item">
+          <block wx:if="{{item.orderDescModelList.length>0}}">
+            <block wx:for="{{item.orderDescModelList}}" wx:for-item="itemChild" wx:key='itemChild'>
+
+              <view class='item_order' bindtap='toOrderDetail' data-item='{{item.id}}'>
+                <view class='image_layout'>
+                  <image class='item_image' src='{{itemChild.itemImages==null?"/pages/images/icon_all_default.jpg":itemChild.itemImages}}' wx:if='{{item.orderType=="virtualGoods"}}'> </image>
+                  <image class='item_image' src='{{itemChild.itemImages==null?"/pages/images/icon_all_default.jpg":itemChild.itemImages}}' wx:elif='{{item.orderType!="virtualGoods"}}'> </image>
+                </view>
+                <view class='item_right'>
+                  <view class="item_right_title justify-between flex">
+                    <view class="item_right_title van-ellipsis2 text-df">{{itemChild.goodsTitle}}</view>
+
+                    <view class="item_price_number2 text-right">
+                      <view class="text-black text-df">￥{{itemChild.price}}
+                      </view>
+                      <view class='text-grey text-df justify-right'>x{{itemChild.num}}</view>
+                    </view>
+                  </view>
+                  <view class="item_right_spec  text-sm" hidden='{{itemChild.specificationItems==null}}'>{{itemChild.specificationItems}}</view>
+
+                   <view class="item_right_spec margin-top-xs text-sm">下单时间：{{item.addDataTime}}</view>
+                </view>
+              </view>
+            
+            </block>
+            <view class='line'></view>
+          </block>
+          <block wx:if="{{item.orderDescModelList<=0}}">
+            <view class="cu-list menu-avatar" bindtap='toOrderDetail' data-item='{{item.id}}' data-type='{{item.orderType}}'>
+              <view class='item_order'>
+                <view class='image_layout'>
+                  <image class='item_image' src='/pages/images/icon_dowm_buy.png'></image>
+                </view>
+                <view class='item_right'>
+                  <view class="item_right_title justify-between flex">
+                    <view class="item_right_title van-ellipsis2">门店收银订单</view>
+                    <text class="text-cut text-black">￥{{item.payment}}</text>
+                  </view>
+
+                  <view class="item_right_spec margin-top text-sm">下单时间：{{item.addDataTime}}</view>
+                </view>
+              </view>
+            </view>
+            
+            <view class='line'></view>
+          </block>
+        </block>
+      </block>
+      <block wx:if="{{orderList.length<=0}}">
+        <view class='blockHead'>
+          <emptyView salelistArr="{{orderList}}" emptycount='10' picheight='300px'>
+          </emptyView>
+        </view>
+      </block>
+    </van-tab>
+    <van-tab title="常购商品">
+      <block wx:if="{{productList.length>0}}">
+        <block wx:for="{{productList}}" wx:key="item">
+          <view class='item_order'>
+            <view class='image_layout'>
+              <image class='item_image' src='{{item.coverImage==null?"/pages/images/icon_all_default.jpg":item.coverImage}}'> </image>
+            </view>
+            <view class='item_right'>
+              <view class="item_right_title van-ellipsis2">{{item.title}}</view>
+              <view class="item_price_number">
+                <text class="text-cut text-red">￥{{item.price}} 
+                  </text>
+              </view>
+              <view class="item_right_spec">{{item.orderNum}}次购买</view>
+            </view>
+          </view>
+          
+          <view class='line'></view>
+        </block>
+      </block>
+      <block wx:if="{{productList.length<=0}}">
+        <view class='blockHead'>
+          <emptyView salelistArr="{{productList}}" emptycount='10' picheight='300px'>
+          </emptyView>
+        </view>
+      </block>
+    </van-tab>
+  </van-tabs>
+
+</view>
+
+
+<view class='bottomLine'></view>
+<view class="bottomLayout">
+  <view class="flex-sub  padding-bottom-xs  flex flex-direction align-center" bindtap='sendCoupon'>
+    <image src='/pages/images/icon_ucoupons.png' style='height:30px;width:30px'></image>
+    <text class='text-sm'>发优惠券</text>
+  </view>
+  <view class="flex-sub  padding-bottom-xs flex flex-direction align-center" bindtap='setShopShipLevel'>
+    <image src='/pages/images/icon_uVIP.png' style='height:30px;width:30px'></image>
+    <text class='text-sm'>升级会员卡</text>
+  </view>
+  <view class="flex-sub padding-bottom-xs  flex flex-direction align-center" bindtap='takeCall'>
+    <image src='/pages/images/icon_Makeaphonecall.png' style='height:30px;width:30px'></image>
+    <text class='text-sm'>打电话</text>
+  </view>
+</view>

@@ -1,0 +1,36 @@
+<!--index.wxml-->
+<view class="container">
+
+<image src="../images/login/user_icon1.png" mode="aspectFill" class="usericonimage"></image>
+
+<view  class="loginIphone">
+<image src="../images/login/mima_icon@2x.png" mode="aspectFill" class="userPersonimage"></image>
+<input type="number" maxlength="11" placeholder="请输入手机号" placeholder-class="placeholder" bindinput="inputPhone" style='color:#000'></input>
+
+</view>
+
+<view class="loginPassword">
+
+<image src="../images/login/yis_iocn2@2x.png" mode="aspectFill" class="userPasswordimage"></image>
+
+<input type="password" placeholder="请输入6-18位的密码" placeholder-class="placeholder" style='color:#000' class="placeholdertwo" bindinput="inputPass" hidden="{{choosetype=='password'?false:true}}" maxlength='18' value="{{userPassword}}"/>
+<input type="text" style='color:#000' placeholder="请输入密码" placeholder-class="placeholder" class="placeholdertwo" bindinput="inputPassord" hidden="{{choosetype=='password'?true:false}}" value="{{userPassword}}"/>
+
+  <image catchtap='onCollectionTap' src="{{isPassword?'../images/login/Sign_icon_hide.png':'../images/login/Sign_icon_display.png'}}" class="signhidepassword"></image>
+
+</view>
+
+<view class="confirm-btn shadow-blur" style='background:#ff4444' bindtap='goToIndex'>登录</view>
+
+<view class="remmberClass">
+
+<view class="rember-btn" bindtap='registerButtonTap'>快速注册</view>
+<view class="forget-btn" bindtap='forgetPass'>忘记密码?</view>
+
+</view>
+
+<!-- <view class="register-btn" bindtap='registerButtonTap'>
+          <text >注册</text>
+        </view> -->
+
+</view>

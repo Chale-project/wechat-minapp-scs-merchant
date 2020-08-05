@@ -1,0 +1,81 @@
+<!--pages/mainClass/CouponDetail/CouponDetail.wxml-->
+<view class='item-layout'>
+  <view class='flex justify-between' style='height:110px;'>
+    <view class='flex align-center justify-center flex-direction padding-left padding-right'>
+      <view>
+        <text class='text-red text-df'>￥</text>
+        <text class='text-red text-sl'>{{usedAmount}}</text>
+      </view>
+      <view class='flex flex-direction-row align-center justify-left'>
+        <view class='padding-top-xs'>{{isAllProduct?"全部商品":"限定商品"}}</view>
+        <view class='margin-left-sm margin-right-sm text-grey'> | </view>
+        <view class='padding-top-xs text-grey'> 满{{meetAmount}}元可用</view>
+      </view>
+      <view class='text-sm text-grey'>{{validStartTime}}至{{validEndTime}}</view>
+    </view>
+    <!-- <view class='flex flex-direction padding-top padding-bottom padding-right-xs' bindtap='toCouponDetail' data-id='{{item.id}}'>
+      <view class='text-lg text-black'>{{item.title==null?"任性领劵，任性买":item.title}}</view>
+      <view class='text-sm padding-top-xs padding-bottom-xs text-grey'>共{{item.couponQuota}}张 / 剩余{{item.residueCount}}张</view>
+      <view class='text-sm text-grey'>{{item.validStartTime}}至{{item.validEndTime}}</view>
+    </view> -->
+    <view class='line6'></view>
+    <view class='flex flex-direction align-center justify-center' style='width:100px;margin-right:20px;'>
+      <view class='text-black'>共{{couponQuota}}张，剩余</view>
+      <view class='text-black text-xxl text-blod'>{{residueCount}}张</view>
+    </view>
+  </view>
+
+</view>
+
+<view class='item-layout padding-left padding-right'>
+
+  <view class='flex flex-direction-row justify-between padding-top padding-bottom'>
+    <view>使用范围：</view>
+    <view>{{isAllProduct?"全部商品可用":"限定商品可用"}}</view>
+  </view>
+
+  <view class='line margin-left maring-right'></view>
+  <view class='flex flex-direction-row justify-between padding-top padding-bottom'>
+    <view>领券上限：</view>
+    <view>每人限领{{repeatCount}}张</view>
+  </view>
+
+  <view class='line  '></view>
+
+  <view class='flex flex-direction-row  padding-top padding-bottom'>
+    <view>
+      <image src='{{isShow1?"/pages/images/icon_yes.png":"/pages/images/icon_no.png"}}' style='height:20px;width:20px'></image>
+    </view>
+    <view class='margin-left-xs'>不支持加入微信卡包</view>
+  </view>
+
+  <view class='line  '></view>
+
+  <view class='flex flex-direction-row  padding-top padding-bottom'>
+    <view>
+      <image src='{{isShow2?"/pages/images/icon_yes.png":"/pages/images/icon_no.png"}}' style='height:20px;width:20px'></image>
+    </view>
+    <view class='margin-left-xs'>不展示已领完的全</view>
+  </view>
+
+  <view class='line '></view>
+
+  <view class='margin-top text-grey'>说明</view>
+
+  <view class='margin-top margin-bottom'>{{spec==null?"暂无说明":spec}}</view>
+</view>
+
+<view class='margin-top margin-bottom' hidden='{{isAllProduct}}'>
+  <view class='margin-top margin-bottom margin-left'>可用商品</view>
+  <block wx:for="{{dataList}}" wx:key="item">
+    <view class='item-layout2'>
+      <view class='image_layout'>
+        <image class='item_image' src='{{item.coverImage==null?"/pages/images/icon_all_default.jpg":item.coverImage}}'> </image>
+      </view>
+      <view class='item_right'>
+        <view class="item_right_title van-ellipsis2 text-df text-black">{{item.title}}</view>
+        <view class="text-xxl text-red">￥{{item.price}}</view>
+      </view>
+    </view>
+  </block>
+</view>

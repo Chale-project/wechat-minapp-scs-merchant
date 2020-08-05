@@ -1,0 +1,57 @@
+<!--pages/mainClass/ShopUser/ShopUser.wxml-->
+
+<view class="cu-bar search bg-white">
+  <view class="search-form round">
+    <text class="icon-search"></text>
+    <input type="text" placeholder="搜索客户名称" confirm-type="search" bindinput="searchnameinput" bindconfirm="searchbutton"></input>
+  </view>
+</view>
+
+<view class='line'></view>
+
+<view class='flex justify-between bg-white padding-left padding-right padding-top-sm padding-bottom-sm align-center'>
+  <view class='layoutTop'>
+    <text class='text-lg'>客户总数</text>
+    <!-- <text class='margin-top-xs text-black text-lg'>{{total}}</text> -->
+  </view>
+  <view class='layoutTop'>
+    <text class='text-black text-df'>{{total}}人</text>
+    <!-- <text>7日新增 <text class='text-red'>{{seven}}</text> 人</text> -->
+    <!-- <text class='pidding-top'>30日新增 <text class='text-red'>{{thirty}}</text> 人</text> -->
+  </view>
+</view>
+<view class='line'></view>
+
+<view class='flex bg-white padding-right padding-left padding-top-sm padding-bottom-xs' hidden='{{type=="newCustomer"||type=="repeatCustomer"||type=="lossCustomer"}}'>
+  <button class="cu-btn round {{bg1}} sm margin-right" bindtap='chooseAll'>全部</button>
+  <button class="cu-btn round {{bg2}} sm margin-right" bindtap='choose2'>浏览商品</button>
+  <button class="cu-btn round {{bg3}} sm margin-right" bindtap='choose3'>浏览店铺</button>
+  <button class="cu-btn round {{bg4}} sm margin-right" bindtap='choose4'>加入购物车</button>
+</view>
+<!-- <block wx:if="{{dataList.length>0}}"> -->
+<block wx:for="{{dataList}}" wx:key="item">
+  <view class="cu-list menu-avatar bg-white" bindtap='toUserDetail' data-item='{{item.userNumber}}'>
+    <view class="cu-item">
+      <view class="cu-avatar radius lg" style="background-image:url({{item.headPic.length>0?item.headPic:'/pages/images/storeManager/productIcon.png'}});"></view>
+      <view class="content van-ellipsis">
+        <view class="text-black text-df">{{item.nickname}}
+          <text class='text-sm margin-left text-grey'>{{item.membershipName==""?"":item.membershipName}}</text>
+        </view>
+        <view class="text-gray text-sm margin-top-xs">
+          <text class="text-cut"><text class='text-red margin-right'>{{item.lastVisiteHour}}</text>{{item.recordTarget}}</text>
+        </view>
+      </view>
+      <view>
+        <text class="icon-right lg text-gray"></text>
+      </view>
+    </view>
+  </view>
+  <view class='line'></view>
+</block>
+<!-- </block> -->
+<!-- <block wx:if="{{dataList.length<=0}}"> -->
+<!-- <view class='blockHead'> -->
+<emptyView salelistArr="{{dataList}}" emptycount='10' picheight='420px'>
+</emptyView>
+<!-- </view> -->
+<!-- </block> -->

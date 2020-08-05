@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "添加账号",
+  "usingComponents": {
+    "van-switch": "/vantUi/switch/index"
+  }
+}

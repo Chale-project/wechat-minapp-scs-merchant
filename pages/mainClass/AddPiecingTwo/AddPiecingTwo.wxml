@@ -1,0 +1,87 @@
+<view>
+  <view class='item_order' bindtap='showGropuDetail'>
+    <view class='image_layout'>
+      <image class='item_image' src='{{coverImage==null?"/pages/images/icon_all_default.jpg":coverImage}}'> </image>
+    </view>
+    <view class='item_right justify-between flex'>
+      <view class="flex flex-direction">
+        <view class="item_right_title van-ellipsis2 text-df">{{title}}</view>
+        <view class="text-red text-df">￥{{price}}</view>
+      </view>
+      <view class=" align-center justify-center flex">
+        <text class="icon-right text-grey"></text>
+      </view>
+    </view>
+  </view>
+
+
+  <view class="cu-form-group margin-top">
+    <view class="title">成团人数</view>
+    <input placeholder="请输入成团人数" placeholder-class="placeholder" type='number' bindinput="groupPeopleNum" style='color:#000'></input>
+  </view>
+
+
+  <view class='flex flex-direction-row padding-left padding-right bg-white margin-top algin-center justify-left padding-top padding-bottom' bindtap='chooseStartTime'>
+    <view class='text-black text-df'>开始时间</view>
+    <view class='text-black text-df margin-left'>{{startTime}}</view>
+  </view>
+  <view class='line'></view>
+  <view class='flex flex-direction-row padding-left padding-right bg-white algin-center justify-left padding-top padding-bottom' bindtap='chooseEndTime'>
+    <view class='text-black text-df'>结束时间</view>
+    <view class='text-black text-df margin-left'>{{endTime}}</view>
+  </view>
+
+  <view class="cu-form-group margin-top">
+    <view class="title">成团时间</view>
+    <input placeholder="请输入成团时间" placeholder-class="placeholder" type='number' bindinput="groupNeedTime" style='color:#000;width:60px;'></input>
+<view class="text-red text-df">小时</view>
+  </view>
+
+  <view class='flex flex-direction-row padding-left padding-right bg-white margin-top algin-center justify-between padding-top padding-bottom'>
+    <view class='text-black text-df'>是否限购</view>
+    <switch bindchange="switchChange" checked='{{isLimit}}'></switch>
+  </view>
+  <view class='line'></view>
+  <view class="cu-form-group ">
+    <view class="title">限购数量</view>
+    <input placeholder="请输入限购数量" placeholder-class="placeholder" type='number' bindinput="groupLimitNum" style='color:#000'></input>
+  </view>
+
+
+  <view class="savebtn" bindtap='saveGroup'>保存拼团活动</view>
+
+</view>
+
+
+<timePicker pickerShow="{{isPickerShow}}" bind:hidePicker="pickerHide" bind:setPickerTime="setPickerTime" config="{{pickerConfig}}"></timePicker>
+
+
+
+<view class="cu-modal {{modalName}}">
+  <view class="cu-dialog bg-white">
+    <view class='flex flex-direction' style='height:50px;'>
+      <view class='item_right_title van-ellipsis2 text-lg margin-top-sm'>{{productName}}</view>
+    </view>
+
+    <view>
+      <block wx:for="{{dataListProduct}}" wx:key="item" wx-index="index" wx:for-index="index">
+        <view class='flex flex-direcion-row margin-top-sm margin-bottom-sm justify-between align-center'>
+          <view class='flex flex-direcion-row margin-left-sm'>
+            <view class='van-ellipsis' style='width:60px;'>{{item.specificationItems}}</view>
+            <view class='margin-left-xs'>￥{{item.descPrice}}</view>
+          </view>
+          <view class='flex flex-direcion-row justify-center align-center margin-right'>
+            <input class='inputLayout line-grey flex justify-center align-center margin-right' style='width:86px;height:38px;' value='{{item.groupPrice}}' placeholder="输入拼团价" data-index="{{index}}" type="digit"  bindinput="getGroupPrice"></input>
+            <input class='inputLayout line-grey flex justify-center align-center' style='width:86px;height:38px;' value="{{item.groupStock}}" placeholder="输入库存" data-index="{{index}}" type="number" bindinput="getStock"></input>
+          </view>
+        </view>
+      </block>
+    </view>
+
+
+    <view class="bg-white flex flex-direcion-row" style='height:44px; '>
+      <view class="flex-sub text-black bg-grey flex align-center justify-center" bindtap="hideModal" style='height:44px; '>取消</view>
+      <!-- <view class="flex-sub bg-main-color text-white  flex align-center justify-center" bindtap="sureChange" style='height:44px; '>确定修改</view> -->
+    </view>
+  </view>
+</view>

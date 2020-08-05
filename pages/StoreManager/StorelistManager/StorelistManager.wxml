@@ -1,0 +1,52 @@
+<!--pages/StoreManager/StorelistManager/StorelistManager.wxml-->
+
+<view class='outviewstore'>
+      <view class="prosearchviewstore">
+      <view class="alltitleviewstore" bindtap='allProTap' >{{choosename}}        <text class="icon-triangledownfill" wx:if="{{!proshow}}"></text>
+      <text class="icon-triangleupfill" wx:else></text>
+      </view>
+      <input placeholder="请输入商品名称" placeholder-class="placeholder" class="searchinputstore" bindinput="searchnameinput" bindconfirm="searchbutton" value="{{searchtitle}}"></input>
+      </view>
+  </view>
+
+<view hidden="{{proshow}}">
+<scroll-view scroll-y="true" bindscrolltolower="storescrolower" style="height:{{screenHeighth-50-60}}px;width:100%">
+
+<import src="/pages/StoreManager/StoreLow/StoreLow.wxml"/>
+
+<van-tabs swipeable color='#C4091C' bind:change="ontapindex">
+  <van-tab title="出售中({{storewheredata.put?storewheredata.put:0}})">
+    <template is="StoreLow" data="{{storesalelistArr:storesalelistArr,storewheredata:storewheredata,scrolowerLoadstore:scrolowerLoadstore,isallcaterorNocater:isallcaterorNocater}}" />
+  </van-tab>
+  <van-tab title="已下架({{storewheredata.out?storewheredata.out:0}})">
+  <template is="StoreLow" data="{{storesalelistArr:storesalelistArr,storewheredata:storewheredata,scrolowerLoadstore:scrolowerLoadstore,isallcaterorNocater:isallcaterorNocater}}" />
+  </van-tab>
+  
+</van-tabs>
+
+</scroll-view>
+
+<view class="bottomviewstore">
+  <view class="checkchooseviews" bindtap="allchoosetap">
+    <checkbox class='round red' checked="{{isAllChoose}}"/> 全选
+  </view>
+  <view class='bottom-itemstore' wx:for="{{storebottomtitledata}}" style="{{storebottomtitledata.length<3?'width: calc(50% - 2px)':'width: calc(33.3% - 2px)'}}" data-idx="{{idx}}" wx:for-index="idx" wx:for-item="item" wx:key="{{idx}}" bindtap='storeaddproducetap'>{{item.name}}</view>
+</view>
+</view>
+
+<!-- 全部分类 -->
+ <scroll-view class='allCaterviewstore' hidden="{{!proshow}}" scroll-y="true" style="height:{{screenHeighth-50-60}}px">
+    <view class='topcaterstore'>
+     <view class='topcater-itemstore' wx:for="{{topcaterdata}}" data-idx="{{idx}}" wx:for-index="idx" wx:for-item="item" wx:key="{{idx}}" bindtap='topcatertap' style="{{!chooseid&&idx==0?'color:#ff4444':chooseid=='noCate'&&idx==1?'color:#ff4444':'color:#333'}}">{{item}}</view>
+    </view>
+    <view class='onecaterviewstore' wx:for="{{caterdata}}" data-ida="{{ida}}" wx:for-index="ida" wx:for-item="itea" wx:key="{{ida}}" wx:if="{{itea.name!='未分类'}}" >
+        <view class='fircaterstore'>{{itea.name}}</view>
+        <view class='twocaterstore'>
+          <view class='secondcater-itemstore' wx:for="{{itea.sublevels}}" data-idx="{{idx}}" wx:for-index="idx" wx:for-item="item" wx:key="{{idx}}" data-ida="{{ida}}" bindtap='twocatertap' style="{{item.id==chooseid?'color:#ff4444':'color:#333'}}">{{idx==0?'所有':item.name}}</view>
+        </view>
+    </view>
+
+  </scroll-view>
+
+  <!-- 删除商品 -->
+<van-dialog id="van-dialog" />

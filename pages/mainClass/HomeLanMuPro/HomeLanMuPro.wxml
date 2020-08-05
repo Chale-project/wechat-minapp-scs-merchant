@@ -1,0 +1,28 @@
+<!--pages/mainClass/HomeLanMuPro/HomeLanMuPro.wxml-->
+<view class='choosePro' bindtap='chooseprotap'>
+ <view>选择商品</view>
+ <view class='icon-right'></view>
+</view>
+
+<scroll-view class='allCaterviewstore' scroll-y="true" style="height:{{screenHeighth-50}}px"  bindscrolltolower="storescrolower">
+
+<view class='topcater-itemstore' wx:for="{{subjectlistdata}}" data-idx="{{idx}}" wx:for-index="idx" wx:for-item="item" wx:key="{{idx}}" bindtap='topcatertap'>
+  <view class='topcloseview'>
+    <view style='width:calc(100% - 25px)'></view>
+    <text class="closeview" data-idx="{{idx}}" bindtap='closetap'>x</text>
+  </view>
+  <image class="userIconImg" src="{{item.goodsImage.length>0?item.goodsImage:'/pages/images/storeManager/productIcon.png'}}" binderror="avatarError" data-idx="{{idx}}" mode="aspectFill"></image>
+  <view class='goodstitleview'>{{item.goodsTitle}}</view>
+  <view style="color:red;height:16px">¥{{item.goodsPrice}}</view>
+</view>
+
+
+<!-- <view class="cu-load {{subjectscrollviewLoader?'loading':'over'}}" wx:if="{{subjectlistdata.length>0}}"></view> -->
+
+<emptyView
+      salelistArr = "{{subjectlistdata}}"
+      emptycount = '0'
+      picheight = '400px'>
+  </emptyView> 
+
+</scroll-view>

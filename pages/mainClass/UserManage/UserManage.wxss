@@ -1,0 +1,19 @@
+/* pages/mainClass/UserManage/UserManage.wxss */
+page{
+  background-color: #f1f1f1
+}
+
+.layout_money {
+  display: flex;
+  flex-direction: row;
+}
+
+.image1{
+  height: 15px;
+  width: 15px;
+}
+.layout_12{
+  flex-direction: row;
+  align-items: center;
+  justify-content: left
+}

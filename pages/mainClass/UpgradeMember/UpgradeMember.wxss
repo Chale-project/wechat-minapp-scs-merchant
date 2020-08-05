@@ -1,0 +1,8 @@
+/* pages/mainClass/UpgradeMember/UpgradeMember.wxss */
+page{
+  background-color: white
+}
+.imageCheck{
+  height: 20px;
+  width: 20px;
+}

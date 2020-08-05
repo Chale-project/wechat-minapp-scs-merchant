@@ -1,0 +1,222 @@
+/* pages/StoreManager/StoreHome/StoreHome.wxss */
+@import '/pages/StoreManager/StoreSale/StoreSale.wxss';
+/* @import '/pages/StoreManager/StoreLow/StoreLow.wxss'; */
+@import '/pages/StoreManager/StoreLow/StoreLow.wxss';
+.outview {
+  background: #fff;
+  padding: 10px;
+  border-bottom: 1px solid #f5f5f5;
+}
+.prosearchview {
+  height: 40px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; 
+}
+.alltitleview {
+  color: #000;
+  width: 100px;
+  padding-left: 10px;
+  display: flex;
+}
+.searchinput {
+  width: calc(100% - 90px);
+  padding-right: 10px;
+  text-align: left;
+}
+.placeholder {
+  color: #ccc;
+}
+.proAndInvent {
+  height: 100px;
+  background: #ff4444;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.proInventview {
+  border-radius: 10px;
+  border: 1px solid #fff;
+  height: 34px;
+  display: flex;
+  flex-direction: row;
+}
+.profirview {
+  font-size: 14px;
+  width: 78px;
+  line-height: 34px;
+  text-align: center;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.inventsecview {
+  font-size: 14px;
+  background: #fff;
+  width: 70px;
+  line-height: 34px;
+  text-align: center;
+  color: #333;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.topview {
+  margin: 10px;
+  background: #fff;
+}
+.firstView {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.dataImage {
+  width: 20px;
+  height: 20px;
+  margin-left: 15px;
+}
+.topTitle {
+  margin-left: 5px;
+  width: calc(100% - 56px);
+  color: #333;
+  display: flex;
+  align-items: center;
+}
+.arrowRight {
+  right: 16px;
+}
+.secondView {
+  height: 70px;
+}
+.secondView::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.student-item {
+  box-sizing: content-box;
+  width: 33.3%;
+  float: left;
+}
+.studentName {
+  text-align:center;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.studentName text {
+  font-weight: bold;
+  color: #000;
+  font-size: 13px;
+}
+.studentName view {
+  margin-top: 8px;
+  color: #000;
+  font-size: 13px;
+}
+.bottomview {
+  height: 60px;
+  bottom: 0px;
+  background: #f5f5f5;
+  z-index: 999;
+  position:fixed;
+  left:0;
+  right:0;
+  border-top: 1px solid #f5f5f5;
+  margin: 0 2px;
+}
+.bottomview::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.bottom-item {
+  width: calc(25% - 2px);
+  height: 100%;
+  float: left;
+  display:flex;
+  flex-direction: column;
+  margin-left: 2px;
+  background: #fff;
+}
+.bottomitem-top {
+  height: 50%;
+  padding-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.iconimages {
+  width: 20px;
+  height: 20px;
+}
+.bottomName {
+  color: #333;
+  font-size: 14px;
+  line-height: 30px;
+  text-align: center;
+}
+/* 全部分类 */
+.allCaterview {
+  background: #f5f5f5;
+}
+.topcater {
+  padding-top: 10px;
+  background: #fff;
+}
+.topcater::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.topcater-item {
+  background:#f5f5f9;
+  box-sizing: content-box;
+  width: calc(25% - 10px);
+  height: 35px;
+  float: left;
+  margin: 0 10px;
+  text-align: center;
+  line-height: 35px;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  overflow:hidden;
+  border-radius: 5px;
+}
+.onecaterview{
+  background: #fff;
+  padding: 5px 0;
+}
+.fircater {
+  color:#333;
+  width: 80px;
+  height:40px;
+  line-height:40px;
+  text-align: center;
+  margin-left: 10px;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  overflow:hidden;
+}
+.twocater::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.secondcater-item {
+  background:#f5f5f9;
+  box-sizing: content-box;
+  width: calc(25% - 10px);
+  height: 35px;
+  float: left;
+  margin: 5px;
+  text-align: center;
+  line-height: 35px;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  overflow:hidden;
+  font-size: 12px;
+  border-radius: 5px;
+}

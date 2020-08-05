@@ -1,0 +1,84 @@
+/* pages/mainClass/OrderDetail/OrderDetail.wxss */
+
+.orderTop {
+  height: 120px;
+  width: 100%;
+  position: relative;
+}
+
+.item_image1 {
+  width: 55px;
+  height: 55px;
+}
+
+.orderAddress {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  height: 82px;
+  width: calc(100% - 30px);
+  box-sizing: border-box;
+  background-color: white;
+  border-radius: 6px;
+  z-index: 5;
+  left: 15px;
+  top: 90px;
+}
+
+.orderMiddle {
+  margin-left: 15px;
+  margin-right: 15px;
+  background-color: white;
+  border-radius: 6px;
+  margin-top: 60px;
+}
+
+.orderBottom {
+  margin-left: 15px;
+  margin-right: 15px;
+  background-color: white;
+  border-radius: 6px;
+  margin-top: 12px;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.remark {
+  display: flex;
+  flex-direction: row;
+  margin-left: 15px;
+  margin-right: 15px;
+  background-color: white;
+  border-radius: 6px;
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+.orderSend {
+  margin-left: 15px;
+  margin-right: 15px;
+  background-color: white;
+  border-radius: 6px;
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+.addressName {
+  margin-top: 10px;
+  margin-left: 15px;
+  margin-right: 15px;
+  font-size: 15px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.addressDetail {
+  margin-top: 10px;
+  margin-left: 15px;
+  margin-right: 15px;
+  font-size: 14px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}

@@ -1,0 +1,96 @@
+<!--pages/mainClass/AllUserDetail/AllUserDetail.wxml-->
+<view class='top_layout'>
+  <view class="flex flex_row bg-white" hidden='true'>
+    <view class="flex-sub flex padding-sm margin-xs justify-center  align-center" bindtap='btn1' data-item='{{sort1}}'>
+      <text class='text-lg align-center {{textColor1}}'>总交易额</text>
+      <view class='flex flex-direction padding-left-xs'>
+        <image class='sortImage' src='{{imageurl1}}'></image>
+      </view>
+    </view>
+    <view class="flex-sub flex padding-sm margin-xs  align-center" bindtap='btn2' data-item='{{sort2}}'>
+      <text class='text-lg align-center {{textColor2}}'>最近购买</text>
+      <view class='flex flex-direction padding-left-xs'>
+        <image class='sortImage' src='{{imageurl2}}'></image>
+      </view>
+    </view>
+    <view class="flex-sub flex padding-sm margin-xs  align-center" bindtap='btn3' data-item='{{sort3}}'>
+      <text class='text-lg align-center {{textColor3}}'>购买次数</text>
+      <view class='flex flex-direction padding-left-xs'>
+        <image class='sortImage' src='{{imageurl3}}'></image>
+      </view>
+    </view>
+  </view>
+  <view class='line'></view>
+  <block wx:for="{{dataList}}" wx:key="item">
+    <view class="cu-list menu-avatar bg-white" data-item='{{item.userNumber}}' bindtap='checkboxChange' data-item='{{item.flagCheck}}' data-index="{{index}}">
+      <view class="cu-item">
+        <view class="cu-avatar radius lg" style="background-image:url({{item.headPic.length>0?item.headPic:'/pages/images/storeManager/productIcon.png'}});"></view>
+        <view class="content van-ellipsis">
+          <view class="text-black">{{item.nickname}}
+            <text class='text-sm margin-left'>{{item.membershipName.length>0?item.membershipName:""}}</text>
+          </view>
+          <view class="text-gray text-sm" wx:if="{{type==1}}">
+            <text class="text-cut">总交易额<text class='text-red margin-right'>  ￥{{item.sumPayment}}</text></text>
+          </view>
+          <view class="text-gray text-sm" wx:elif="{{type==2}}">
+            <text class="text-cut">最近购买于<text class='text-red margin-right'>  {{item.lastOrderTime==''?'':item.lastOrderTime}}</text></text>
+          </view>
+          <view class="text-gray text-sm" wx:elif="{{type==3}}">
+            <text class="text-cut">购买次数<text class='text-red margin-right'>  {{item.orderCount}}次</text></text>
+          </view>
+          <view class="text-gray text-sm" wx:elif="{{type==4}}">
+            <text class="text-cut">{{item.phoneNumber==null?"":item.phoneNumber}}</text>
+          </view>
+        </view>
+        <view>
+          <image src='{{item.flagCheck?"/pages/images/icon_check.png":"/pages/images/icon_uncheck.png"}}' style='width:26px;height:26px;'></image>
+          <!-- <checkbox class="round bg-red" checked="{{item.flagCheck}}" bindtap="checkboxChange" data-item='{{item.flagCheck}}' data-index="{{index}}"></checkbox> -->
+        </view>
+      </view>
+    </view>
+    <view class='line'></view>
+  </block>
+</view>
+
+<emptyView salelistArr="{{dataList}}" emptycount='10' picheight='400px'>
+</emptyView>
+
+<!-- <view class="bottomLayout">
+  <button class="cu-btn bg-blue margin-tb-sm lg" bindtap='over'>（已选{{chooseNum}}个客户）完成</button>
+</view> -->
+
+<view class="bottomLayout">
+  <view class="flex" style='width:100%;height:55px;'>
+   
+    <view class='flex flex-direction-row align-center justify-center bg-white' style='width:220px;' bindtap='chooseAllUser'>
+      <image src='{{chooseAll?"/pages/images/icon_check.png":"/pages/images/icon_uncheck.png"}}' style='width:26px;height:26px;'></image>
+      <view class='margin-left-sm'>全选</view>
+
+       <view class='margin-left' style="width:120px;">共{{totalChoose}}个客户</view>
+    </view>
+    <form bindsubmit="formSubmit2" bindreset="formReset2" report-submit='true' class="flex flex-sub bg-main-color padding-sm  justify-center aling-center">
+      <button form-type="submit" class='f-btn' style="margin-top:7px;">发送优惠券</button>
+    </form>
+  </view>
+</view>
+
+
+<view class="cu-modal {{modalName}}" bindtap='hideModal'>
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">提示</view>
+      <view class="action" bindtap="hideModal">
+        <text class="icon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-xl">
+      确定发送给所有人吗？
+    </view>
+    <view class="cu-bar bg-white justify-end">
+      <view class="action">
+        <button class="cu-btn line-grey text-green" bindtap="hideModal">取消</button>
+        <button class="cu-btn bg-main-color margin-left text-white" bindtap="sendToAll">确定</button>
+      </view>
+    </view>
+  </view>
+</view>

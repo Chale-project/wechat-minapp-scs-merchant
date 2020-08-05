@@ -1,0 +1,20 @@
+/* pages/mainClass/PayDetail/PayDetail.wxss */
+.text{
+  font-size: 16px;
+  color: #FF3300
+}
+
+.text2{
+  font-size: 16px;
+  color: #000000
+}
+
+.text3{
+  font-size: 14px;
+  color: #999999
+}
+
+.payImage{
+  width: 30px;
+  height: 30px;
+}

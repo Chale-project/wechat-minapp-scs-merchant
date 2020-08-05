@@ -1,0 +1,37 @@
+<!--pages/mainClass/SendCouponsToPersonage/SendCouponsToPersonage.wxml-->
+<!-- <block wx:if="{{dataList.length>0}}"> -->
+<block wx:for="{{dataList}}" wx:key="item">
+  <view class='item-layout' style='height:98px;'>
+    <view class='flex justify-between'>
+      <view class='flex align-center justify-center flex-direction padding-left padding-right' bindtap='toCouponDetail' data-id='{{item.id}}'>
+        <view>
+          <text class='text-red text-xs'>￥</text>
+          <text class='text-red text-xxl'>{{item.usedAmount/100}}</text>
+        </view>
+        <view class='padding-top-sm'>满{{item.meetAmount/100}}元可用</view>
+      </view>
+      <view class='flex flex-direction padding-top padding-bottom' bindtap='toCouponDetail' data-id='{{item.id}}'>
+        <view class='text-lg text-black'>{{item.title==null?"任性领劵，任性买":item.title}}</view>
+        <view class='text-sm padding-top-xs padding-bottom-xs text-grey'>剩余{{item.residueCount}}张</view>
+        <view class='text-sm text-grey'>{{item.validStartTime}} 至 {{item.validEndTime}}</view>
+        <!-- <view class='text-df'>{{item.validStartTime}}至{{item.validEndTime}}</view> -->
+      </view>
+      <view style='height:98px;' class='flex flex-direction-row'>
+        <view class='line6'></view>
+        <view class='flex align-center justify-center '>
+          <form bindsubmit="formSubmit" bindreset="formReset" report-submit='true'>
+            <button form-type="submit" class='form-button1' data-item='{{item.id}}'>立即\n发送</button>
+          </form>
+        </view>
+      </view>
+    </view>
+  </view>
+</block>
+<!-- </block> -->
+<!-- <block wx:if="{{dataList.length<=0}}"> -->
+<emptyView salelistArr="{{dataList}}" emptycount='10' picheight='420px'>
+</emptyView>
+<view class='blockHead'>
+  <button class="cu-btn round bg-main-color text-white" bindtap='toAddCoupons' hidden='{{dataList.length>0}}'>还没有优惠券，去添加</button>
+</view>
+<!-- </block> -->

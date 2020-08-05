@@ -1,0 +1,8 @@
+/* pages/mainClass/ShopShipIntroduct/ShopShipIntroduct.wxss */
+.layout{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  flex-direction: column;
+}

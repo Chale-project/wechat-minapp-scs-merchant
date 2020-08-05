@@ -1,0 +1,11 @@
+var numberUtil={
+  numberFormat: function(value){
+    var v = parseInt(value)
+    return v.toFixed(2)
+  }
+}
+
+
+module.exports={
+  numberFormat:number.numberFormat
+}

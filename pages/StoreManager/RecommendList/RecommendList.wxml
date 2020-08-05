@@ -1,0 +1,73 @@
+<!--pages/StoreManager/RecommendList/RecommendList.wxml-->
+<!--pages/StoreManager/ProductRecommend/ProductRecommend.wxml-->
+<!-- 添加商品 -->
+<!-- <view class='outviewstore'>
+      <view class="prosearchviewstore">
+      <view class="alltitleviewstore" bindtap='allProTap' >{{choosename}}        <text class="icon-triangledownfill" wx:if="{{!proshow}}"></text>
+      <text class="icon-triangleupfill" wx:else></text>
+      </view>
+      <input placeholder="请输入商品名称" placeholder-class="placeholder" class="searchinputstore" bindinput="searchnameinput" bindconfirm="searchbutton" value="{{searchtitle}}"></input>
+      </view>
+  </view> -->
+
+<scroll-view scroll-y="true" bindscrolltolower="storescrolower" style="height:{{screenHeighth-50}}px;width:100%" hidden="{{proshow}}">
+<!-- 添加列表信息-->
+<checkbox-group bindchange="checkboxChange">
+ <view class='sale-itemstore' wx:for="{{storesalelistArr}}" data-idx="{{item.id}}" wx:for-index="idx" wx:for-item="item" wx:key="{{idx}}">
+ <view class="checkchooseviewstore">
+  <checkbox class="round red" value="{{idx}}" checked="{{item.proSelecte}}"></checkbox>
+ </view>
+
+ <view class="rightitemviewstore">
+  <image class="userIconImgstore" src="{{item.coverImage.length>0?item.coverImage:'/pages/images/storeManager/productIcon.png'}}" mode="aspectFill" data-idx="{{idx}}" binderror="avatarErrorstore"></image>
+   <view class='rightproall' style="{{isallcaterorNocater?'margin-top:0':'margin-top:-15px'}}">
+    <view class='rightproallFir'>
+        <view class="productNamestore">{{item.title}}</view>
+        <view class="productPricestore">¥{{item.price}}</view>
+      </view>
+      <!-- <view class='rightproallSec'> -->
+        <view class="addtimeviewstore" style="margin-top:2px">添加时间 {{item.addDataTime}}</view>
+        <view class="totalsalestore" style="margin-top:0px" style="{{idx==0?'width:calc(100% - 50px)':'width:calc(100% - 100px)'}}">总销量 {{item.stockCount}} 库存 {{item.num}}</view>
+        <view class='paixuview' wx:if="{{!isallcaterorNocater}}">
+            <view style="{{idx==0?'width:calc(100% - 50px)':'width:calc(100% - 100px)'}}"></view>
+            <view class='moveclass' data-idx="{{idx}}" bindtap='moveuptap' wx:if="{{idx>0}}">置顶</view>
+            <view class='moveclass' data-idx="{{idx}}" bindtap='movetoptap' wx:if="{{idx>0}}">上移</view>
+            <view class='moveclass' data-idx="{{idx}}" bindtap='moveloworuptap'>下移</view>
+          </view>
+     <!-- </view> -->
+    </view>
+  </view>
+</view>
+</checkbox-group>
+
+<view class="cu-load {{scrolowerLoadstore?'loading':'over'}}" wx:if="{{storesalelistArr.length>0}}"></view>
+
+<emptyView
+      salelistArr = "{{storesalelistArr}}"
+      emptycount = '5'
+      picheight = '400px'>
+  </emptyView>
+
+</scroll-view>
+
+<view class="bottomviewstore">
+  <view class="checkchooseviews" bindtap="allchoosetap">
+    <checkbox class='round red' checked="{{isAllChoose}}"/> 全选
+  </view>
+  <view class='bottom-itemstore' wx:for="{{storebottomtitledata}}" style="width: calc(100% - 102px)" data-idx="{{idx}}" wx:for-index="idx" wx:for-item="item" wx:key="{{idx}}" bindtap='storeaddproducetap'>{{item.name}}</view>
+</view>
+
+
+<!-- 全部分类 -->
+ <!-- <scroll-view class='allCaterviewstore' hidden="{{!proshow}}" scroll-y="true" style="height:{{screenHeighth-60-50}}px">
+    <view class='topcaterstore'>
+     <view class='topcater-itemstore' wx:for="{{topcaterdata}}" data-idx="{{idx}}" wx:for-index="idx" wx:for-item="item" wx:key="{{idx}}" bindtap='topcatertap' style="{{!chooseid&&idx==0?'color:#ff4444':chooseid=='noCate'&&idx==1?'color:#ff4444':'color:#333'}}">{{item}}</view>
+    </view>
+    <view class='onecaterviewstore' wx:for="{{caterdata}}" data-ida="{{ida}}" wx:for-index="ida" wx:for-item="itea" wx:key="{{ida}}" wx:if="{{itea.name!='未分类'}}" >
+        <view class='fircaterstore'>{{itea.name}}</view>
+        <view class='twocaterstore'>
+          <view class='secondcater-itemstore' wx:for="{{itea.sublevels}}" data-idx="{{idx}}" wx:for-index="idx" wx:for-item="item" wx:key="{{idx}}" data-ida="{{ida}}" bindtap='twocatertap' style="{{item.id==chooseid?'color:#ff4444':'color:#333'}}">{{idx==0?'所有':item.name}}</view>
+        </view>
+    </view>
+
+  </scroll-view> -->

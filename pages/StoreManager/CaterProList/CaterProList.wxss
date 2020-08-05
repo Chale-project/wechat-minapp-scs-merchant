@@ -1,0 +1,110 @@
+/* pages/StoreManager/CaterProList/CaterProList.wxss */
+.categoryclass {
+  height: 50px;
+  border-bottom: 1px solid #f5f5f5;
+  display: flex;
+  flex-direction: row;
+  background: #fff;
+}
+.saleview {
+  width: 50%;
+  line-height: 50px;
+  text-align: center;
+}
+.pullproview {
+  width: 50%;
+  line-height: 50px;
+  text-align: center;
+}
+.productscrollview{
+  margin-bottom: 50px;
+}
+.sale-item {
+  width:100%;
+  height: 120px;
+  background: #fff;
+  margin-bottom:10px;
+  display: flex;
+  flex-direction: row;
+}
+.checkchooseview {
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.rightitemview {
+  width: calc(100% - 50px);
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+.userIconImg {
+  width:90px;
+  height:90px;
+  background: #f5f5f5;
+}
+.rightproview {
+  width: calc(100% - 90px);
+  height: 100px;
+  padding: 0 10px;
+}
+.productName {
+  color:#333;
+  font-size: 15px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2;
+  display:-webkit-box;
+}
+.productPrice {
+  color:red;
+  font-size: 13px;
+  margin-top:2px;
+}
+.addtimeview {
+  color:#666;
+  font-size: 13px;
+  margin-top:2px;
+}
+.totalsale {
+  color:#666;
+  font-size: 13px;
+  height: 26px;
+}
+.bottomview {
+  height: 50px;
+  bottom: 0px;
+  background: #fff;
+  z-index: 999;
+  position:fixed;
+  left:0;
+  right:0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #f5f5f5;
+}
+.checkchooseviews {
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bottomsecview {
+  width: calc(100% - 170px);
+  line-height: 50px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.bottomsubview {
+  width: 120px;
+  text-align: center;
+  line-height: 50px;
+  background: #ff4444;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 14px;
+}

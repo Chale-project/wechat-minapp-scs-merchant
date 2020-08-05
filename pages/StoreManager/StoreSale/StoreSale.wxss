@@ -1,0 +1,85 @@
+/* pages/StoreManager/StoreSale/StoreSale.wxss */
+
+.tabTitle {
+  height: 40px;
+  background: #fff;
+}
+.tabTitle::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.tabTitle-item {
+  box-sizing: content-box;
+  width: 33.3%;
+  float: left;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  line-height: 40px;
+}
+.itemName{
+  color: #333;
+  font-size: 14px;
+}
+.shengxuImage {
+  margin-left: 2px;
+  width: 12px;
+  height: 12px;
+}
+/* .productscrollview{
+  margin-bottom: 60px;
+} */
+.sale-item {
+  background: #fff;
+  margin-bottom:10px;
+  width: 100%;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  padding: 0 10px;
+}
+.userIconImg {
+  width:90px;
+  height:90px;
+  background: #f5f5f5;
+}
+.salerightviews {
+  width: calc(100% - 90px);
+  height: 95px;
+  padding-left: 10px;
+}
+.salerightoneview {
+  height: 60%;
+}
+.productName {
+  color:#333;
+  font-size: 15px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2;
+  display:-webkit-box;
+}
+.productPrice {
+  color:red;
+  font-size: 15px;
+}
+/* .salerightsecview {
+  margin-top:2%;
+  height:43%;
+} */
+.addtimeview {
+  margin-top: 2px;
+  color:#666;
+  font-size: 13px;
+}
+.totalsale {
+  color:#666;
+  font-size: 13px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+

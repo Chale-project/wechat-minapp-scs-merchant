@@ -1,0 +1,29 @@
+<!--pages/ShopsPower/ShopsPowerManager/ShopPowerManager.wxml-->
+
+<scroll-view scroll-y="true" bindscrolltolower="scrolower" style="height:{{screenHeighth-50}}px;width:100%">
+
+<view class='account-item' wx:for="{{accountlistArr}}" data-idx="{{idx}}" wx:for-index="idx" wx:for-item="item" wx:key="{{idx}}" bindtap='accountitemtap'>
+
+  <view class='leftitem'>
+   <view class='userphoneview'>{{item.shopOperatorName?item.shopOperatorName:''}}<text style='padding-left:5px'>{{item.userMobilePhone?item.userMobilePhone:''}}</text></view>
+   <view class='userjobview'>岗位:{{item.roleName?item.roleName:''}}</view>
+  </view>
+  <view class='stateItem'>{{item.operatorStatus=='enabled'?'已启用':'已关闭'}}</view>
+  <view class='icon-right'></view>
+</view>
+
+<view class="cu-load {{scrolowerLoad?'loading':'over'}}" wx:if="{{accountlistArr.length>0}}"></view>
+ <emptyView
+      salelistArr = "{{accountlistArr}}"
+      emptycount = '5'
+      picheight = '400px'>
+  </emptyView>
+
+</scroll-view>
+
+<view class='bottomview'>
+  <view class='jobmanagerview' bindtap='jobmanagerviewtap'>岗位管理</view>
+  <view class='addAccountview' bindtap='addAccountviewtap'>+ 新建子账号</view>
+</view>
+
+

@@ -1,0 +1,11 @@
+/* pages/mainClass/CommissionOrderAll/CommissionOrderAll.wxss */
+
+.layout1{
+  border-radius: 10px;
+  margin-left: 12px;
+  margin-right: 12px;
+  margin-top: 12px;
+  background: #fff;
+  padding-bottom: 15px;
+  padding-top: 10px;
+}

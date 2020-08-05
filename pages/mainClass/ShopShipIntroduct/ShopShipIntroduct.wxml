@@ -1,0 +1,16 @@
+<!--pages/mainClass/ShopShipIntroduct/ShopShipIntroduct.wxml-->
+<view class='layout'>
+
+  <image class='margin-top padding-top' src="/pages/images/icon_ship.png" style='height:80px;width:80px;'></image>
+
+  <view class='margin-top padding-top text-xl margin-bottom padding-bottom'> 设置会员等级，吸引顾客复购</view>
+
+  <view class='padding'> <text class="icon-appreciate lg text-gray padding-right-xs"></text>满足条件自动升级会员</view>
+
+  <view class='padding'>  <text class="icon-appreciate lg text-gray padding-right-xs"></text>多处展示会员优惠福利</view>
+
+  <view class='padding margin-bottom'> <text class="icon-appreciate lg text-gray padding-right-xs"></text>下单即可享受会员权益</view>
+
+
+   <button class="cu-btn bg-red margin-tb-sm lg margin-top" bindtap='toShopShipSet'>新增会员等级</button>
+</view>

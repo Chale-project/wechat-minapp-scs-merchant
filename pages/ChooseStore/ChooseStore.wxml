@@ -1,0 +1,40 @@
+<!--pages/mainClass/ChooseStore/ChooseStore.wxml-->
+<emptyView salelistArr="{{shops}}" emptycount='3' ischooseStore='choose'>
+</emptyView>
+<view class="pages">
+
+  <view class="topContenView">
+    <view class="student-item shadow-blur" style='background:#fff' wx:for="{{shops}}" data-idx="{{idx}}" wx:for-index="idx" wx:for-item="item" wx:key="{{idx}}" bindtap="seltap">
+
+      <view class="productStatus">
+        <span style="{{item.shopType=='零售'?'border-left:1.81rem solid #f0a823':item.shopType=='餐饮'?'border-left:1.81rem solid #f0afff':'border-left:1.81rem solid #ffaeaf'}}">
+          <em>{{item.shopType}}</em>
+        </span>
+      </view>
+
+      <image class='iconImage' src="{{item.shopLogo.length>0?item.shopLogo:'/pages/images/addStore/chooseStoreLogo.png'}}" binderror="avatarError" data-idx="{{idx}}"></image>
+      <view class="studentName">{{item.shopName}}</view>
+      <!-- 判断店铺审核 -->
+      <!-- <view class='checkState' wx:if="{{item.auditState=='notpass'}}">审核未通过</view>
+    <view class='checkState' wx:if="{{item.auditState=='not'}}">待审核</view>
+    <view class='checkState' wx:if="{{item.auditState=='pass'}}">审核通过</view> -->
+      <view class='checkState'>{{item.auditState=='not'?'待审核':item.auditState=='pass'?item.state=='disabled'?'已禁用':'审核通过':'审核未通过'}}</view>
+
+      <view class="arrowRight icon-right"></view>
+    </view>
+
+  </view>
+
+  <view class="topview" wx:if="{{shops&&shops.length<1}}">
+    <view class='nodataview'>
+      <image class="nodataImage" src="/pages/images/home/nodataStore.png"></image>
+    </view>
+    <view class='stateView'>您还没有店铺</view>
+    <view class='desView'>快创建一个属于自己的店铺吧!</view>
+  </view>
+
+  <view class="addView shadow-blur" style='background:#ff4444' bindtap='addStoreTap' wx:if="{{shops}}">创建新店铺</view>
+
+  <view class="jumpView shadow-blur" style='background:#fff' bindtap='chooseJump' wx:if="{{shops}}">退出登录</view>
+
+</view>

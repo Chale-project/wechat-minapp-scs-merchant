@@ -1,0 +1,56 @@
+<!--pages/mainClass/PiecingEdit/PiecingEdit.wxml-->
+<view>
+  <view class='item_order' bindtap='showGropuDetail'>
+    <view class='image_layout'>
+      <image class='item_image' src='{{coverImage==null?"/pages/images/icon_all_default.jpg":coverImage}}'> </image>
+    </view>
+    <view class='item_right justify-between flex'>
+      <view class="flex flex-direction">
+        <view class="item_right_title van-ellipsis2 text-df">{{title}}</view>
+        <view class="text-red text-df">￥{{groupPrice}}</view>
+      </view>
+      <view class=" align-center justify-center flex">
+        <text class="icon-right text-grey"></text>
+      </view>
+    </view>
+  </view>
+
+
+  <view class='flex flex-direction-row padding-left padding-right bg-white margin-top algin-center justify-left padding-top padding-bottom'>
+    <view class='text-black text-df'>成团人数</view>
+    <view class='text-black text-df margin-left'>{{peopleNum}}人</view>
+  </view>
+
+
+  <view class='flex flex-direction-row padding-left padding-right bg-white margin-top algin-center justify-left padding-top padding-bottom' bindtap='chooseStartTime'>
+    <view class='text-black text-df'>开始时间</view>
+    <view class='text-black text-df margin-left' >{{startTime}}</view>
+  </view>
+  <view class='line'></view>
+  <view class='flex flex-direction-row padding-left padding-right bg-white algin-center justify-left padding-top padding-bottom' bindtap='chooseEndTime'>
+    <view class='text-black text-df'>结束时间</view>
+    <view class='text-blue text-df margin-left' >{{endTime}}</view>
+  </view>
+
+  <view class='flex flex-direction-row padding-left padding-right bg-white margin-top algin-center justify-left padding-top padding-bottom'>
+    <view class='text-black text-df margin-right'>成团时间</view>
+    <view class='text-black text-df margin-left'>{{groupTime}}小时</view>
+  </view>
+
+  <view class='flex flex-direction-row padding-left padding-right bg-white margin-top algin-center justify-between padding-top padding-bottom'>
+    <view class='text-black text-df'>是否限购</view>
+    <switch disabled='true' checked='{{isCheck}}'></switch>
+  </view>
+  <view class='line'></view>
+  <view class='flex flex-direction-row padding-left padding-right bg-white  algin-center justify-left padding-top padding-bottom'>
+    <view class='text-black text-df'>限购数量</view>
+    <view class='text-black text-df margin-left' style='padding-top:2px;'>{{limitation}}</view>
+  </view>
+
+
+  <view class="savebtn" bindtap='saveprotap'>保存拼团活动</view>
+
+</view>
+
+
+<timePicker pickerShow="{{isPickerShow}}" bind:hidePicker="pickerHide" bind:setPickerTime="setPickerTime" config="{{pickerConfig}}"></timePicker>

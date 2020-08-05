@@ -1,0 +1,546 @@
+<!--pages/mainClass/OrderManage/OrderManage.wxml-->
+<view class="cu-bar search bg-white">
+  <view class="search-form round flex align-center justify-center" bindtap='toSearch'>
+    <text class="icon-search"></text>
+    <view>搜索</view>
+    <!-- <input type="text" placeholder="搜索商品名称或收货人手机号" confirm-type="search" bindinput="searchnameinput" bindconfirm="searchbutton" value='{{textValue}}'></input> -->
+  </view>
+</view>
+
+
+<van-tabs sticky swipeable active="1" bind:change="onChange" swipe-threshold='3'>
+  <van-tab title="待付款">
+    <!-- <block wx:if="{{dataList.length>0}}"> -->
+    <block wx:for="{{dataList}}" wx:for-item="item" wx:key='item' wx-for-index='index'>
+      <view class='order-layout'>
+        <view class='allItem' bindtap='toOrderDetail' data-item='{{item.id}}' data-type='{{item.orderType}}'>
+          <view>
+            <text class='text-black text-13 van-ellipsis'>订单号:{{item.orderId}}</text>
+          </view>
+          <view>
+            <text class='text-orange text-13'>{{item.state=="unpay"?"未支付":item.state=="waitSending"?item.deliveryType=="home"?"待发货":"待自提":item.state=="waitReceiving"?item.deliveryType=="home"?"待收货":"待自提":item.state=="receipted"?"已签收/已取货":item.state=="cancel"?"已取消":item.state=="arrived"?"已送达":item.state=="waitGroup"?"待成团":item.state=="success"?"已完成":""}}</text>
+          </view>
+        </view>
+
+        <block wx:if="{{item.orderDescModelList.length>0}}">
+          <block wx:for="{{item.orderDescModelList}}" wx:for-item="itemChild" wx:key='itemChild'>
+
+            <view class='item_order' bindtap='toOrderDetail' data-item='{{item.id}}' data-type='{{item.orderType}}'>
+              <view class='image_layout'>
+                <image class='item_image' src='{{itemChild.itemImages==null?"/pages/images/icon_all_default.jpg":itemChild.itemImages}}' wx:if='{{item.orderType=="virtualGoods"}}'> </image>
+                <image class='item_image' src='{{itemChild.itemImages==null?"/pages/images/icon_all_default.jpg":itemChild.itemImages}}' wx:elif='{{item.orderType!="virtualGoods"}}'> </image>
+              </view>
+              <view class='item_right'>
+                <view class="item_right_title justify-between flex">
+                  <view class="item_right_title van-ellipsis2 text-df">{{itemChild.goodsTitle}}</view>
+
+                  <view class="item_price_number2 text-right">
+                    <view class="text-black text-df">￥{{itemChild.price}}
+                    </view>
+                    <view class='text-grey text-df justify-right'>x{{itemChild.num}}</view>
+                  </view>
+                </view>
+                <view class="item_right_spec  text-sm" hidden='{{itemChild.specificationItems==null}}'>{{itemChild.specificationItems}}</view>
+              </view>
+            </view>
+          </block>
+        </block>
+        <block wx:if="{{item.orderDescModelList<=0}}">
+          <view class='item_order' bindtap='toOrderDetail' data-item='{{item.id}}' data-type='{{item.orderType}}'>
+            <view class='image_layout'>
+              <image class='item_image' src='/pages/images/icon_dowm_buy.png'></image>
+            </view>
+            <view class='item_right'>
+              <view class="item_right_title justify-between flex">
+                <view class="item_right_title van-ellipsis2">门店收银订单</view>
+                <text class="text-cut text-black">￥{{item.payment}}</text>
+              </view>
+            </view>
+          </view>
+        </block>
+        <view class='flex bg-white padding-left-sm padding-right-sm padding-bottom-xs padding-top-sm justify-between'>
+          <text class='text-grey text-df'> 下单时间:{{item.addDataTime}}</text>
+          <view>
+            <text class='text-black text-df margin-right-xs' hidden='{{item.goodsNumber<=0}}'>共{{item.goodsNumber}}件</text>
+            <text class='text-df text-red'>合计:￥{{item.payment}}</text>
+          </view>
+        </view>
+
+        <view class='flex bg-white padding-left-sm padding-right-sm padding-bottom padding-top-xs justify-between'>
+          <text class='text-grey'></text>
+          <button class="cu-btn round bg-red sm padding-bottom-xs justify-right text-df" bindtap='toOrderDetail' data-item='{{item.id}}' data-type='{{item.orderType}}'>查看订单</button>
+        </view>
+
+      </view>
+    </block>
+
+
+    <!-- </block> -->
+    <!-- <block wx:if="{{dataList.length<=0}}"> -->
+    <!-- <view class='blockHead'> -->
+    <emptyView salelistArr="{{dataList}}" emptycount='10' picheight='420px'>
+    </emptyView>
+    <!-- </view> -->
+    <!-- </block> -->
+
+
+
+  </van-tab>
+
+
+  <van-tab title="待发货">
+    <!-- <block wx:if="{{dataList2.length>0}}"> -->
+    <block wx:for="{{dataList2}}" wx:key="item">
+      <view class='order-layout'>
+        <view class='allItem' bindtap='toOrderDetail' data-item='{{item.id}}' data-type='{{item.orderType}}'>
+          <view>
+            <text class='text-black text-13 van-ellipsis'>订单号:{{item.orderId}}</text>
+          </view>
+          <view>
+            <text class='text-orange text-13'>{{item.state=="unpay"?"未支付":item.state=="waitSending"?item.deliveryType=="home"?"待发货":"待自提":item.state=="waitReceiving"?item.deliveryType=="home"?"待收货":"待自提":item.state=="receipted"?"已签收/已取货":item.state=="cancel"?"已取消":item.state=="arrived"?"已送达":item.state=="waitGroup"?"待成团":item.state=="success"?"已完成":""}}</text>
+          </view>
+        </view>
+
+        <block wx:if="{{item.orderDescModelList.length>0}}" wx-for-index='index'>
+          <block wx:for="{{item.orderDescModelList}}" wx-for-index='childIndex' wx:for-item="itemChild" wx:key='itemChild'>
+
+
+            <view class='item_order' bindtap='toOrderDetail' data-item='{{item.id}}' data-type='{{item.orderType}}'>
+              <view class='image_layout'>
+                <image class='item_image' src='{{itemChild.itemImages==null?"/pages/images/icon_all_default.jpg":itemChild.itemImages}}' wx:if='{{item.orderType=="virtualGoods"}}'> </image>
+                <image class='item_image' src='{{itemChild.itemImages==null?"/pages/images/icon_all_default.jpg":itemChild.itemImages}}' wx:elif='{{item.orderType!="virtualGoods"}}'> </image>
+              </view>
+              <view class='item_right'>
+                <view class="item_right_title justify-between flex">
+                  <view class="item_right_title van-ellipsis2 text-df">{{itemChild.goodsTitle}}</view>
+                  <view class="item_price_number2 text-right">
+                    <view class="text-black text-df">￥{{itemChild.price}}
+                    </view>
+                    <view class='text-grey text-df justify-right'>x{{itemChild.num}}</view>
+                  </view>
+                </view>
+                <view class="item_right_spec margin-top-xs text-sm" hidden='{{itemChild.specificationItems==null}}'>{{itemChild.specificationItems}}</view>
+              </view>
+            </view>
+
+          </block>
+        </block>
+        <block wx:if="{{item.orderDescModelList<=0}}">
+          <view class='item_order' bindtap='toOrderDetail' data-item='{{item.id}}' data-type='{{item.orderType}}'>
+            <view class='image_layout'>
+              <image class='item_image' src='/pages/images/icon_dowm_buy.png'></image>
+            </view>
+            <view class='item_right'>
+              <view class="item_right_title justify-between flex">
+                <view class="item_right_title van-ellipsis2 text-df">门店收银订单</view>
+                <text class="text-cut text-black text-df">￥{{item.payment}}</text>
+              </view>
+            </view>
+          </view>
+        </block>
+        <!-- <view class='flex bg-white padding-left padding-right padding-bottom-xs padding-top-xs justify-between'>
+        <text class=' text-grey'> 下单：{{item.addDataTime}}</text>
+        <button class="cu-btn round bg-red sm padding-bottom-xs" style='width:60px;' bindtap='toSend' data-item='{{item.id}}'>发货</button>
+      </view> -->
+
+
+        <view class='flex bg-white padding-left-sm padding-right-sm padding-bottom-xs padding-top-sm justify-between'>
+          <text class='text-grey text-df'> 下单时间:{{item.addDataTime}}</text>
+          <view>
+            <text class='text-black text-df' hidden='{{item.goodsNumber<=0}}'>共{{item.goodsNumber}}件</text>
+            <text class='text-df text-red'>         合计:￥{{item.payment}}</text>
+          </view>
+        </view>
+
+        <view class='flex bg-white padding-left-sm padding-right-sm padding-bottom padding-top-xs justify-between'>
+          <text class='text-grey'></text>
+          <view>
+            <button class="cu-btn round bg-red sm padding-bottom-xs margin-right-xs text-df" bindtap='toOrderDetail' data-item='{{item.id}}' data-type='{{item.orderType}}'>查看订单</button>
+            <view class="cu-btn round bg-red sm padding-bottom-xs text-df" style='width:60px;' bindtap='toSend' data-item='{{item.id}}' hidden="{{item.deliveryType == 'home' && item.state == 'waitGroup'}}">发货</view>
+          </view>
+        </view>
+
+      </view>
+    </block>
+    <!-- </block> -->
+    <!-- <block wx:if="{{dataList2.length<=0}}"> -->
+    <!-- <view class='blockHead'> -->
+    <emptyView salelistArr="{{dataList2}}" emptycount='10' picheight='420px'>
+    </emptyView>
+    <!-- </view> -->
+    <!-- </block> -->
+  </van-tab>
+
+
+  <van-tab title="待收货/自提">
+    <view class='receive_layout'>
+      <block wx:for="{{dataList3}}" wx:key="item">
+        <view class='order-layout'>
+          <view class='allItem' bindtap='toOrderDetail' data-item='{{item.id}}' data-type='{{item.orderType}}'>
+            <view>
+              <text class='text-black text-13 van-ellipsis'>订单号:{{item.orderId}}</text>
+            </view>
+            <view>
+              <text class='text-orange text-13'>{{item.state=="unpay"?"未支付":item.state=="waitSending"?item.deliveryType=="home"?"待发货":"待自提":item.state=="waitReceiving"?item.deliveryType=="home"?"待收货":"待自提":item.state=="receipted"?"已签收/已取货":item.state=="cancel"?"已取消":item.state=="arrived"?"已送达":item.state=="waitGroup"?"待成团":item.state=="success"?"已完成":""}}</text>
+            </view>
+          </view>
+          <block wx:if="{{item.orderDescModelList.length>0}}">
+            <block wx:for="{{item.orderDescModelList}}" wx:for-item="itemChild" wx:key='itemChild'>
+              <view class='item_order' bindtap='toOrderDetail' data-item='{{item.id}}' data-type='{{item.orderType}}'>
+                <view class='image_layout'>
+                  <image class='item_image' src='{{itemChild.itemImages==null?"/pages/images/icon_all_default.jpg":itemChild.itemImages}}' wx:if='{{item.orderType=="virtualGoods"}}'> </image>
+                  <image class='item_image' src='{{itemChild.itemImages==null?"/pages/images/icon_all_default.jpg":itemChild.itemImages}}' wx:elif='{{item.orderType!="virtualGoods"}}'> </image>
+                </view>
+                <view class='item_right'>
+                  <view class="item_right_title justify-between flex">
+                    <view class="item_right_title van-ellipsis2 text-df">{{itemChild.goodsTitle}}</view>
+
+                    <view class="item_price_number2 text-right">
+                      <view class="text-black text-df">￥{{itemChild.price}}
+                      </view>
+                      <view class='text-grey text-df justify-right'>x{{itemChild.num}}</view>
+                    </view>
+                  </view>
+                  <view class="item_right_spec margin-top-xs text-sm" hidden='{{itemChild.specificationItems==null}}'>{{itemChild.specificationItems}}</view>
+                </view>
+              </view>
+
+            </block>
+          </block>
+          <block wx:if="{{item.orderDescModelList<=0}}">
+            <view class='item_order' bindtap='toOrderDetail' data-item='{{item.id}}' data-type='{{item.orderType}}'>
+              <view class='image_layout'>
+                <image class='item_image' src='/pages/images/icon_dowm_buy.png'></image>
+              </view>
+              <view class='item_right'>
+                <view class="item_right_title justify-between flex">
+                  <view class="item_right_title van-ellipsis2 text-df">门店收银订单</view>
+                  <text class="text-cut text-black text-df">￥{{item.payment}}</text>
+                </view>
+              </view>
+            </view>
+          </block>
+
+
+
+          <view class='flex bg-white padding-left-sm padding-right-sm padding-bottom-xs padding-top-sm justify-between'>
+            <text class='text-grey text-df'> 下单时间:{{item.addDataTime}}</text>
+            <view>
+              <text class='text-black text-df' hidden='{{item.goodsNumber<=0}}'>共{{item.goodsNumber}}件</text>
+              <text class='text-df text-red'>         合计:￥{{item.payment}}</text>
+            </view>
+          </view>
+
+          <view class='flex bg-white padding-left-sm padding-right-sm padding-bottom padding-top-xs justify-between'>
+            <text class='text-grey'></text>
+            <view>
+
+
+              <button class="cu-btn round bg-red sm padding-bottom-xs margin-right-xs text-df" data-item='{{item.verificationCode}}' bindtap='showCode' hidden='{{item.deliveryType=="home"||item.deliveryType==null}}'>取货码</button>
+              <button class="cu-btn round bg-red sm padding-bottom-xs text-df margin-right-xs" data-item='{{item.id}}' bindtap='pickGoods' hidden='{{item.deliveryType=="home"||item.deliveryType==null}}'>完成提货</button>
+              <view class="cu-btn round bg-red sm padding-bottom-xs text-df margin-right-xs" data-item='{{item.id}}' bindtap='arrivedGoods' hidden='{{item.isShowArrived}}'>已送达</view>
+              <button class="cu-btn round bg-red sm padding-bottom-xs margin-right-xs text-df" bindtap='toOrderDetail' data-item='{{item.id}}' data-type='{{item.orderType}}'>查看订单</button>
+            </view>
+          </view>
+
+        </view>
+      </block>
+      <!-- </block> -->
+      <!-- <block wx:if="{{dataList3.length<=0}}"> -->
+      <!-- <view class='blockHead'> -->
+      <emptyView salelistArr="{{dataList3}}" emptycount='10' picheight='420px'>
+      </emptyView>
+      <!-- </view> -->
+      <!-- </block> -->
+    </view>
+    <view class='bottomLayout'>
+      <button class="cu-btn bg-main-color margin-tb-sm lg text-white flex-sub" bindtap='scan1'>输入取货码</button>
+      <view class='line5'></view>
+      <button class="cu-btn bg-main-color margin-tb-sm lg text-white flex-sub" bindtap='scan'>扫码核销</button>
+    </view>
+  </van-tab>
+
+
+  <van-tab title="已完成">
+    <!-- <block wx:if="{{dataList4.length>0}}"> -->
+    <block wx:for="{{dataList4}}" wx:key="item">
+      <view class='order-layout'>
+        <view class='allItem' bindtap='toOrderDetail' data-item='{{item.id}}' data-type='{{item.orderType}}'>
+          <view>
+            <text class='text-black text-13 van-ellipsis'>订单号:{{item.orderId}}</text>
+          </view>
+          <view>
+            <text class='text-orange text-13'>{{item.state=="unpay"?"未支付":item.state=="waitSending"?item.deliveryType=="home"?"待发货":"待自提":item.state=="waitReceiving"?item.deliveryType=="home"?"待收货":"待自提":item.state=="receipted"?"已签收/已取货":item.state=="cancel"?"已取消":item.state=="arrived"?"已送达":item.state=="waitGroup"?"待成团":item.state=="success"?"已完成":""}}</text>
+          </view>
+        </view>
+        <block wx:if="{{item.orderDescModelList.length>0}}">
+          <block wx:for="{{item.orderDescModelList}}" wx:for-item="itemChild" wx:key='itemChild'>
+            <view class='item_order' bindtap='toOrderDetail' data-item='{{item.id}}' data-type='{{item.orderType}}'>
+              <view class='image_layout'>
+                <image class='item_image' src='{{itemChild.itemImages==null?"/pages/images/icon_all_default.jpg":itemChild.itemImages}}' wx:if='{{item.orderType=="virtualGoods"}}'> </image>
+                <image class='item_image' src='{{itemChild.itemImages==null?"/pages/images/icon_all_default.jpg":itemChild.itemImages}}' wx:elif='{{item.orderType!="virtualGoods"}}'> </image>
+              </view>
+              <view class='item_right'>
+                <view class="item_right_title justify-between flex">
+                  <view class="item_right_title van-ellipsis2 text-df">{{itemChild.goodsTitle}}</view>
+
+                  <view class="item_price_number2 text-right">
+                    <view class="text-black text-df">￥{{itemChild.price}}
+                    </view>
+                    <view class='text-grey text-df justify-right'>x{{itemChild.num}}</view>
+                  </view>
+                </view>
+                <view class="item_right_spec margin-top-xs text-sm" hidden='{{itemChild.specificationItems==null}}'>{{itemChild.specificationItems}}</view>
+              </view>
+            </view>
+          </block>
+        </block>
+        <block wx:if="{{item.orderDescModelList<=0}}">
+          <view class='item_order' bindtap='toOrderDetail' data-item='{{item.id}}' data-type='{{item.orderType}}'>
+            <view class='image_layout'>
+              <image class='item_image' src='/pages/images/icon_dowm_buy.png'></image>
+            </view>
+            <view class='item_right'>
+              <view class="item_right_title justify-between flex">
+                <view class="item_right_title van-ellipsis2 text-df">门店收银订单</view>
+                <text class="text-cut text-black text-df">￥{{item.payment}}</text>
+              </view>
+            </view>
+          </view>
+        </block>
+        <view class='flex bg-white padding-left-sm padding-right-sm padding-bottom-xs padding-top-sm justify-between'>
+          <text class='text-grey text-df'> 下单时间:{{item.addDataTime}}</text>
+          <view>
+            <text class='text-black text-df' hidden='{{item.goodsNumber<=0}}'>共计{{item.goodsNumber}}件</text>
+            <text class='text-df text-red'>         合计:￥{{item.payment}}</text>
+          </view>
+        </view>
+
+        <view class='flex bg-white padding-left-sm padding-right-sm padding-bottom padding-top-xs justify-between'>
+          <text class='text-grey'></text>
+          <button class="cu-btn round bg-red sm padding-bottom-xs text-df" bindtap='toOrderDetail' data-item='{{item.id}}' data-type='{{item.orderType}}'>查看订单</button>
+        </view>
+      </view>
+    </block>
+    <!-- </block> -->
+    <!-- <block wx:if="{{dataList4.length<=0}}"> -->
+    <!-- <view class='blockHead'> -->
+    <emptyView salelistArr="{{dataList4}}" emptycount='10' picheight='420px'>
+    </emptyView>
+    <!-- </view> -->
+    <!-- </block> -->
+
+  </van-tab>
+
+
+  <van-tab title="全部">
+    <!-- <block wx:if="{{dataList5.length>0}}"> -->
+    <block wx:for="{{dataList5}}" wx:key="item">
+      <view class='order-layout'>
+        <view class='allItem' bindtap='toOrderDetail' data-item='{{item.id}}' data-type='{{item.orderType}}'>
+          <view>
+            <text class='text-black text-13 van-ellipsis'>订单号:{{item.orderId}}</text>
+          </view>
+          <view>
+            <text class='text-orange text-13'>{{item.state=="unpay"?"未支付":item.state=="waitSending"?item.deliveryType=="home"?"待发货":"待自提":item.state=="waitReceiving"?item.deliveryType=="home"?"待收货":"待自提":item.state=="receipted"?"已签收/已取货":item.state=="cancel"?"已取消":item.state=="arrived"?"已送达":item.state=="waitGroup"?"待成团":item.state=="success"?"已完成":""}}</text>
+          </view>
+        </view>
+        <block wx:if="{{item.orderDescModelList.length>0}}">
+          <block wx:for="{{item.orderDescModelList}}" wx:for-item="itemChild" wx:key='itemChild'>
+            <view class='item_order' bindtap='toOrderDetail' data-item='{{item.id}}' data-type='{{item.orderType}}'>
+              <view class='image_layout'>
+                <image class='item_image' src='{{itemChild.itemImages==null?"/pages/images/icon_all_default.jpg":itemChild.itemImages}}' wx:if='{{item.orderType=="virtualGoods"}}'> </image>
+                <image class='item_image' src='{{itemChild.itemImages==null?"/pages/images/icon_all_default.jpg":itemChild.itemImages}}' wx:elif='{{item.orderType!="virtualGoods"}}'> </image>
+              </view>
+              <view class='item_right'>
+                <view class="item_right_title justify-between flex">
+                  <view class="item_right_title van-ellipsis2 text-df">{{itemChild.goodsTitle}}</view>
+
+                  <view class="item_price_number2 text-right">
+                    <view class="text-black text-df">￥{{itemChild.price}}
+                    </view>
+                    <view class='text-grey text-df justify-right'>x{{itemChild.num}}</view>
+                  </view>
+                </view>
+                <view class="item_right_spec text-sm" hidden='{{itemChild.specificationItems==null}}'>{{itemChild.specificationItems}}</view>
+              </view>
+            </view>
+          </block>
+        </block>
+        <block wx:if="{{item.orderDescModelList<=0}}">
+          <view class='item_order' bindtap='toOrderDetail' data-item='{{item.id}}' data-type='{{item.orderType}}'>
+            <view class='image_layout'>
+              <image class='item_image' src='/pages/images/icon_dowm_buy.png'></image>
+            </view>
+            <view class='item_right'>
+              <view class="item_right_title justify-between flex">
+                <view class="item_right_title van-ellipsis2 text-df">门店收银订单</view>
+                <text class="text-cut text-black text-df">￥{{item.payment}}</text>
+              </view>
+            </view>
+          </view>
+        </block>
+
+        <view class='flex bg-white padding-left-sm padding-right-sm padding-bottom-xs padding-top-sm justify-between'>
+          <text class='text-grey text-df'> 下单时间:{{item.addDataTime}}</text>
+          <view>
+            <text class='text-black text-df' hidden='{{item.goodsNumber<=0}}'>共{{item.goodsNumber}}件</text>
+            <text class='text-df text-red'>         合计:￥{{item.payment}}</text>
+          </view>
+        </view>
+
+        <view class='flex bg-white padding-left-sm padding-right-sm padding-bottom padding-top-xs justify-between'>
+          <text class='text-grey'></text>
+          <button class="cu-btn round bg-red sm padding-bottom-xs text-df" bindtap='toOrderDetail' data-item='{{item.id}}' data-type='{{item.orderType}}'>查看订单</button>
+        </view>
+      </view>
+    </block>
+
+    <emptyView salelistArr="{{dataList5}}" emptycount='10' picheight='420px'>
+    </emptyView>
+
+  </van-tab>
+
+
+</van-tabs>
+
+
+<van-popup show="{{ isShowTiHuo }}" position="top" custom-class='sendLayout' overlay="{{ true }}" bind:close="onClose" close-on-click-overlay='true'>
+
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">请输入取货码</view>
+      <view class="action" bindtap="hideModal">
+        <text class="icon-close text-red"></text>
+      </view>
+    </view>
+    <view class="layout_dialog bg-white">
+      <view class='cu-form-group '>
+        <!-- <view class="title">取货码：</view> -->
+        <input class="flex align-left justify-start inputQu" maxlength="8" bindinput='inputTiHuoMa' placeholder="请输入取货码" type='number'></input>
+      </view>
+    </view>
+    <view class="cu-bar bg-white justify-center">
+      <view class="action">
+        <button class="cu-btn bg-main-color text-white margin-left " style='width:160px;' bindtap="tiHuoSure">确定</button>
+      </view>
+    </view>
+  </view>
+</van-popup>
+
+
+
+<van-popup show="{{ isShowSend }}" position="top" custom-class='sendLayout' overlay="{{ true }}" bind:close="onClose" close-on-click-overlay='true'>
+
+  <!-- <view class="cu-modal {{isShowSend}}" bindtap='hideModal'> -->
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">请选择配送人</view>
+      <view class="action" bindtap="hideModal">
+        <text class="icon-close text-red"></text>
+      </view>
+    </view>
+    <view class="layout_dialog bg-white padding-top-xs" style="width:100%;clear:both;overflow:hidden;_zoom:1">
+      <block wx:for="{{peoList}}" wx:for-item="item" wx:key='item' wx-index="index" wx:for-index="index">
+        <view class='flex justify-center align-center' style="width:25%;height:60px;float:left" bindtap="chooseThis"  data-index="{{index}}">
+          <text class="round {{item.chooseState?'bg-main-color':'bg-grey'}} text-white text-center" style="width:55px;height:55px;display:inline-block;text-align:center;line-height:55px;">{{item.deliverymanName}}</text>
+        </view>
+
+      </block>
+
+    </view>
+
+    <view hidden="{{!isChooseOther}}">
+      <view class='cu-form-group'>
+        <view class="title">配送人：</view>
+        <input class="flex align-left justify-start" placeholder="请输入配送员姓名" value="{{name}}" bindinput='inputDeliveryMan'></input>
+      </view>
+      <view class='cu-form-group '>
+        <view class="title">手机号：</view>
+        <input class="flex align-left  justify-start" maxlength="11" bindinput='inputDeliveryPhone' placeholder="请输入配送员手机号" type='number' value="{{phone}}"></input>
+      </view>
+    </view>
+
+    <view class="cu-bar bg-white justify-center">
+      <view class="action">
+        <button class="cu-btn bg-main-color text-white margin-left " style='width:160px;' bindtap="makeSureSend">确定</button>
+      </view>
+    </view>
+  </view>
+  <!-- </view> -->
+</van-popup>
+
+<view class="cu-modal {{showVerificationCode}}" bindtap='hideModal'>
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">取货码</view>
+      <view class="action" bindtap="hideModal1">
+        <text class="icon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-xl text-sl">
+      {{verificationCode}}
+    </view>
+  </view>
+</view>
+
+
+
+<view class="cu-modal {{ScanDetail}}" bindtap='hideModal'>
+  <view class="cu-dialog">
+
+    <view class='padding-top padding-bottom-xs'>商品核销</view>
+
+    <view class="padding-xs">
+      <block wx:for="{{orderDescModelList}}" wx:for-item="itemChild" wx:key='itemChild'>
+        <view class='item_order'>
+          <view>
+            <image class='item_image' mode='widthFix' src='{{itemChild.itemImages==null?"/pages/images/icon_all_default.jpg":itemChild.itemImages}}'> </image>
+          </view>
+          <view class='item_right'>
+            <view class="text-black van-ellipsis2 text-df padding-left">{{itemChild.goodsTitle}}</view>
+            <view class="text-gray text-sm padding-left" style="text-align: left;">规格：{{itemChild.specificationItems}}</view>
+            <view class="text-gray text-sm flex padding-left">
+              <text class="text-cut">
+							<text class="margin-right-xs"></text>本单金额: ￥{{itemChild.price}} 共{{itemChild.num}}件
+              </text>
+            </view>
+          </view>
+        </view>
+        <view class='line'></view>
+      </block>
+    </view>
+    <view class="cu-bar bg-white justify-end">
+      <view class="action">
+        <button class="cu-btn bg-main-color text-white" bindtap="hideModal11" catchtap>取消</button>
+        <button class="cu-btn bg-main-color margin-left text-white" bindtap="scanSure" catchtap>完成提货</button>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+
+
+
+
+
+<view class="cu-modal {{modalName}}" bindtap='hideModal'>
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">提示</view>
+      <view class="action" bindtap="hideModal">
+        <text class="icon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-xl">
+      是否完成取货
+    </view>
+    <view class="cu-bar bg-white justify-end">
+      <view class="action">
+        <button class="cu-btn line-grey text-grey" bindtap="hideModal">取消</button>
+        <button class="cu-btn bg-main-color text-white margin-left" bindtap="getAll">完成取货</button>
+      </view>
+    </view>
+  </view>
+</view>

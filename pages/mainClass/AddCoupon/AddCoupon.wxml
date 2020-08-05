@@ -1,0 +1,90 @@
+<!--pages/mainClass/AddCoupon/AddCoupon.wxml-->
+<view class='topLayout'>
+  <view class='padding-left padding-top padding-bottom'>券信息</view>
+ <view class="cu-form-group">
+    <view class="title">券的名称</view>
+    <input placeholder="任性领券，任性买（10个字内）" bindinput='textareaAInput' type='text'></input>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">券的面额 ￥</view>
+    <input placeholder="优惠券金额" bindinput='inputCouponMoney' type='digit'></input>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">使用条件 ￥</view>
+    <input placeholder="用券最低订单金额" bindinput='inputCouponOrderMoney' type='digit'></input>
+  </view>
+
+  <view class="cu-form-group margin-top">
+    <view class="title">券的库存 </view>
+    <input placeholder="可被领取的券数" bindinput='inputCouponNum' type='number'></input>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">每人限领 </view>
+    <input placeholder="每人限领的券数" bindinput='inputCouponConfine' type='number'></input>
+  </view>
+
+  <view class='padding-left padding-top padding-bottom'>有效期</view>
+
+  <view class="cu-form-group">
+    <view class="title">开始时间 </view>
+    <!-- <picker mode="date" value="{{starttime}}" start="{{starttime}}" end="2025-12-31" bindchange="startTimeChange">
+      <view class="picker">
+        {{starttime}}
+      </view>
+    </picker> -->
+
+    <picker mode="multiSelector" value="{{dateTime1}}" bindchange="changeDateTime1" bindcolumnchange="changeDateTimeColumn1" range="{{dateTimeArray1}}">
+      <view class="tui-picker-detail">
+        {{dateTimeArray1[0][dateTime1[0]]}}-{{dateTimeArray1[1][dateTime1[1]]}}-{{dateTimeArray1[2][dateTime1[2]]}}
+        <!-- {{dateTimeArray1[3][dateTime1[3]]}}:00 -->
+      </view>
+    </picker>
+  </view>
+
+  <view class="cu-form-group">
+    <view class="title">结束时间 </view>
+    <!-- <picker mode="date" value="{{endtime}}" start="{{endtime}}" end="2025-12-31" bindchange="endTimeChange">
+      <view class="picker">
+        {{endtime}}
+      </view>
+    </picker> -->
+
+    <picker mode="multiSelector" value="{{dateTime2}}" bindchange="changeDateTime2" bindcolumnchange="changeDateTimeColumn2" range="{{dateTimeArray2}}">
+      <view class="tui-picker-detail">
+        {{dateTimeArray2[0][dateTime2[0]]}}-{{dateTimeArray2[1][dateTime2[1]]}}-{{dateTimeArray2[2][dateTime2[2]]}}
+        <!-- {{dateTimeArray2[3][dateTime2[3]]}}:00 -->
+      </view>
+    </picker>
+  </view>
+
+  <view class='padding-left padding-top padding-bottom'>券类型</view>
+
+  <view class="cu-form-group">
+    <view class="title">券的使用范围 </view>
+    <button class="cu-btn block {{bg1}} text-white padding-right" bindtap='btn1'>全部商品</button>
+    <button class="cu-btn block {{bg2}} text-white" bindtap='btn2'>限定可用商品</button>
+  </view>
+
+  <view class='padding-left padding-top padding-bottom'>领取设置</view>
+  <view class="cu-form-group">
+    <view class="title">展示已领完的券</view>
+    <switch bindchange="switch1Change"></switch>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">支持加入微信卡包</view>
+    <switch bindchange="switch2Change"></switch>
+  </view>
+  <view class='padding-left padding-top padding-bottom'>说明
+    <text class='text-orange'>(选填)</text>
+  </view>
+  <view class="cu-form-group">
+    <!-- <input value='' placeholder='300字内' placeholder-style='#cccccc' bindinput='couponIntroduct'  maxlength='10' style="height:100px" maxlength="300">
+    </input> -->
+    <textarea data-placeholder="" maxlength="300"  placeholder="300字" bindinput="couponIntroduct"></textarea>
+  </view>
+</view>
+
+<view class='bottomLayout'>
+  <!-- <button class="cu-btn bg-main-color margin-tb-sm lg text-white" maxlength='10' bindtap='toAddCoupon'>完成</button> -->
+  <view class="savebtn" bindtap='toAddCoupon'>完成</view>
+</view>

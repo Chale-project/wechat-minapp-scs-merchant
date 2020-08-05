@@ -1,0 +1,78 @@
+<!--pages/StoreManager/ProAddCater/ProAddCater.wxml-->
+<!-- 空态图 -->
+<view class='emityLayout' wx:if='{{caterdata.length<1}}'>
+<image class='emityView1' src='/pages/images/icon_emity.png'></image>
+</view>
+
+<view class="catercontentview">
+<!-- 显示一级分类内容 -->
+<view class='fircater-item' wx:for="{{caterdata}}" data-idx="{{idx}}" wx:for-index="idx" wx:for-item="item" wx:key="{{idx}}">
+<view class="firstview">
+<view class="firstnameview" style='color:#000;font-size:16px;font: bold'>{{item.name}}</view>
+<!-- <view class="editcurview icon-edit" data-idx="{{idx}}" bindtap="firsteditselect"></view>
+<view class="horlineview"></view>
+<view class="deletview icon-delete" data-idx="{{idx}}" bindtap="firstdeleteselect"></view> -->
+  <view class='rightitemview' wx:if="{{item.id && item.name == '未分类'?false:true}}">
+        <image class='mostUpview' src="/pages/images/addStore/addCaterZhiding.png" mode="aspectFit" data-idx="{{idx}}" bindtap='mostUpviewtap' wx:if="{{idx!= 1}}"></image>
+        <view class="horlineview" wx:if="{{idx!= 1}}"></view>
+        <image class='topmoveview' src="/pages/images/addStore/addCaterTopMove.png" mode="aspectFit" data-idx="{{idx}}" bindtap='topmoveviewtap' wx:if="{{idx!= 1}}"></image>
+        <view class="horlineview" wx:if="{{idx!= 1}}"></view>
+        <image class='editcurview' src="/pages/images/addStore/addCaterEdit.png" data-idx="{{idx}}" bindtap="firsteditselect" mode="aspectFit"></image>
+        <view class="horlineview"></view>
+        <image class="deletview" src="/pages/images/addStore/addCaterDelet.png" data-idx="{{idx}}" bindtap="firstdeleteselect" mode="aspectFit"></image>
+  </view>
+  </view>
+
+<!-- 显示子分类 -->
+<view class='secondcater-item' wx:for="{{caterdata[idx].sublevels}}" data-idy="{{idy}}" wx:for-index="idy" wx:for-item="iten" wx:key="{{idy}}">
+<view class="secview">
+<view class="firstnameview" style="color:#666;font-size:15px">{{iten.name}}</view>
+<!-- <view class="editcurview icon-edit" data-idx="{{idx}}" data-idy="{{idy}}" bindtap="seceditselect"></view>
+<view class="horlineview"></view>
+<view class="deletview icon-delete" data-idx="{{idx}}" data-idy="{{idy}}" bindtap="secdeleteselect"></view> -->
+<view class='rightitemview'>
+        <image class='mostUpview' src="/pages/images/addStore/addCaterZhiding.png" data-idx="{{idx}}" data-idy="{{idy}}" mode="aspectFit" bindtap='secmostUpviewtap' wx:if="{{idy!= 0}}"></image>
+        <view class="horlineview" wx:if="{{idy!= 0}}"></view>
+        <image class='topmoveview' src="/pages/images/addStore/addCaterTopMove.png" data-idx="{{idx}}" data-idy="{{idy}}" mode="aspectFit" bindtap='sectopmoveviewtap' wx:if="{{idy!= 0}}"></image>
+        <view class="horlineview" wx:if="{{idy!= 0}}"></view>
+        <image class='editcurview' src="/pages/images/addStore/addCaterEdit.png" data-idx="{{idx}}" data-idy="{{idy}}" bindtap="seceditselect" mode="aspectFit"></image>
+        <view class="horlineview"></view>
+        <image class="deletview" src="/pages/images/addStore/addCaterDelet.png" data-idx="{{idx}}" data-idy="{{idy}}" bindtap="secdeleteselect" mode="aspectFit"></image>
+  </view>
+
+</view>
+</view>
+<!-- 添加子分类 -->
+<view class="addsecondcater" data-idx="{{idx}}" bindtap="addsecondcatertap" wx:if="{{item.id && item.name == '未分类'?false:true}}">
+  <view class="delRight">+</view>
+  <view class="addRight">添加子分类</view>
+</view>
+</view>
+ <view style="height:110px"></view>
+
+</view>
+
+
+<!-- 新建父分类或子分类 -->
+<van-popup show="{{ show }}" bind:close="onClose">
+<view class="vanContentView">
+<view class="catertoptitle">{{poptoptitle}}</view>
+<input class="shurucater" placeholder="{{placehorldNum==6?'请输入6个字符以内的分类名称':'请输入2-10个字符的子分类名称'}}"placeholder-class="placeholder" maxlength="{{placehorldNum}}" bindinput="inputcatertap" value="{{catervalue}}"></input>
+<view class="cancleorsure">
+<view class="cancleview" bindtap="cancletap">取消</view>
+<view class="sureview" bindtap="suretap">确定</view>
+</view>
+</view>
+</van-popup>
+
+
+
+
+<!-- 创建分类,管理分类 -->
+<view class="editview" hidden="{{bottomshow}}">
+  <view class="addcatereview icon-roundadd" bindtap="addcatertap"> 创建分类</view>
+  <view class="savebtn" bindtap='savebtntap'>保存</view>
+</view>
+
+<!-- 删除分类 -->
+<van-dialog id="van-dialog" />

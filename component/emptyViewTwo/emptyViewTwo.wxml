@@ -1,0 +1,25 @@
+<!--component/emptyViewTwo/emptyViewTwo.wxml-->
+<view class='empty-item' wx:for="{{emptycount}}" data-idx="{{idx}}" wx:for-index="idx" wx:key="{{idx}}" wx:if="{{!salelistArr}}">
+  <view class='emptytopview'>
+      <view class="empty-1"></view>
+      <view class="empty-right">
+        <view class="empty-2"></view>
+        <view class="empty-3"></view>
+        <view class="empty-4"></view>
+        <view class='emptytotal'>
+          <view class="empty-5"></view>
+          <view class="empty-6"></view>
+        </view>
+      </view>
+    </view>
+  <view class='emptytime'></view>
+  </view>
+  
+<!-- 空态图 -->
+  <view class='emityLayout' wx:if="{{salelistArr.length<1}}" style="height:{{picheight}}">
+
+    <image class='emityView1' src='/pages/images/icon_emity.png'></image>
+    <view style="color:#666;font-size:14px">当前未设置秒杀活动</view>
+    <view style="color:#666;font-size:12px">点击<text style='color:#ff4444;font-size:12px'>底部按钮</text>设置</view>
+
+  </view>

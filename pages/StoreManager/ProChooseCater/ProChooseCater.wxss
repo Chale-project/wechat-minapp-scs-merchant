@@ -1,0 +1,105 @@
+/* pages/StoreManager/ProChooseCater/ProChooseCater.wxss */
+.pageschoose {
+  padding-bottom: 100px;
+  width: 100%;
+  height: 100%;
+}
+.fir-item {
+  margin-bottom: 10px;
+}
+.checkchooseview {
+  width: 50px;
+  text-align: center;
+}
+.chooseimage {
+  width: 20px;
+  height: 20px;
+}
+.onecater {
+  font: bold;
+  font-size: 16px;
+  color:#000;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.shouview {
+  padding-right: 10px;
+  color: #ccc;
+  margin-left:10px;
+  text-align:left;
+}
+.firstcater {
+  background: #fff;
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+.sec-item {
+  border-top: 1px solid #f5f5f5;
+}
+.checktwochooseview {
+  width: 50px;
+  text-align: center;
+}
+.twocater {
+  color:#666;
+  padding-left: 10px;
+  max-width: 50%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.twoshouview {
+  color:#ccc;
+  margin-left:10px;
+  max-width: 50%;
+  text-align:left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.secondcater {
+  font-size: 15px;
+  height: 40px;
+  color: #666;
+  background: #fff;
+  display: flex;
+  align-items: center;
+}
+.editcater {
+  background:#fff; 
+  height:100px;
+  bottom:0;
+  z-index:999;
+  position:fixed;
+  left:0;
+  right:0;
+}
+.managerview {
+  font-size: 16px;
+  width: 100%;
+  line-height: 50px;
+  text-align: center;
+  border-bottom: 1px solid #f5f5f5;
+}
+.saveview {
+  height:50px;
+}
+.give {
+  font-size: 16px;
+  background: #fff;
+  color: #333;
+  border:1px solid #ccc;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 5px;
+}
+.upstore {
+  font-size: 16px;
+  background: #ff4444;
+  color: #fff;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 5px;
+}

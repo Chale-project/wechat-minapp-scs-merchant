@@ -1,0 +1,10 @@
+/* pages/mainClass/ShopData/ShopData.wxss */
+.shopImage{
+  height: 30px;
+  width: 30px;
+  border-radius: 15px;
+}
+.shopzhengImage {
+  width: 60px;
+  height: 40px;
+}

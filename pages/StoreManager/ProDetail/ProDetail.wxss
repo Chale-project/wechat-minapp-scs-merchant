@@ -1,0 +1,74 @@
+/* pages/StoreManager/ProDetail/ProDetail.wxss */
+
+/* text */
+.contentview {
+  margin-bottom: 40px;
+}
+.content-item {
+  margin: 10px;
+}
+.addtextview {
+  padding: 10px;
+  background: #fff;
+  height: 235px;
+}
+.addtextinput {
+  padding:10px;
+  width: 100%;
+  height: calc(100% - 30px);
+}
+.imagegroup {
+  height: calc(100% - 30px);
+}
+.editcurview {
+  margin-left: calc(100% - 150px);
+  width: 150px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+.edit-item {
+  border: 1px solid #666;
+  background: #f5f5f5;
+}
+.deleteview {
+  width: 50px;
+  line-height: 30px;
+  text-align: center;
+}
+/* pic */
+
+/* 弹窗 */
+.vanContentView {
+  height: 200px;
+  background: #fff;
+  display: flex;
+}
+.addtpic-item {
+  height:100px;
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+margin-left:20px;
+}
+.addsinglepic {
+  width:50px;
+height:50px;
+}
+.addsinglepro {
+  text-align:center;
+line-height:30px;
+}
+.savebrn {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  background: #ff4444;
+  color: #fff;
+}

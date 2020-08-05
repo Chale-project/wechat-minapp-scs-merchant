@@ -1,0 +1,38 @@
+<!--pages/mainClass/PiecingDetail/PiecingDetail.wxml-->
+<view>
+  <view class='item_order' >
+  <view class="rightTopLayout"><text class="text-white text-xs">{{number}}人团</text></view>
+    <view class='image_layout'>
+      <image class='item_image' src='{{coverImage==null?"/pages/images/icon_all_default.jpg":coverImage}}'> </image>
+    </view>
+    <view class='item_right justify-between flex flex-direction'>
+      <!-- <view class="flex flex-direction"> -->
+        <view class="item_right_title van-ellipsis2 text-df">{{title}}</view>
+        <view class="text-red text-df">￥{{groupPrice}}</view>
+      <!-- </view> -->
+      <!-- <view class=" align-center justify-center flex">
+        <text class="icon-right text-grey"></text>
+      </view> -->
+    </view>
+  </view>
+
+  <block wx:for="{{dataList}}" wx:key="item">
+    <view class='white_layout'>
+      <view class='flex flex-direction-row align-center justify-between margin-left margin-right' style='height:45px'>
+        <view class='text-grey text-df'>商品规格</view>
+        <view class='text-black text-df'>{{item.specificationItems}}</view>
+      </view>
+      <view class='line'></view>
+      <view class='flex flex-direction-row align-center justify-between margin-left margin-right' style='height:45px'>
+        <view class='text-grey text-df'>原价</view>
+        <view class='text-black text-df'>￥{{item.descPrice/100}}</view>
+      </view>
+      <view class='line'></view>
+      <view class='flex flex-direction-row align-center justify-between margin-left margin-right' style='height:45px'>
+        <view class='text-grey text-df'>拼团价</view>
+        <view class='text-black text-df'>￥{{item.groupPrice/100}}</view>
+      </view>
+    </view>
+  </block>
+
+</view>

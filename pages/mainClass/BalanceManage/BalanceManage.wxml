@@ -1,0 +1,37 @@
+
+<view class='flex justify-between  padding-sm align-center topLayout'>
+  <view class='chooseMonty1'>
+    <!-- <text class='text1 text-black' > 本月</text> -->
+    <picker class='picker1' mode="multiSelector" value="{{dateTime1}}" bindchange="changeDateTime1" bindcolumnchange="changeDateTimeColumn1" range="{{dateTimeArray1}}">
+      <view class="tui-picker-detail text-black text-sm">
+        {{dateTimeArray1[0][dateTime1[0]]}}-{{dateTimeArray1[1][dateTime1[1]]}}
+      </view>
+    </picker>
+    <image class='showChooseImage' src='/pages/images/icon_show_choose.png' style='height:15px;width:15px'></image>
+  </view>
+  <view class='flex flex-direction'>
+    <!-- <text class='text-white text-lg'>支出：￥100.00</text> -->
+    <text class='text-white text-blod text-lg'>合计：￥{{shopGetMoney>0?shopGetMoney:"0"}}</text>
+  </view>
+</view>
+
+<!-- <block wx:if="{{dataList.length>0}}"> -->
+<block wx:for="{{dataList}}" wx:for-item="item" wx:key='item'>
+  <view class='flex justify-between bg-white padding-sm align-center'>
+    <view class='flex flex-direction'>
+      <text class='text-black text-lg'> 余额交易</text>
+      <text class='text-grey text-sm margin-top-xs'> {{item.addDataTime}}</text>
+    </view>
+    <view>
+      <text class='text-red text-lg'>{{item.money>=0?"￥":""}}{{item.money}}</text>
+    </view>
+  </view>
+  <view class='line'></view>
+</block>
+<!-- </block> -->
+<!-- <block wx:if="{{dataList.length<=0}}"> -->
+<!-- <view class='blockHead'> -->
+<emptyView salelistArr="{{dataList}}" emptycount='5' picheight='420px'>
+</emptyView>
+<!-- </view> -->
+<!-- </block> -->

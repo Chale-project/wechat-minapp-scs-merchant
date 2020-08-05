@@ -1,0 +1,41 @@
+<!--pages/StoreManager/StoreSale/StoreSale.wxml-->
+<template name="StoreSale">
+
+<view style='width:100%;height:100%'>
+<view class="tabTitle">
+  <view class='tabTitle-item' wx:for="{{navtitledata}}" data-idx="{{idx}}" wx:for-index="idx" wx:for-item="item" wx:key="{{idx}}" bindtap='kucunTap'>
+
+   <view class="itemName"><text>{{item.name}}</text>
+   <image class="shengxuImage" hidden="{{kucunSel==idx?false:true}}" src="{{shengOrJiang3?'/pages/images/storeManager/shengxu_sel.png':'/pages/images/storeManager/jiangxu_sel.png'}}"></image>
+  
+   </view>
+  </view>
+</view>
+ 
+<!-- 添加列表信息-->
+ <view class='sale-item' wx:for="{{salelistArr}}" data-idx="{{idx}}" wx:for-index="idx" wx:for-item="item" wx:key="{{idx}}" bindtap="proselect">
+  <image class="userIconImg" src="{{item.coverImage.length>0?item.coverImage:'/pages/images/storeManager/productIcon.png'}}" binderror="avatarError" data-idx="{{idx}}" mode="aspectFill"></image>
+  <view class="salerightviews">
+    <view class="salerightoneview">
+      <view class="productName">{{item.title}}</view>
+      <view class="productPrice">¥{{item.price}}</view>
+    </view>
+    <!-- <view class="salerightsecview"> -->
+      <view class="addtimeview">添加时间 {{item.addDataTime}}</view>
+      <view class="totalsale">总销量 {{item.stockCount}} 库存 {{item.num}}</view>
+    <!-- </view> -->
+  </view>
+  </view>
+
+<view class="cu-load {{scrolowerLoad?'loading':'over'}}" wx:if="{{salelistArr.length>0}}"></view>
+
+
+<emptyView
+      salelistArr = "{{salelistArr}}"
+      emptycount = '3'
+      picheight = '300px'>
+  </emptyView>
+
+</view>
+
+</template>

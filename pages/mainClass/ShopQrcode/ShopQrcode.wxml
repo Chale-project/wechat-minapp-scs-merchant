@@ -1,0 +1,18 @@
+<!--pages/mainClass/ShopQrcode/ShopQrcode.wxml-->
+
+<view style="height:{{screenHeighth}}px; background:#fff">
+
+  <view class='layoutone' wx:if="{{qrCodePath}}">
+    <image class='qrcodeimage' src="{{qrCodePath}}" binderror="avatarError"></image>
+    <view class="shareOrSave" bindtap='saveQrcodeTap'>保存二维码</view>
+  </view>
+
+  <!-- 空态图 -->
+  <view class='emityLayout' wx:if="{{!qrCodePath}}">
+
+    <image class='emityView1' src='/pages/images/icon_emity.png'></image>
+    <view style="color:#666">暂无数据</view>
+  </view>
+
+</view>
+

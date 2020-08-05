@@ -1,0 +1,23 @@
+/* pages/mainClass/ShopTimeOutPay/ShopTimeOutPay.wxss */
+.cu-form-group .title {
+  min-width: calc(4em + 30rpx);
+}
+.textshow {
+  color: #666;
+  font-size: 12px;
+  padding: 20px;
+}
+.surebtn {
+  font-size: 14px;
+  height: 40px;
+  background: #ff4444;
+  color: #fff;
+  border-radius: 5px;
+  margin: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.surebtn:active {
+  opacity: .8;
+}

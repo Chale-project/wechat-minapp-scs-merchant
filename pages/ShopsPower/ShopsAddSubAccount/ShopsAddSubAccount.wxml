@@ -1,0 +1,32 @@
+<!--pages/ShopsPower/ShopsAddSubAccount/ShopsAddSubAccount.wxml--> 
+  
+  <view class='loginaccount'>
+    <view class='login'>姓名</view>
+    <input type='text' class="iphoneinput" placeholder="请输入姓名" placeholder-class="placeholder" maxlength='10' value="{{name}}" bindinput="nametap"></input>
+  </view>
+  <view class='loginaccount'>
+    <view class='login'>登录账号</view>
+    <input type='number' class="iphoneinput" placeholder="请输入手机号" placeholder-class="placeholder" maxlength='11' value="{{iphonetext}}" bindinput="loginaccounttap"></input>
+  </view>
+  <view class='loginaccount'>
+    <view class='login'>设置密码</view>
+    <input type="password" class="iphoneinput" maxlength='16' placeholder="请填写6-16位密码" placeholder-class="placeholder" value="{{passwordtext}}" bindinput="setpasswordtap"></input>
+  </view>
+  <view class='loginaccount' bindtap='choosejobtap'>
+    <view class='login'>岗位</view>
+    <view class="choosejobview" bindinput="chooosejobtap" style="{{chooseRoleName?'color:#000':'color:#ccc'}}">{{chooseRoleName?chooseRoleName:'去选择岗位'}}</view>
+    <view class='icon-right'></view>
+  </view>
+
+  <view class='loginaccount'>
+    <view class='shopinfo'>是否接收店铺消息</view>
+    <van-switch
+        checked="{{ switchchecked }}"
+        active-color="#07c160"
+        inactive-color="lightgray"
+        bind:change="onSwitchChange"
+      />
+  </view>
+
+  <view class='saveview' bindtap='savetap'>保存</view>
+  

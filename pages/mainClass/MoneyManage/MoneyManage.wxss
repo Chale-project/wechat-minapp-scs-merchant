@@ -1,0 +1,48 @@
+/* pages/mainClass/MoneyManage/MoneyManage.wxss */
+.chooseMonty1{
+  background-color: white;
+  border-radius: 15px;
+  width: 140px;
+  height: 32px;
+  display: flex;
+  flex-direction: row;
+}
+
+.v_line{
+  height: 32px;
+  width: 1px;
+  background: red
+}
+
+.text-date{
+  height: 32px;
+  text-align: center;
+  padding-top: 5px;
+  align-items: center;
+  padding-left: 15px;
+  padding-right: 5px;
+  justify-content: center;
+}
+
+.showChooseImage{
+  right: 2px;
+  top: 10px;
+  z-index: 4;
+}
+
+.text1{
+  left: 22px;
+  top: 7px;
+  z-index: 2;
+}
+
+.picker1{
+  left: 12px;
+  top: 10px;
+  height: 20px;
+  z-index: 1;
+}
+
+.topLayout{
+  background-color: #ff4444;
+}

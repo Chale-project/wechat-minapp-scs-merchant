@@ -1,0 +1,49 @@
+<!--pages/mainClass/ShopChooseProGuang/ShopChooseProGuang.wxml-->
+  <view class='outview'>
+      <view class="prosearchview">
+      <view class="alltitleview" bindtap='allProTap'>{{choosename}}        <text class="icon-triangledownfill" wx:if="{{!proshow}}"></text>
+      <text class="icon-triangleupfill" wx:else></text>
+      </view>
+      <input placeholder="请输入商品名称" placeholder-class="placeholder" class="searchinput" bindinput="searchnameinput" bindconfirm="searchbutton" value="{{searchtitle}}"></input>
+      </view>
+  </view>
+  <!-- 商品列表 -->
+  <scroll-view hidden="{{proshow}}" scroll-y="true" style="height:{{screenHeighth-60}}px" bindscrolltolower="scrolower">
+   <view class='sale-item' wx:for="{{salelistArr}}" data-idx="{{idx}}" wx:for-index="idx" wx:for-item="item" wx:key="{{idx}}" bindtap="proselect">
+  <image class="userIconImg" src="{{item.coverImage.length>0?item.coverImage:'/pages/images/storeManager/productIcon.png'}}" binderror="avatarError" data-idx="{{idx}}" mode="aspectFill"></image>
+  <view class="salerightviews">
+    <view class="salerightoneview">
+      <view class="productName">{{item.title}}</view>
+      
+    </view>
+    <view class="salerightsecview">
+      <view class="productPrice">¥{{item.price/100}}</view>
+      <view class="addtimeview">添加时间 {{item.addDataTime}}</view>
+      <view class="totalsale">总销量 {{item.stockCount}} 库存 {{item.num}}</view>
+    </view>
+  </view>
+  </view>
+
+<emptyView
+      salelistArr = "{{salelistArr}}"
+      emptycount = '3'
+      picheight = '300px'>
+  </emptyView>
+  </scroll-view>
+
+  <!-- 全部分类 -->
+ <scroll-view class='allCaterview' hidden="{{!proshow}}" scroll-y="true" style="height:{{screenHeighth-50}}px">
+    <view class='topcater'>
+     <view class='topcater-item' wx:for="{{topcaterdata}}" data-idx="{{idx}}" wx:for-index="idx" wx:for-item="item" wx:key="{{idx}}" bindtap='topcatertap' style="{{!chooseid&&idx==0?'color:#ff4444':chooseid=='noCate'&&idx==1?'color:#ff4444':'color:#333'}}">{{item}}</view>
+    </view>
+    <view class='onecaterview' wx:for="{{caterdata}}" data-ida="{{ida}}" wx:for-index="ida" wx:for-item="itea" wx:key="{{ida}}" wx:if="{{itea.id}}" >
+        <view class='fircater'>{{itea.name}}</view>
+        <view class='twocater'>
+          <view class='secondcater-item' wx:for="{{itea.sublevels}}" data-idx="{{idx}}" wx:for-index="idx" wx:for-item="item" wx:key="{{idx}}" data-ida="{{ida}}" bindtap='twocatertap' style="{{item.id==chooseid?'color:#ff4444':'color:#333'}}">{{idx==0?'所有':item.name}}</view>
+        </view>
+    </view>
+
+  </scroll-view>
+
+
+

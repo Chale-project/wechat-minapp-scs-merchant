@@ -1,0 +1,36 @@
+/* pages/mainClass/SendCouponsToPersonage/SendCouponsToPersonage.wxss */
+page{
+  background-color: #f1f1f1
+}
+
+
+
+.bottomLayout {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin-left: 15px;
+  margin-right: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.top_layout {
+  padding-bottom: 60px;
+}
+
+.item-layout {
+  margin-top: 15px;
+  margin-left: 15px;
+  margin-right: 15px;
+  border-radius: 6px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.line6 {
+  width: 1px;
+  background-color: #f1f1f1;
+}

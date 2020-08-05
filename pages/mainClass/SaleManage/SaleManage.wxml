@@ -1,0 +1,15 @@
+<!--pages/mainClass/SaleManage/SaleManage.wxml-->
+<block wx:for="{{dataList}}" wx:key="item">
+  <view class="cu-list menu {{menuBorder?'sm-border':''}} {{menuCard?'card-menu margin-top':''}}" bindtap='toModel' data-item='{{item.pathUrl}}' data-pos='{{item.index}}'>
+    <view class="cu-item {{menuArrow?'arrow':''}}">
+      <view class="content flex algin-center justify-left">
+        <image src="{{item.imageUrl}}" class="png" mode="aspectFit"></image>
+        <text class="text-black" >{{item.name}}</text>
+      </view>
+      <view>
+        <text class="icon-right lg text-gray"></text>
+      </view>
+    </view>
+  </view>
+  <view class='line'></view>
+</block>

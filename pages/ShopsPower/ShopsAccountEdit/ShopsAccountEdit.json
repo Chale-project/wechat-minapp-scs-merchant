@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "账号基本信息",
+  "usingComponents": {
+    "van-switch": "/vantUi/switch/index"
+  }
+}

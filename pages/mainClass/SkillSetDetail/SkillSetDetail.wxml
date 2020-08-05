@@ -1,0 +1,60 @@
+<!--pages/mainClass/SkillSetDetail/SkillSetDetail.wxml-->
+
+<view class="rightitemview">
+  <image class="userIconImg" src="{{chooseProduct.coverImage.length>0?chooseProduct.coverImage:'/pages/images/storeManager/productIcon.png'}}" data-idx="{{idx}}" mode="aspectFill"></image>
+  <view class="productName">{{chooseProduct.title}}</view>
+  <!-- <view class="totalsale">{{chooseProduct.specificationItems}}</view>
+  <view class="productPrice"><text> ¥ {{chooseProduct.originalPrice}}</text></view> -->
+  
+  </view>
+
+  <view class='guigenumview' wx:for="{{chooseProduct.descList}}" data-idx="{{idx}}" wx:for-index="idx" wx:for-item="item" wx:key="{{idx}}">
+    <view class="cu-form-group">
+      <view class="title">商品规格</view>
+      <view style='color:#666;text-align:right;padding-right:10px'>{{item.specificationItems}}</view>
+    </view>
+
+    <view class="cu-form-group">
+      <view class="title">原价</view>
+      <view style="color:#666;text-align:right;padding-right:10px">¥ {{item.goodsDescPrice}}</view>
+  </view>
+
+    <view class="cu-form-group">
+      <view class="title">秒杀价</view>
+      <view style="color:#ff4444;text-align:right;padding-right:10px">¥ {{item.seckillPrice}}</view>
+  </view>
+
+    <view class="cu-form-group">
+      <view class="title">活动库存</view>
+      <view style="color:#666;text-align:right;padding-right:10px">{{item.seckillNum}}</view>
+  </view>
+
+  </view>
+  <!-- <view class="cu-form-group margin-top">
+    <view class="title">秒杀价格</view>
+    <view style='color:#666;width:100%;text-align:left'>¥ {{chooseProduct.seckillPrice}}</view>
+  </view>
+
+  <view class="cu-form-group">
+    <view class="title">开始时间</view>
+    <view style="color:#666;width:100%;text-align:left">{{chooseProduct.startTime}}</view>
+  </view>
+
+  <view class="cu-form-group">
+    <view class="title">持续时间</view>
+    <view style="color:#666;width:100%;text-align:left">{{continuetime}}</view>
+  </view>
+
+  <view class="cu-form-group">
+    <view class="title">结束时间</view>
+    <view style="color:#666;width:100%;text-align:left">{{chooseProduct.endTime}}</view>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">活动库存</view>
+    <view style='color:#666;width:100%;text-align:left'>{{chooseProduct.num}}</view>
+  </view>
+
+  <view class="cu-form-group">
+    <view class="title">限购数量</view>
+    <view style='color:#666;width:100%;text-align:left'>{{chooseProduct.limitation}}</view>
+  </view> -->

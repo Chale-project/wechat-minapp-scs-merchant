@@ -1,0 +1,19 @@
+/* pages/mainClass/PiecingUser/PiecingUser.wxss */
+
+.rightTopLayout {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 2px;
+  z-index: 5;
+  background: #ff4444;
+  border-bottom-right-radius: 20px;
+  border-top-right-radius: 20px;
+  width: 30px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+

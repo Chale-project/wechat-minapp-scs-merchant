@@ -1,0 +1,269 @@
+/* pages/StoreManager/AddProduce/AddProduce.wxss */
+.producecontentview {
+  margin-bottom: 60px;
+}
+.topcameraview {
+  height: 500rpx;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background: #f5f5f5;
+  justify-content: center;
+}
+.topcenterview {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.uploadcamer {
+  height: 100%;
+  width: 100%;
+}
+.slide-image{
+  height: 100%;
+  width: 100%;
+}
+.toppic {
+  width: 80px;
+  height: 80px;
+}
+.editTopImage {
+  width: 100%;
+  height: 100%;
+  margin-top: -250px;
+  position: absolute;
+  padding-left:10px;
+}
+.delProImage {
+  width: 30px;
+  color: #C4091C;
+  border: 2px solid #C4091C;
+  border-radius: 15px;
+  text-align: center;
+  height: 30px;
+  line-height: 30px;
+  margin-top: -240px;
+  margin-left: 10px;
+  background: #fff;
+  position: absolute;
+}
+.leijiaProView {
+  width: 100%;
+  height: 60px;
+  margin-top: -60px;
+}
+.picdes {
+  font-size: 12px;
+  color: #666;
+}
+.titleview {
+  background: #fff;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+.protitle {
+  width: 50px;
+  font-size: 16px;
+}
+.titleinput {
+  width:calc(100% - 50px);
+  font-size:16px;
+  color:#000;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  height: 50px;
+}
+.produce-item {
+  background: #fff;
+  margin-bottom: 10px;
+}
+.singleitemview {
+  padding: 10px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.circleview {
+  width: calc(100% - 40px);
+}
+.itempriceview {
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+.itemstitle {
+  width: 66px;
+  font-size: 15px;
+}
+.inputandqrcode {
+  width:calc(100% - 66px);
+  border:1px solid #f5f5f5;
+  margin-left:10px;
+  height:46px;
+  display:flex;
+  align-items:center;
+}
+.shopcodeview {
+  width: 26px;
+  height: 26px;
+  margin-right: 5px;
+}
+.curcodestateclass {
+  color: red;
+  font-size: 12px;
+  padding-left: 76px;
+}
+.priceinput {
+  width:calc(100% - 31px);
+  padding-left:5px;
+  font-size:15px;
+  color:#000;
+  min-height: 46px;
+  display: flex;
+  align-items: center;
+  height: 46px;
+}
+.placeholder {
+  color: #9a9a9a;
+}
+.firitem {
+  height: 60px;
+  background: #fff;
+  display: flex;
+  align-items: center; 
+}
+.guigefiritem {
+  width: 50px;
+  color: #333;
+}
+.tapupimageview {
+  width: 40px;
+  font-size: 12px;
+  text-align: center;
+  border: 1px solid #f5f5f5;
+}
+.imagetapitem {
+  width: 60px;
+  height: 60px;
+  padding-left: 10px;
+}
+.delproduceview {
+  width: 40px;
+  display: flex;
+  justify-content: center;
+}
+.delRight {
+  width: 20px;
+  color: #C4091C;
+  border: 2px solid #C4091C;
+  border-radius: 10px;
+  text-align: center;
+  height: 20px;
+  line-height: 16px;
+}
+.addproduceview {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 40px;
+  margin-bottom: 10px;
+}
+.addrightview {
+  padding-right: 10px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+.addRight {
+  text-align: right;
+  font-size: 14px;
+  padding-left: 2px;
+}
+.prodetailall {
+  height: 60px;
+}
+.prodetailview {
+  height: 50px;
+  display: flex;
+  background: #fff;
+  padding: 10px;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #f5f5f5;
+}
+.detailpro {
+  font-size: 15px;
+  width: 150px;
+}
+.prodesdetail {
+  width: calc(100% - 140px);
+  text-align: right;
+  color:#666;
+  font-size:15px;
+}
+.detailarrow {
+  width: 20px;
+}
+.saveview {
+  background:#fff; 
+  height:50px;
+  bottom:0;
+  z-index:999;
+  position:fixed;
+  left:0;
+  right:0;
+  border-top: 1px solid #f5f5f5;
+}
+.give {
+  background: #666;
+  font-size: 16px;
+  color: #fff;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 5px;
+}
+.upstore {
+  background: red;
+  font-size: 16px;
+  color: #fff;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 5px;
+}
+/* 编辑 */
+.bottomview {
+  height: 50px;
+  bottom: 0px;
+  background: #fff;
+  z-index: 999;
+  position:fixed;
+  left:0;
+  right:0;
+  border-top: 1px solid #f5f5f5;
+}
+.bottomview::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.bottom-item {
+  width: 33.3%;
+  height: 100%;
+  float: left;
+  display:flex;
+}
+.bottomName {
+  width: 100%;
+  color: #333;
+  font-size: 16px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}

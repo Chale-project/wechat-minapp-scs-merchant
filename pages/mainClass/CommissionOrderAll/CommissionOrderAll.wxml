@@ -1,0 +1,56 @@
+<!--pages/mainClass/CommissionOrderAll/CommissionOrderAll.wxml-->
+<van-tabs active="{{ active }}" bind:change="onChange" sticky>
+  <van-tab title="所有"></van-tab>
+  <van-tab title="待结算"></van-tab>
+  <van-tab title="已结算"></van-tab>
+  <van-tab title="已到账"></van-tab>
+  <van-tab title="冲正"></van-tab>
+  <van-tab title="已失效"></van-tab>
+</van-tabs>
+<view>
+</view>
+
+<block wx:for="{{dataList}}" wx:for-item="item" wx:key='item' wx-for-index='index'>
+
+  <view class="layout1">
+    <view class='item_order' bindtap='toOrderDetail' data-item='{{item.id}}' data-type='{{item.orderType}}'>
+      <view class='image_layout'>
+        <image class='item_image' src='{{item.goodsImage==null?"/pages/images/icon_all_default.jpg":item.goodsImage}}'> </image>
+        
+      </view>
+      <view class='item_right'>
+        <view class="item_right_title justify-between flex">
+          <view class="item_right_title van-ellipsis2 text-df">{{item.goodsName}}</view>
+        </view>
+        <view class="item_right_spec  text-sm" >店铺名称：{{item.shopName}}</view>
+         <view class="item_right_spec text-sm margin-top-xs">{{item.state}}</view>
+      </view>
+    </view>
+
+    <view class="flex flex-direction-row" style="margin-left:15px;">
+
+      <view class="flex flex-direction">
+        <view class="text-grey">付款金额</view>
+        <view class="text-black margin-top-xs">{{item.payment}}</view>
+      </view>
+
+      <view class="flex flex-direction" style="margin-left:40px;">
+        <view class="text-grey">付款预估收入</view>
+        <view class="text-black margin-top-xs">{{item.shopCommission}}</view>
+      </view>
+
+      <view class="flex flex-direction" style="margin-left:40px;">
+        <view class="text-grey">提成</view>
+        <view class="text-black margin-top-xs">{{item.shopCommissionRatio}}%</view>
+      </view>
+
+    </view>
+
+    <view class='text-grey margin-top-sm'  style="margin-left:15px;">{{item.paymentTime}}付款</view>
+
+  </view>
+
+</block>
+
+ <emptyView salelistArr="{{dataList}}" emptycount='10' picheight='420px'>
+      </emptyView>

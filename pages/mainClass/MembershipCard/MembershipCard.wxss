@@ -1,0 +1,97 @@
+/* pages/mainClass/MembershipCard/MembershipCard.wxss */
+
+.item-layout {
+  margin-top: 15px;
+  margin-left: 15px;
+  margin-right: 15px;
+  border-radius: 6px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.top_layout {
+  padding-bottom: 60px;
+}
+
+.bottomLayout {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin-left: 15px;
+  margin-right: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.tvLvName {
+  font-size: 24px;
+  color: white;
+  padding-top: 15px;
+  padding-left: 15px;
+  padding-bottom: 17px;
+}
+
+.tv2 {
+  font-size: 18px;
+  color: white;
+  padding-left: 15px;
+  padding-bottom: 15px;
+}
+
+.membershipLevel0 {
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  background-color: #e54d42;
+  display: flex;
+  flex-direction: column;
+}
+
+.membershipLevel1 {
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  background-color: #f37b1d;
+  display: flex;
+  flex-direction: column;
+}
+
+.membershipLevel2 {
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  background-color: #fbbd08;
+  display: flex;
+  flex-direction: column;
+}
+
+.membershipLevel3 {
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  background-color: #8dc63f;
+  display: flex;
+  flex-direction: column;
+}
+
+.membershipLevel4 {
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  background-color: #39b54a;
+  display: flex;
+  flex-direction: column;
+}
+
+.membershipLevel5 {
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  background-color: #1cbbb4;
+  display: flex;
+  flex-direction: column;
+}
+
+.membershipLevel6 {
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  background-color: #0081ff;
+  display: flex;
+  flex-direction: column;
+}

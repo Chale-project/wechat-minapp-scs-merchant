@@ -1,0 +1,14 @@
+/* pages/mainClass/AddPiecingTwo/AddPiecingTwo.wxss */
+.savebtn {
+  margin: 50px;
+  color: #fff;
+  background: #ff4444;
+  border-radius: 5px;
+  text-align: center;
+  height: 40px;
+  line-height: 40px;
+}
+
+.inputLayout{
+  border: 1px solid #f1f1f1;
+}

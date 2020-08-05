@@ -1,0 +1,51 @@
+/* pages/mainClass/ShopUploadInfo/ShopUploadInfo.wxss */
+.contentview {
+  background: #fff;
+  height: 600px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.emptyview {
+  margin-top: 20px;
+  width: 300px;
+  height: 160px;
+  border: 2px dashed #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.imageupload {
+  width: 40px;
+  height: 40px;
+}
+.imageview {
+  width: 100%;
+  height: 100%;
+}
+.completview {
+  margin-top: 20px;
+  font-size: 14px;
+  height: 40px;
+  background: #ff4444;
+  color: #fff;
+  border-radius: 5px;
+  width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.completview:active {
+  opacity: .8;
+}
+.showpic {
+  height: 600px;
+  background: #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.showImageView {
+  width: 90%;
+  height: 90%;
+}

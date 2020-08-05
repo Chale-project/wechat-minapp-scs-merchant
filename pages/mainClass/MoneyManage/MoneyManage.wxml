@@ -1,0 +1,60 @@
+<!--pages/mainClass/MoneyManage/MoneyManage.wxml-->
+
+
+<view class='flex justify-between  padding-sm align-center topLayout'>
+  <view class='chooseMonty1'>
+    <view class='flex flex-direction-row align-center justify-center padding-right-xs' bindtap='changeDate'>
+      <view class='text-date'>{{isMonth?"月":"日"}}</view>
+      <view>
+        <image src='/pages/images/icon_change_date.png' style='height:15px;width:15px'></image>
+      </view>
+    </view>
+
+    <view class='v_line'></view>
+    <view class='flex align-center justify-center' style='width:100%;margin-top:3px'>
+      <picker class='picker1' mode="multiSelector" value="{{dateTime1}}" bindchange="changeDateTime1" bindcolumnchange="changeDateTimeColumn1" range="{{dateTimeArray1}}" >
+        <view class="tui-picker-detail text-black text-sm" style='margin-top:1.5px' hidden='{{!isMonth}}'>
+          {{dateTimeArray1[0][dateTime1[0]]}}-{{dateTimeArray1[1][dateTime1[1]]}}
+        </view>
+      </picker>
+
+
+       <picker class='picker2' mode="multiSelector" value="{{dateTime2}}" bindchange="changeDateTime2" bindcolumnchange="changeDateTimeColumn2" range="{{dateTimeArray2}}" >
+        <view class="tui-picker-detail text-black text-sm" hidden='{{isMonth}}'>
+          {{dateTimeArray2[0][dateTime2[0]]}}-{{dateTimeArray2[1][dateTime2[1]]}}-{{dateTimeArray2[2][dateTime2[2]]}}
+        </view>
+      </picker>
+    </view>
+
+  </view>
+  <view class='flex flex-direction'>
+    <text class='text-white text-lg text-blod'>合计：￥{{shopGetMoney>0?shopGetMoney:"0"}}</text>
+    <text class='text-white text-lg text-blod'>交易笔数：{{totalCount}}笔</text>
+  </view>
+</view>
+
+<van-tabs active="0" bind:change="onChange" sticky>
+  <van-tab title="线下"></van-tab>
+  <van-tab title="线上"></van-tab>
+  <van-tab title="全部"></van-tab>
+</van-tabs>
+<!-- <block wx:if="{{dataList.length>0}}"> -->
+<block wx:for="{{dataList}}" wx:for-item="item" wx:key='item'>
+  <view class='flex justify-between bg-white padding-sm align-center'>
+    <view class='flex flex-direction'>
+      <text class='text-black text-lg'> {{item.source}}</text>
+      <text class='text-grey text-sm margin-top-xs'> {{item.addDataTime}}</text>
+    </view>
+    <view>
+      <text class='text-red text-lg'>￥{{item.journalAccount}}</text>
+    </view>
+  </view>
+  <view class='line'></view>
+</block>
+<!-- </block> -->
+<!-- <block wx:if="{{dataList.length<=0}}"> -->
+<!-- <view class='blockHead'> -->
+<emptyView salelistArr="{{dataList}}" emptycount='5' picheight='420px'>
+</emptyView>
+<!-- </view> -->
+<!-- </block> -->

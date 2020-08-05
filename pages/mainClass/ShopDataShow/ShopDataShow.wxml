@@ -1,0 +1,124 @@
+<!--pages/mainClass/ShopDataShow/ShopDataShow.wxml-->
+<van-tabs sticky bind:change="onChange" swipe-threshold='3'>
+  <!-- 营收 -->
+  <van-tab title="营收" custom-class='bg-white'>
+  </van-tab>
+
+  <!-- 会员 -->
+  <van-tab title="会员" custom-class='bg-white'>
+  </van-tab>
+
+  <!-- 商品 -->
+  <van-tab title="商品" custom-class='bg-white'>
+  </van-tab>
+
+</van-tabs>
+
+
+<view class='bg-white'>
+
+  <view hidden='{{tab1}}'>
+    <view class='flex justify-between align-center padding-top padding-bottom-xs'>
+      <view class='flex-sub'></view>
+      <view class='flex-sub flex text-sm align-center justify-center'>收入</view>
+
+      <view class='flex-sub'>
+        <view class='chooseMonty1 bg-blue'>
+          <picker bindchange="PickerChange" value="{{index}}" range="{{picker}}">
+            <view class="picker"> {{index?picker[index]:'所有店铺'}}</view>
+          </picker>
+          <image class='showChooseImage' src='/pages/images/icon_show_choose.png' style='height:15px;width:15px'></image>
+        </view>
+
+      </view>
+    </view>
+
+    <view class='text-xxl flex align-center justify-center padding-bottom'>￥0.00</view>
+
+    <view class='flex justify-center align-center'>
+      <button class="cu-btn round margin-right bg-white">今日</button>
+      <button class="cu-btn round margin-right bg-white">近7天</button>
+      <button class="cu-btn round margin-right bg-white">近30天</button>
+      <button class="cu-btn round margin-right bg-white">近90天</button>
+    </view>
+
+    <view class='chart_layout'>
+      <ff-canvas id="scroll" canvas-id="scrollLine" opts="{{ opts }}"></ff-canvas>
+    </view>
+  </view>
+
+
+  <view class='layoutMiddle' hidden='{{tab4}}'>
+
+    <view hidden='{{tab2}}' class='view_emity1'></view>
+
+    <view class='view_emity2'>
+      <view class='flex justify-between align-center padding-top padding-bottom-xs'>
+        <view class='flex-sub'></view>
+        <view class='flex-sub flex text-sm align-center justify-center'>会员总人数</view>
+
+        <view class='flex-sub'>
+          <view class='chooseMonty1 bg-blue'>
+            <picker bindchange="PickerChange" value="{{index}}" range="{{picker}}">
+              <view class="picker"> {{index?picker[index]:'所有店铺'}}</view>
+            </picker>
+            <image class='showChooseImage' src='/pages/images/icon_show_choose.png' style='height:15px;width:15px'></image>
+          </view>
+        </view>
+      </view>
+
+      <view class='text-xxl flex align-center justify-center padding-bottom'>0</view>
+
+      <view class='flex justify-center align-center'>
+        <button class="cu-btn round margin-right bg-white">今日</button>
+        <button class="cu-btn round margin-right bg-white">近7天</button>
+        <button class="cu-btn round margin-right bg-white">近30天</button>
+        <button class="cu-btn round margin-right bg-white">近90天</button>
+      </view>
+
+      <view class='chart_layout'>
+        <ff-canvas id="scroll" canvas-id="scrollLine" opts="{{ opts2 }}"></ff-canvas>
+      </view>
+    </view>
+  </view>
+
+
+  <view hidden='{{tab3}}'>
+    <view class='text-xl  padding text-black' style='height:40px;'>Top5类目销售排行</view>
+
+    <view class='flex padding-left-xs padding-right-xs' style='height:40px;'>
+      <view class='flex-sub flex align-center justify-center text-black text-sm'>商品分类</view>
+      <view class='flex-sub flex align-center justify-center text-black text-sm'>销量</view>
+      <view class='flex-sub flex align-center justify-center text-black text-sm'>支付金额</view>
+    </view>
+    <block wx:for="{{classifySalesData}}" wx:for-item="item" wx:key='item'>
+      <view class='flex' style='height:40px;'>
+        <view class='flex-sub flex align-center justify-center text-black text-sm van-ellipsis'>{{item.name}}</view>
+        <view class='flex-sub flex align-center justify-center text-blue text-sm van-ellipsis'>{{item.saleNum}}</view>
+        <view class='flex-sub flex align-center justify-center text-blue text-sm van-ellipsis'>￥{{item.payMoney}}</view>
+      </view>
+      <view class='line'></view>
+    </block>
+
+    <view class='ListLine'></view>
+    <view class='text-xl  padding text-black' style='height:40px;'>Top10商品销售情况</view>
+    <view class='flex' style='height:40px;'>
+      <view class='flex-sub flex align-center justify-center text-black text-sm'>商品</view>
+      <view class='flex-sub flex align-center justify-center text-black text-sm'>浏览量</view>
+      <view class='flex-sub flex align-center justify-center text-black text-sm'>销量</view>
+      <view class='flex-sub flex align-center justify-center text-black text-sm'>支付金额</view>
+      <view class='flex-sub flex align-center justify-center text-black text-sm'>单品转化率</view>
+    </view>
+    <block wx:for="{{productSalesData}}" wx:for-item="item" wx:key='item'>
+      <view class='flex padding-left-xs padding-right-xs' style='height:40px;'>
+        <view class='flex-sub flex align-center justify-center text-black text-sm van-ellipsis'>{{item.name}}</view>
+        <view class='flex-sub flex align-center justify-center text-blue text-sm van-ellipsis'>{{item.browseCount}}</view>
+        <view class='flex-sub flex align-center justify-center text-blue text-sm van-ellipsis'>{{item.saleNum}}</view>
+        <view class='flex-sub flex align-center justify-center text-blue text-sm van-ellipsis'>￥{{item.payMoney}}</view>
+        <view class='flex-sub flex align-center justify-center text-blue text-sm van-ellipsis'>{{item.ConversionRate}}</view>
+      </view>
+      <view class='line'></view>
+    </block>
+  </view>
+
+</view>

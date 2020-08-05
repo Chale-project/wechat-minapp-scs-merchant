@@ -1,0 +1,20 @@
+/* pages/mainClass/AllStoreSlaes/AllStoreSlaes.wxss */
+
+.imageNormal1 {
+  height: 24px;
+  width: 32px;
+  margin-right: 5px;
+}
+
+.imageNormal2 {
+  height: 24px;
+  width: 24px;
+  margin-left: 5px;
+  margin-right: 8px;
+}
+
+.lineV{
+  width: 2px;
+  height: 25px;
+  background-color: #f1f1f1
+}

@@ -1,0 +1,137 @@
+<!--pages/StoreManager/AddProduce/AddProduce.wxml-->
+<view class="producecontentview">
+<!-- 商品图片添加 -->
+<view class="topcameraview">
+  <view class="topcenterview" wx:if="{{cameraurlarr.length<1}}" bindtap='caramtap'>
+  <image src="/pages/images/addStore/icon_shooting@2x.png" class="toppic"></image>
+  <view class='paicdes'>添加商品图片</view>
+  </view>
+<!-- 商品图片轮播图 -->
+<swiper class="uploadcamer screen-swiper" indicator-dots="true"
+  autoplay="true" circular="true" interval="5000" duration="1000" current='{{curcameraindex}}' wx:if="{{cameraurlarr.length>0}}" bind:change="uploadchange">
+  <swiper-item wx:for="{{cameraurlarr}}" wx:key="{{idy}}" data-idy="{{idy}}" wx:for-index="idy" wx:for-item="item">
+    <image src="{{item.length>0?item:'/pages/images/storeManager/productIcon.png'}}" mode="aspectFit" binderror="avatarError" data-idy="{{idy}}" style="" bindtap='bigimagetap'></image>
+  </swiper-item>
+</swiper>
+</view>
+<!-- <view class='editTopImage' wx:if="{{cameraurlarr.length>0}}">  -->
+  <view class="delProImage" bindtap='delProTap' wx:if="{{cameraurlarr.length>0}}">一</view>
+  <view class='leijiaProView' wx:if="{{cameraurlarr.length>0}}">
+  <image src="/pages/images/addStore/icon_shooting@2x.png" style='margin-left: calc(100% - 60px);width:60px;height:60px' bindtap='leijiAddProTap'></image>
+  </view>
+<!-- </view> -->
+
+<view class="titleview">
+<view class='protitle'>标题</view>
+<input class="titleinput" placeholder="请填写商品标题" placeholder-class="placeholder" value="{{biaotitext}}" bindinput="inputnametap"></input>
+</view>
+
+<!-- 添加多个商品 -->
+<view class='produce-item' wx:for="{{itemallarr}}" data-idx="{{idx}}" wx:for-index="idx" wx:for-item="item" wx:key="{{idx}}">
+
+<view class="singleitemview">
+<view class="circleview">
+
+<!-- 规格名 -->
+<view class="itempriceview" wx:if="{{curaddindex==1}}">
+<view class='itemstitle'>规格名</view>
+<view class="inputandqrcode">
+<input class="priceinput" placeholder="请填写规格名称" placeholder-class="placeholder" bindinput="priceinputtapone" data-idx="{{idx}}" value="{{item.specificationItems}}"></input>
+</view>
+</view>
+<!-- 商品编码 -->
+<view class="itempriceview">
+  <view class='itemstitle'>商品编码</view>
+      <view class="inputandqrcode">
+      <input type='number' class="priceinput" placeholder="请填写商品编码" placeholder-class="placeholder" bindinput="priceinputtapfour" data-idx="{{idx}}" value="{{item.commodityCode}}">
+      </input>
+      <!-- <view class="qrcode icon-qr_code" data-idx="{{idx}}" bindtap="qrcodetap"></view> -->
+      <image class='shopcodeview' src='/pages/images/addStore/shopcode.png' data-idx="{{idx}}" bindtap="qrcodetap"></image>
+    </view>
+  </view>
+  <view class='curcodestateclass' wx:if="{{item.curcodestate==false}}">该商品编码已存在</view>
+<!-- 价格 -->
+<view class="itempriceview">
+<view class='itemstitle'>价格</view>
+<view class="inputandqrcode">
+<input type="digit" class="priceinput" placeholder="请填写商品价格" placeholder-class="placeholder" bindinput="priceinputtaptwo" data-idx="{{idx}}" value="{{item.descPrice?item.descPrice:''}}"></input>
+<view style="color:#ccc;font-size:15px">元</view>
+</view>
+</view>
+<!-- 库存 -->
+<view class="itempriceview">
+<view class='itemstitle'>库存</view>
+<view class="inputandqrcode">
+<input type="number" class="priceinput" placeholder="请填写商品库存" placeholder-class="placeholder" bindinput="priceinputtapthree" data-idx="{{idx}}" value="{{item.number}}"></input>
+<view style="color:#ccc;font-size:15px">件</view>
+</view>
+</view>
+<!-- 点击上传图片 -->
+<view class="firitem" wx:if="{{curaddindex==1}}">
+<view class='guigefiritem'>图片</view>
+<view class="tapupimageview" data-idx="{{idx}}" bindtap="tapupimage" wx:if="{{!itemallarr[idx].itemImages}}">点击上传图片</view>
+<image src="{{itemallarr[idx].itemImages}}" class="imagetapitem" wx:if="{{itemallarr[idx].itemImages}}" binderror="avatarguigeError" data-idx="{{idx}}" bindtap="tapupimage"></image>
+</view>
+
+</view>
+<!-- 删除按钮 -->
+<view class="delproduceview" data-index="{{idx}}" bindtap="delbuttontap" wx:if="{{itemallarr.length>1}}">
+<view class="delRight">一</view>
+</view>
+</view>
+
+</view>
+
+<!-- 添加按钮 -->
+<view class="addproduceview">
+  <view></view>
+  <view class='addrightview' bindtap="addbuttontap">
+  <view class="delRight">+</view>
+  <view class="addRight">添加商品规格</view>
+  </view>
+</view>
+
+<!-- 商品详情和分类 -->
+
+    <view class="prodetailview" wx:for="{{prodetailarr}}" data-ide="{{ide}}" wx:for-index="ide" wx:for-item="ite" wx:key="{{ide}}" bindtap="{{ide<2?'detailprotap':''}}">
+      <view class='detailpro'>{{ite}}</view>
+      <view class="prodesdetail" wx:if="{{ide==1}}">{{choosecaterdic.name}}</view>
+      <view class="detailarrow icon-right" wx:if="{{ide<2}}"></view>
+      <van-switch
+        checked="{{ switchchecked }}"
+        active-color="#07c160"
+        inactive-color="lightgray"
+        bind:change="onSwitchChange"
+        wx:if="{{ide==2}}"
+      />
+      <!-- <van-switch
+        checked="{{ isHuiYuan }}"
+        active-color="#07c160"
+        inactive-color="lightgray"
+        bind:change="onSwitchChangetwo"
+        wx:if="{{ide==3}}"
+      /> -->
+    </view>
+
+<view class='prodetailall'>
+</view>
+
+<!-- 放入仓库 -->
+    <view class="saveview flex" wx:if="{{uploweditOrAdd==2}}">
+      <view class="give flex-sub margin-xs" bindtap="givetap">放入仓库</view>
+      <view class="upstore flex-sub margin-xs" bindtap="upstoretap">上架出售</view>
+    </view>
+
+</view>
+
+<!-- 编辑商品 -->
+<view class="bottomview" wx:if="{{uploweditOrAdd<2}}">
+  <view class='bottom-item' wx:for="{{bottomtitledata}}" data-idx="{{idw}}" wx:for-index="idw" wx:for-item="itew" wx:key="{{idw}}" bindtap="bottomitemtap">
+    <view class="bottomName">{{itew}}</view>
+  </view>
+</view>
+
+<!-- 删除商品 -->
+<van-dialog id="van-dialog" />
+
+<!-- 放大商品 -->

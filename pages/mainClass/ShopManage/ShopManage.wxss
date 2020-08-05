@@ -1,0 +1,38 @@
+/* pages/mainClass/ShopManage/ShopManage.wxss */
+
+.layout0 {
+  margin-top: 15px;
+  margin-left: 15px;
+  margin-right: 15px;
+  border-radius: 6px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 150px;
+  justify-content: center;
+}
+.qrcodeimage {
+  width:30px;
+  height:30px;
+  position:absolute;
+  right:30px;
+  top:30px;
+}
+.image {
+  height: 55px;
+  width: 55px;
+  border-radius: 27.5px;
+}
+
+.layout1 {
+  margin-top: 12px;
+  margin-left: 15px;
+  margin-right: 15px;
+  border-radius: 6px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 6px;
+  margin-bottom: 12px;
+}

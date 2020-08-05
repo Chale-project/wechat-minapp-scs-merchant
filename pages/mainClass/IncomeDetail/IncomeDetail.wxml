@@ -1,0 +1,30 @@
+<!--pages/mainClass/IncomeDetail/IncomeDetail.wxml-->
+<view>
+
+  <view class="flex flex-direction-row padding-top-xs padding-bottom-xs" style="width:100%;background:#F6F3FA">
+    <view style="width:66%" class="padding-left">日期</view>
+    <view style="width:34%">月结发钱(元)</view>
+  </view>
+
+
+  <block wx:for="{{dataList}}" wx:for-item="item" wx:key='item' wx-for-index='index'>
+
+    <view style="padding-left:16px;padding-top:6px;padding-bottom:6px;background:#F8F9F6">{{item.months}}</view>
+
+    <view class="flex flex-direction-row padding-top padding-bottom bg-white justify-center align-center" style="width:100%;">
+      <view style="width:66%" class="padding-left flex flex-direction-row">
+        <view class="flex justify-center align-center">月结时间:{{item.settlementTime}}</view>
+      </view>
+      <view class="flex flex-direction-row justify-center align-center" style="width:40%">
+        <view>
+          <image src='/pages/images/icon_pay_balance.png' style='width:20px;height:20px;margin-top:4px;"'></image>
+        </view>
+        +{{item.commissionMoney}}</view>
+    </view>
+  </block>
+
+</view>
+
+
+<emptyView salelistArr="{{dataList}}" emptycount='10' picheight='420px'>
+</emptyView>

@@ -1,0 +1,107 @@
+<!--pages/mainClass/UserCoupons/UserCoupons.wxml-->
+<view class='top_layout'>
+  <van-tabs sticky bind:change="onChange">
+    <van-tab title="未使用">
+      <block wx:if="{{dataList.length>0}}">
+        <block wx:for="{{dataList}}" wx:key="item">
+          <view class='item-layout'>
+            <view class='flex justify-between' bindtap='toCouponDetail' data-id='{{item.id}}'>
+              <view class='flex align-center justify-center flex-direction padding-left padding-right'>
+                <view>
+                  <text class='text-red text-xs'>￥</text>
+                  <text class='text-red text-xxl'>{{item.usedAmount}}</text>
+                </view>
+                <view class='padding-top-sm'>满{{item.meetAmount/100}}元可用</view>
+              </view>
+              <view class='flex flex-direction padding-top padding-bottom padding-right'>
+                <view class='text-lg text-black'>{{item.title==null?"任性领劵，任性买":item.title}}</view>
+                <view class='text-sm padding-top-xs padding-bottom-xs text-grey'>1张</view>
+                <view class='text-sm text-grey'>{{item.validStartTime}}至{{item.validEndTime}}</view>
+                <!-- <view class='text-df'>{{item.validStartTime}}至{{item.validEndTime}}</view> -->
+              </view>
+              <!-- <view class='line6'></view>
+              <view class='flex align-center justify-center  padding-right' bindtap='SendCoupons' data-item='{{item.id}}'>
+                <text class='text-red'>立即\n发送</text>
+              </view> -->
+            </view>
+
+          </view>
+        </block>
+      </block>
+      <block wx:if="{{dataList.length<=0}}">
+        <view class='blockHead'>
+         <emptyView salelistArr="{{dataList}}" emptycount='10' picheight='420px'>
+    </emptyView>
+        </view>
+      </block>
+    </van-tab>
+    <van-tab title="已使用">
+      <block wx:if="{{dataList2.length>0}}">
+        <block wx:for="{{dataList2}}" wx:key="item">
+          <view class='item-layout'>
+            <view class='flex justify-between'>
+              <view class='flex align-center justify-center flex-direction padding-left padding-right'>
+                <view>
+                  <text class='text-red text-xs'>￥</text>
+                  <text class='text-red text-xxl'>{{item.usedAmount}}</text>
+                </view>
+                <view class='padding-top-sm'>满{{item.meetAmount/100}}元可用</view>
+              </view>
+              <view class='flex flex-direction padding-top padding-bottom padding-right'>
+                <view class='text-lg'>{{item.title==null?"任性领劵，任性买":item.title}}</view>
+                <view class='text-xs padding-top-xs padding-bottom-xs'>剩余1张</view>
+                <view class='text-df'>{{item.validStartTime}}至{{item.validEndTime}}</view>
+                <!-- <view class='text-df'>{{item.validStartTime}}至{{item.validEndTime}}</view> -->
+              </view>
+              <!-- <view class='line6'></view>
+              <view class='flex align-center justify-center  padding-right' bindtap='SendCoupons' data-item='{{item.id}}'>
+                <text class='text-red'>立即\n发送</text>
+              </view> -->
+            </view>
+
+          </view>
+        </block>
+      </block>
+      <block wx:if="{{dataList2.length<=0}}">
+        <view class='blockHead'>
+         <emptyView salelistArr="{{dataList2}}" emptycount='10' picheight='420px'>
+    </emptyView>
+        </view>
+      </block>
+    </van-tab>
+    <van-tab title="已过期">
+      <block wx:if="{{dataList3.length>0}}">
+        <block wx:for="{{dataList3}}" wx:key="item">
+          <view class='item-layout'>
+            <view class='flex justify-between'>
+              <view class='flex align-center justify-center flex-direction padding-left padding-right'>
+                <view>
+                  <text class='text-red text-xs'>￥</text>
+                  <text class='text-red text-xxl'>{{item.usedAmount}}</text>
+                </view>
+                <view class='padding-top-sm'>满{{item.meetAmount/100}}元可用</view>
+              </view>
+              <view class='flex flex-direction padding-top padding-bottom padding-right'>
+                <view class='text-lg'>{{item.title==null?"任性领劵，任性买":item.title}}</view>
+                <view class='text-xs padding-top-xs padding-bottom-xs'>剩余1张</view>
+                <view class='text-df'>{{item.validStartTime}}至{{item.validEndTime}}</view>
+                <!-- <view class='text-df'>{{item.validStartTime}}至{{item.validEndTime}}</view> -->
+              </view>
+              <!-- <view class='line6'></view>
+              <view class='flex align-center justify-center  padding-right' bindtap='SendCoupons' data-item='{{item.id}}'>
+                <text class='text-red'>立即\n发送</text>
+              </view> -->
+            </view>
+
+          </view>
+        </block>
+      </block>
+      <block wx:if="{{dataList3.length<=0}}">
+        <view class='blockHead'>
+         <emptyView salelistArr="{{dataList3}}" emptycount='10' picheight='420px'>
+    </emptyView>
+        </view>
+      </block>
+    </van-tab>
+  </van-tabs>
+</view>

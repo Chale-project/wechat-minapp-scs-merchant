@@ -1,0 +1,262 @@
+<!--pages/mainClass/HomeNew/HomeNew.wxml-->
+<view style='width:100%;height:100%;'>
+
+  <view class='top_white'>
+    <view class='top_red'>
+      <view class='flex justify-left align-center text-normal' style='height:20%;padding-left:15px;padding-top:15px;' catchtap>
+        <view class='text-normal'>今日营收(元)</view>
+        <image class='tipImage margin-left-xs' bindtap='showTip5' src='/pages/images/icon_show_tips.png '></image>
+      </view>
+      
+        <view class='text-sl text-white padding-top-sm' style='height:35%;padding-left:15px;'>￥{{todayMoney}}</view>
+
+        <view class='sales_layout' style='height:45%;'>
+          <view class="flex-sub   margin-xs flex flex-direction align-left justify-left">
+            <view class='flex justify-left align-center ' catchtap>
+              <text class=' text-df text-white padding-top-sm'>微信收入</text>
+              <image class='tipImage margin-top-sm margin-left-xs' bindtap='showTip3' src='/pages/images/icon_show_tips.png '></image>
+            </view>
+            <text class='text-lg text-white margin-top-sm '>￥{{weixinMoney}}</text>
+          </view>
+          <view class="flex-sub margin-xs flex flex-direction align-left justify-left">
+            <view class='flex justify-left align-center ' catchtap>
+              <text class='text-df text-white padding-top-sm'>支付宝收入</text>
+              <image class='tipImage margin-top-sm margin-left-xs' bindtap='showTip4' src='/pages/images/icon_show_tips.png '></image>
+            </view>
+            <text class='text-lg text-white margin-top-sm '>￥{{alipaynMoney}}</text>
+          </view>
+          <view class="flex-sub margin-xs flex flex-direction align-left justify-left" bindtap='toBalanceManage'>
+            <view class='flex justify-left align-center ' catchtap>
+              <text class='text-df text-white padding-top-sm'>余额收入</text>
+              <image class='tipImage margin-top-sm margin-left-xs' bindtap='showTip' src='/pages/images/icon_show_tips.png'></image>
+            </view>
+            <text class='text-lg text-white margin-top-sm'>￥{{remainingMoney}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view style='height:1%'></view>
+
+    <view style="height:15%;background: white;" class='flex align-center justify-center'>
+      <view class="flex-sub   flex flex-direction align-center" bindtap='showTip2'>
+        <text class='text-xl'>{{totalCustomers}}</text>
+        <text class='text-df margin-top-sm '>客户总数</text>
+      </view>
+      <view class='v-line '></view>
+      <view class="flex-sub flex flex-direction align-center" bindtap='showTip2'>
+        <text class='text-xl'>{{recurrenceRate}}</text>
+        <text class='text-df margin-top-sm '>回头率</text>
+      </view>
+      <view class="flex-sub flex flex-direction align-center" bindtap='showTip2'>
+        <text class='text-xl'>{{visitors}}</text>
+        <text class='text-df margin-top-sm '>访客数</text>
+      </view>
+      <view class="flex-sub    flex flex-direction align-center" bindtap='showTip2'>
+        <text class='text-xl'>{{ransactionOrder==null?"0":ransactionOrder}}</text>
+        <text class='text-df margin-top-sm '>成交订单</text>
+      </view>
+    </view>
+
+    <view style='height:1%'></view>
+
+    <view style="height:35%;background: white;" class='flex flex-direction '>
+
+      <view class='layout2 '>
+
+
+        <form bindsubmit='toUserManage' bindreset="formReset" report-submit='true' class='flex-sub'>
+          <view class="flex-sub padding flex flex-direction align-center justify-center form-layout">
+            <button form-type="submit" class='f-btn'></button>
+            <view class="flex flex-direction align-center justify-center">
+              <image class='home_image' src='/pages/images/icon_home4.png'></image>
+              <text class='text-df margin-top-sm '>客户管理</text>
+            </view>
+          </view>
+        </form>
+
+        <form bindsubmit='toProductManage' bindreset="formReset" report-submit='true' class='flex-sub'>
+          <view class="flex-sub padding flex flex-direction align-center justify-center form-layout">
+            <button form-type="submit" class='f-btn'></button>
+            <view class="flex flex-direction align-center justify-center">
+              <image class='home_image' src='/pages/images/icon_home2.png'></image>
+              <text class='text-df margin-top-sm '>商品管理</text>
+            </view>
+          </view>
+        </form>
+
+
+        <form bindsubmit='toOrderManage' bindreset="formReset" report-submit='true' class='flex-sub'>
+          <view class="flex-sub padding flex flex-direction align-center justify-center form-layout">
+            <button form-type="submit" class='f-btn'></button>
+            <view class="flex flex-direction align-center justify-center">
+              <image class='home_image' src='/pages/images/icon_home3.png'></image>
+              <text class='text-df margin-top-sm '>订单管理</text>
+            </view>
+          </view>
+        </form>
+
+
+        <form bindsubmit="toMoneyManage" bindreset="formReset" report-submit='true' class='flex-sub'>
+          <view class="flex-sub padding flex flex-direction align-center justify-center form-layout">
+            <button form-type="submit" class='f-btn'></button>
+            <view class="flex flex-direction align-center justify-center">
+              <image class='home_image' src='/pages/images/icon_home6.png'></image>
+              <text class='text-df margin-top-sm '>交易记录</text>
+            </view>
+          </view>
+        </form>
+      </view>
+
+      <view class='layout3 '>
+
+        <form bindsubmit="toSaleManage" bindreset="formReset" report-submit='true' class='flex-sub'>
+          <view class="flex-sub margin-bottom flex flex-direction align-center justify-center form-layout">
+            <button form-type="submit" class='f-btn'></button>
+            <view class="flex flex-direction align-center justify-center">
+              <image class='home_image' src='/pages/images/icon_home7.png'></image>
+              <text class='text-df margin-top-sm '>营销推广</text>
+            </view>
+          </view>
+        </form>
+
+        <form bindsubmit="toCommissionIncome" bindreset="formReset" report-submit='true' class='flex-sub'>
+          <view class="flex-sub margin-bottom flex flex-direction align-center justify-center form-layout">
+            <button form-type="submit" class='f-btn'></button>
+            <view class="flex flex-direction align-center justify-center">
+              <image class='home_image' src='/pages/images/icon_yjsy.png'></image>
+              <text class='text-df margin-top-sm '>佣金收益</text>
+            </view>
+          </view>
+        </form>
+
+        <form bindsubmit="toCustomerDataAnalysis" bindreset="formReset" report-submit='true' class='flex-sub'>
+          <view class="flex-sub margin-bottom flex flex-direction align-center justify-center form-layout">
+            <button form-type="submit" class='f-btn'></button>
+            <view class="flex flex-direction align-center justify-center">
+              <image class='home_image' src='/pages/images/icon_home5.png'></image>
+              <text class='text-df margin-top-sm'>数据统计</text>
+            </view>
+          </view>
+        </form>
+
+
+
+        <form bindsubmit="toShopManage" bindreset="formReset" report-submit='true' class='flex-sub'>
+          <view class="flex-sub margin-bottom flex flex-direction align-center justify-center form-layout">
+            <button form-type="submit" class='f-btn'></button>
+            <view class="flex flex-direction align-center justify-center">
+              <image class='home_image' src='/pages/images/icon_home1.png'></image>
+              <text class='text-df margin-top-sm '>店铺设置</text>
+            </view>
+          </view>
+        </form>
+
+        <!-- <view class="flex-sub  margin-bottom margin-left margin-right flex flex-direction align-center justify-center" bindtap='toCustomerDataAnalysis'>
+        <image class='home_image' src='/pages/images/icon_home5.png'></image>
+        <text class='text-df margin-top-sm '>数据统计</text>
+      </view> -->
+
+        <!-- <view class="flex-sub margin-bottom margin-left margin-right flex flex-direction align-center justify-center" bindtap='toMoneyManage'>
+        <image class='home_image ' src='/pages/images/icon_home6.png'></image>
+        <text class='text-df margin-top-sm '>交易记录</text>
+      </view>
+      <view class="flex-sub margin-bottom margin-left margin-right flex flex-direction align-center justify-center" bindtap='toSaleManage'>
+        <image class='home_image' src='/pages/images/icon_home7.png'></image>
+        <text class='text-df margin-top-sm '>营销推广</text>
+      </view>
+
+      <view class="flex-sub  margin-bottom margin-left margin-right flex flex-direction align-center justify-center" bindtap='toScanErCode'>
+        <image class='home_image' src='/pages/images/icon_home8.png'></image>
+        <text class='text-df margin-top-sm '>扫码核销</text>
+      </view> -->
+
+      </view>
+    </view>
+
+    <view style='height:1%'></view>
+
+    <view style="height:11%;background: white;" class='flex align-center justify-center '>
+      <form bindsubmit="toScanErCode" bindreset="formReset" report-submit='true' class='flex-sub'>
+        <view class="flex-sub flex align-center justify-center form-layout">
+          <button form-type="submit" class='f-btn'></button>
+          <view class="flex  align-center justify-center">
+            <image class='item_image' src='/pages/images/icon_home8.png'></image>
+            <text class='text-df  '>扫码核销</text>
+          </view>
+        </view>
+      </form>
+
+
+      <form bindsubmit="toChangeStore" bindreset="formReset" report-submit='true' class='flex-sub'>
+        <view class="flex-sub flex align-center justify-center form-layout">
+          <button form-type="submit" class='f-btn'></button>
+          <view class="flex  align-center justify-center">
+            <image class='item_image' src='/pages/images/icon_home10.png'></image>
+            <text class='text-df  '>切换店铺</text>
+          </view>
+        </view>
+      </form>
+      <!-- <view class="flex-sub flex align-center justify-center" bindtap='toShopAdministratorSet'>
+      <image class='item_image' src='/pages/images/icon_home9.png'></image>
+      <text class='text-df'>店铺管理员设置</text>
+    </view> -->
+      <view class='v-line '></view>
+      <!-- <view class="flex-sub flex align-center justify-center" bindtap='toChangeStore'>
+      <image class='item_image' src='/pages/images/icon_home10.png'></image>
+      <text class='text-df'>切换店铺</text>
+    </view> -->
+    </view>
+  </view>
+
+
+
+  <view class="cu-modal {{tip}}" bindtap='hideModal'>
+    <view class="cu-dialog">
+      <view class="cu-bar bg-white justify-end">
+        <view class="content">{{tipTitle}}</view>
+        <view class="action" bindtap="hideModal">
+          <text class="icon-close text-red padding-xs"></text>
+        </view>
+      </view>
+      <view class="padding-xl bg-white">
+        {{tipString}}
+      </view>
+    </view>
+  </view>
+
+
+
+  <view class="cu-modal {{ScanDetail}}" bindtap='hideModal'>
+    <view class="cu-dialog">
+
+      <view class='padding-top padding-bottom-xs '>商品核销</view>
+
+      <view class="padding-xs">
+        <block wx:for="{{orderDescModelList}}" wx:for-item="itemChild" wx:key='itemChild '>
+          <view class='item_order '>
+            <view>
+              <image class='item_image ' mode='widthFix ' src='{{itemChild.itemImages==null? "/pages/images/icon_all_default.jpg":itemChild.itemImages}} '> </image>
+            </view>
+            <view class='item_right '>
+              <view class="text-black van-ellipsis2 text-df padding-left">{{itemChild.goodsTitle}}</view>
+              <view class="text-gray text-sm padding-left" style="text-align: left;">规格：{{itemChild.specificationItems}}</view>
+              <view class="text-gray text-sm flex padding-left">
+                <text class="text-cut">
+							<text class="margin-right-xs"></text>本单金额: ￥{{itemChild.price/100}} 共{{itemChild.num}}件
+                </text>
+              </view>
+            </view>
+          </view>
+          <view class='line '></view>
+
+        </block>
+      </view>
+      <view class="cu-bar bg-white justify-end">
+        <view class="action">
+          <button class="cu-btn bg-main-color text-white" bindtap="hideModal11" catchtap>取消</button>
+          <button class="cu-btn bg-main-color margin-left text-white" bindtap="scanSure" catchtap>完成提货</button>
+        </view>
+      </view>
+    </view>
+  </view>

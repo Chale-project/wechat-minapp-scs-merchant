@@ -1,0 +1,6 @@
+/* pages/mainClass/AllUserDetail/AllUserDetail.wxss */
+
+.sortImage{
+  width: 12px;
+  height: 12px;
+}

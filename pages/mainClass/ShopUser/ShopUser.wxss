@@ -1,0 +1,9 @@
+/* pages/mainClass/ShopUser/ShopUser.wxss */
+
+page{
+  background-color: #fff
+}
+.layoutTop{
+  display: flex;
+  flex-direction: column;
+}

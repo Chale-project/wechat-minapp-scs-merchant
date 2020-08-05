@@ -1,0 +1,23 @@
+<!--pages/mainClass/cutInside/cutInside.wxml-->
+
+<import src="../../we-cropper/we-cropper.wxml"/>
+
+<view class="cropper-wrapper">
+  <template is="we-cropper" data="{{...cropperOpt}}"/>
+  <view class="cropper-buttons" style="color: {{cropperOpt.boundStyle.color}}">
+  </view>
+</view>
+
+<view class="imageloadbtn">
+ <view
+      class="upload btn"
+      bindtap="uploadTap">
+      上传图片
+    </view>
+    <view
+      class="upload btn"
+      style="background-color:#ff4444"
+      bindtap="getCropperImage">
+      生成图片
+    </view>
+</view>

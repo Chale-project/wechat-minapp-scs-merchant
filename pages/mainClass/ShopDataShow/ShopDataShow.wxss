@@ -1,0 +1,61 @@
+/* pages/mainClass/ShopDataShow/ShopDataShow.wxss */
+
+.chooseMonty1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  border-radius: 20px;
+  width: 110px;
+}
+
+.layoutMiddle {
+  position: relative;
+}
+
+.view_emity1 {
+  left: 0;
+  top: 0;
+  width: 100%;
+  position: absolute;
+  background-color: white;
+  z-index: 6;
+  height: 300px;
+}
+
+.view_emity2 {
+  left: 0;
+  top: 0;
+  width: 100%;
+  position: absolute;
+  background-color: white;
+  z-index: 1;
+}
+
+.newCustom {
+  position: absolute;
+  top: 55px;
+  left: 10px;
+}
+
+.backCustom {
+  position: absolute;
+  top: 75px;
+  left: 10px;
+}
+
+ff-canvas {
+  width: 100%;
+  height: 100%;
+}
+
+.showChooseImage {
+  margin-left: 4px;
+}
+
+.chart_layout {
+  height: 150px;
+}

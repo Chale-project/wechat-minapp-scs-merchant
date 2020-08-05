@@ -1,0 +1,61 @@
+<!--pages/mainClass/CommissionIncome/CommissionIncome.wxml-->
+<view>
+  <view class="flex justify-between bg-white align-center" style="height:80px;">
+    <view class="flex flex-direction padding-left" style="width:50%">
+      <view class="text-grey text-df">上月预估收入(元)</view>
+      <view class="margin-top-xs text-black text-lg">{{lastMonthEarn}}</view>
+    </view>
+    <view style="width:1px;height:60px;" class="bg-grey"></view>
+    <view class="flex flex-direction padding-left-lg" style="width:50%">
+      <view class="text-grey text-df">本月预估收入(元)</view>
+      <view class="margin-top-xs text-black text-lg">{{thisMonthEarn}}</view>
+    </view>
+  </view>
+
+  <view class="text-grey" style="background:#F1F1F1;padding:12px;">每月20号结算上月收入</view>
+
+  <view class="text-black flex flex-direction-row justify-between" style="background:#FFFFFF;padding:12px;" bindtap="allOrderDetail">
+    <view>全部订单明细</view>
+    <view>
+      <text class="icon-right"></text>
+    </view>
+  </view>
+  <view class="line"></view>
+  <view class="bg-white padding-top">
+    <van-tabs type="card" bind:change="onChange">
+      <van-tab title="今日"></van-tab>
+      <van-tab title="昨日"></van-tab>
+      <van-tab title="近7日"></van-tab>
+      <van-tab title="近30日"></van-tab>
+    </van-tabs>
+    <view class="flex justify-between bg-white align-center margin-top-xs" style="height:60px;">
+      <view class="flex flex-direction padding-left" style="width:50%">
+        <view class="text-grey text-df">付款订单(笔)</view>
+        <view class="margin-top-xs text-black text-lg">{{orderNum}}</view>
+      </view>
+      <view class="flex flex-direction padding-left" style="width:50%">
+        <view class="text-grey text-df">付款预估收入(元)</view>
+        <view class="margin-top-xs text-black text-lg">{{payEarn}}</view>
+      </view>
+    </view>
+    <view class="flex justify-between bg-white align-center padding-bottom-xs" style="height:60px;">
+
+      <view class="flex flex-direction padding-left" style="width:50%">
+        <view class="text-grey text-df">结算预估收入(元)</view>
+        <view class="margin-top-xs text-black text-lg">{{conmissionEarn}}</view>
+      </view>
+      <view class="flex flex-direction padding-left" style="width:50%">
+        <view class="text-grey text-df"></view>
+        <view class="margin-top-xs text-black text-lg"></view>
+      </view>
+    </view>
+  </view>
+
+  <view class="text-black margin-top flex flex-direction-row justify-between" style="background:#FFFFFF;padding:12px;" bindtap="incomeDetail">
+    <view>结算明细</view>
+    <view>
+      <text class="icon-right"></text>
+    </view>
+  </view>
+  <view class="line"></view>
+</view>

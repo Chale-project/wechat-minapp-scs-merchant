@@ -1,0 +1,29 @@
+<!--pages/mainClass/register/register.wxml-->
+
+<view class="container">
+<image src="../../images/login/user_icon1.png" mode="aspectFill" class="usericonimage"></image>
+
+<view class="loginOne">
+
+<input type="number" maxlength="11" placeholder="请输入手机号" placeholder-class="placeholder" bindinput="inputPhone" style='color:#000'/>
+
+</view>
+
+<view class="loginTwo">
+<input type="number" placeholder="请输入验证码" placeholder-class="placeholder" bindinput="inputver"  class="messageInput"/>
+<view class="verButton" style="color:{{verTitle==='获取验证码'?'#ff4444':'#666666'}}" bindtap="verButtonTap">{{verTitle}}</view>
+
+</view>
+
+<view class="loginThree">
+<input type="password" placeholder="请输入6-18位的密码" placeholder-class="placeholder" bindinput="inputPass" hidden="{{choosetype=='password'?false:true}}" maxlength='18' style='color:#000' value="{{userPassword}}"/>
+<input type="text" placeholder="请输入6-18位数的密码" placeholder-class="placeholder" class="placeholdertwo" bindinput="inputPassord" style='color:#000' hidden="{{choosetype=='password'?true:false}}" value="{{userPassword}}"/>
+<image catchtap='onCollectionTap' src="{{isPassword?'../../images/login/Sign_icon_hide.png':'../../images/login/Sign_icon_display.png'}}" class="signhidepassword"></image>
+</view>
+
+<view class="confirm-btn shadow-blur" style='background:#ff4444' bindtap='goToIndex'>{{flag==1?'注册':'确定'}}
+        </view>
+
+
+
+</view>

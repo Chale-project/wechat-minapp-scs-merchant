@@ -1,0 +1,28 @@
+<!--pages/mainClass/ShopBusinessDetail/ShopBusinessDetail.wxml-->
+
+<view class="itemview" bindtap='popshowtap' style="margin-bottom:10px">
+  <view class='nameview'>店铺整体营业状态</view>
+  <view class='business'>{{businessdata.businessState}}</view>
+  <text class='icon-right text-gray padding-left-xs'></text>
+</view>
+
+<view class="itemview" bindtap='popshowtaptwo' style="margin-bottom:10px">
+  <view class='nameview'>外卖营业状态</view>
+  <view class='business'>{{businessdata.deliveryState}}</view>
+  <text class='icon-right text-gray padding-left-xs'></text>
+</view>
+
+<!-- 空态 -->
+<emptyView salelistArr="{{businessdata}}" emptycount='0' picheight='400px'>
+</emptyView>
+
+<van-popup show="{{ popshow }}" position="bottom" bind:close="onClose">
+  <view class='guigenumview' wx:for="{{guigeInputArr}}" data-idx="{{idx}}" wx:for-index="idx" wx:for-item="item" wx:key="{{idx}}" bindtap="guigenumviewtap">
+    <view wx:if="{{idx<3}}">{{item}}</view>
+    <picker mode="multiSelector" bindchange="bindMultiPickerChange" value="{{multiIndex}}" range="{{multiArray}}">
+      <view class="picker" wx:if="{{idx==guigeInputArr.length-1}}">
+        {{item}}
+      </view>
+    </picker>
+  </view>
+</van-popup>

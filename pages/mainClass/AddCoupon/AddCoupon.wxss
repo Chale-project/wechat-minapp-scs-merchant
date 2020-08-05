@@ -1,0 +1,27 @@
+/* pages/mainClass/AddCoupon/AddCoupon.wxss */
+page{
+  background-color: #f1f1f1
+}
+
+.topLayout {
+  padding-bottom: 10px;
+}
+
+.bottomLayout {
+  margin-left: 15px;
+  margin-right: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.savebtn {
+  margin-left: 25px;
+  margin-right:25px;
+  margin-bottom:10px;
+  color: #fff;
+  background: #ff4444;
+  border-radius: 5px;
+  text-align: center;
+  height: 40px;
+  line-height: 40px;
+}

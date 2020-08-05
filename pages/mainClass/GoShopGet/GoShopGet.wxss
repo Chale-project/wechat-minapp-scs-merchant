@@ -1,0 +1,81 @@
+/* pages/mainClass/GoShopGet/GoShopGet.wxss */
+
+.cu-form-group .title {
+  min-width: calc(4em + 30rpx);
+}
+
+.rightweekview {
+  width: 100%;
+  height: 80px;
+  padding: 5px;
+}
+.rightweekview::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.itemweek {
+  box-sizing: content-box;
+  width: calc(25% - 20px);
+  height: 30px;
+  float: left;
+  margin: 2px 5px;
+  border: 1px solid #ff4444;
+  border-radius: 3px;
+  text-align: center;
+  line-height: 30px;
+}
+
+.saveview {
+  margin-top: 30px;
+  font-size: 14px;
+  height: 40px;
+  background: #ff4444;
+  color: #ffffff;
+  border-radius: 5px;
+  margin-left: 30%;
+  margin-right: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.saveview:active {
+  opacity: .8;
+}
+.addressContentView {
+  width:300px;
+  height:130px;
+  background:#fff;
+  border-radius:5px;
+  display:flex;
+  align-items:center;
+  flex-direction:column;
+}
+.addresspoptitle {
+  height:80px;
+  width:260px;
+  padding-top:20px;
+  font-size:16px;
+  color:#333;
+}
+.bottomview {
+  height:50px;
+  display:flex;
+  align-items:center;
+  flex-direction:row;
+  width:100%;
+}
+.canclbutton {
+  width:50%;
+  background:#f5f5f5;
+  color:#333;
+  height:100%;
+  line-height:50px;
+}
+.surebutton {
+  width:50%;
+  background:#ff4444;
+  color:#fff;
+  height:100%;
+  line-height:50px;
+}

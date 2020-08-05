@@ -1,0 +1,191 @@
+/* pages/mainClass/HomeLanMuChoosePro/HomeLanMuChoosePro.wxss */
+.bottomviewstore {
+  height: 50px;
+  bottom: 0px;
+  background: #fff;
+  z-index: 999;
+  position:fixed;
+  left:0;
+  right:0;
+  border-top: 1px solid #f5f5f5;
+  margin: 0 2px;
+  display: flex;
+}
+.bottomviewstore::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.checkchooseviews {
+  width: 100px;
+  display: flex;
+  color: #ff4444;
+  align-items: center;
+  justify-content: center;
+  border-right:1px solid #f5f5f5;
+}
+.bottom-itemstore {
+  height: 100%;
+  float: left;
+  justify-content:center;
+  display:flex;
+  align-items:center;
+  margin-left: 2px;
+  background: #fff;
+  border-right:1px solid #f5f5f5;
+  width:calc(100% - 100px);
+  background:#ff4444;
+  color:#fff;
+}
+.outviewstore {
+  background: #fff;
+  padding: 10px;
+  border-bottom: 1px solid #f5f5f5;
+}
+.prosearchviewstore {
+  height: 40px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; 
+}
+.alltitleviewstore {
+  color: #000;
+  width: 100px;
+  padding-left: 10px;
+  display: flex;
+}
+.searchinputstore {
+  width: calc(100% - 90px);
+  padding-right: 10px;
+  text-align: left;
+}
+.placeholder {
+  color: #ccc;
+}
+
+/* 全部分类 */
+.allCaterviewstore {
+  background: #f5f5f5;
+}
+.topcaterstore {
+  padding-top: 10px;
+  background: #fff;
+}
+.topcaterstore::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.topcater-itemstore {
+  background:#f5f5f9;
+  box-sizing: content-box;
+  width: calc(25% - 10px);
+  height: 35px;
+  float: left;
+  margin: 5px;
+  text-align: center;
+  line-height: 35px;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  overflow:hidden;
+  border-radius: 5px;
+}
+.onecaterviewstore{
+  background: #fff;
+  padding: 5px 0;
+}
+.fircaterstore {
+  color:#666;
+  height:40px;
+  width: 80px;
+  line-height:40px;
+  text-align: center;
+  margin-left: 10px;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  overflow:hidden;
+}
+.twocaterstore::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.secondcater-itemstore {
+  background:#f5f5f9;
+  box-sizing: content-box;
+  width: calc(25% - 10px);
+  height: 35px;
+  float: left;
+  margin: 5px;
+  text-align: center;
+  line-height: 35px;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  overflow:hidden;
+  font-size: 12px;
+  border-radius: 5px;
+}
+
+.sale-itemstore {
+  background: #fff;
+  margin-bottom:10px;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 130px;
+}
+.checkchooseviewstore {
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.rightitemviewstore {
+  width: calc(100% - 50px);
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+.userIconImgstore {
+  width:90px;
+  height:90px;
+  background: #f5f5f5;
+}
+.rightproall {
+  width: calc(100% - 90px);
+  height: 90px;
+  padding-left: 10px;
+}
+.rightproallFir {
+  height: 60%;
+}
+.productNamestore {
+  color:#333;
+  font-size: 15px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2;
+  display:-webkit-box;
+}
+.productPricestore {
+  color:red;
+  font-size: 15px;
+}
+
+.addtimeviewstore {
+  color:#666;
+  font-size: 13px;
+  height: 20%;
+}
+
+.totalsalestore {
+  color:#666;
+  font-size: 13px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 100%;
+  height: 20%;
+}

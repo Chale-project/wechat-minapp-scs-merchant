@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "数据",
+  "navigationBarBackgroundColor": "#ffffff",
+  "usingComponents": {
+    "ff-canvas": "@antv/f2-canvas"
+  }
+}

@@ -1,0 +1,48 @@
+<!--pages/mainClass/IntegralDetail/IntegralDetail.wxml-->
+
+
+<view class='layout0'>
+  <view class='text-lg text-white'>{{totalSum}}</view>
+  <view class='text-df text-white margin-top'>已发放积分</view>
+</view>
+
+<view class='ListLine'></view>
+
+
+
+<view class="flex flex-direction-row justify-between padding-top-sm padding-bottom-sm">
+  <view class="flex flex-direction-row align-center justify-center" style="margin-left:50px;" bindtap="totalIntegral">
+    总积分
+    <view class='flex flex-direction padding-left-xs'>
+      <image class='sortImage' src='{{imageurl1}}'></image>
+    </view>
+  </view>
+  <view class="flex flex-direction-row align-center justify-center" style="margin-right:50px;" bindtap="canUserIntegral">
+    可用积分
+    <view class='flex flex-direction padding-left-xs'>
+      <image class='sortImage' src='{{imageurl2}}'></image>
+    </view>
+  </view>
+</view>
+
+<view class="line"></view>
+
+<block wx:for="{{dataList}}" wx:for-item="item" wx:key='item' wx-for-index='index'>
+  <view class='flex  align-center justify-between padding-left padding-right' style='height:70px;' bindtap="toUsedDetail" data-userNumber="{{item.userNumber}}">
+    <view class='flex flex-direction-row'>
+      <image class='imageLayout1 round' src='{{item.headPic==null?"/pages/image/":item.headPic}}'></image>
+      <view class="flex flex-direction">
+        <view class='van-ellipsis' style='margin-left:15px;width:70px;'>{{item.userName}}</view>
+        <view class="margin-left margin-top-sm text-yellow">{{item.membershipName}}</view>
+      </view>
+    </view>
+    <view class='flex flex-direction align-right justify-right'>
+      <view class=' flex align-right justify-right justify-around text-gray'>总积分:{{item.integralSum}} <text class="padding-left">可用积分:{{item.customerIntegral}} </text></view>
+      <view class=' margin-top-sm flex align-right justify-right justify-end text-gray text-right'>昨日使用积分:{{item.useOfYesterdayIntegral}}</view>
+    </view>
+  </view>
+  <view class='line'></view>
+</block>
+
+<emptyView salelistArr="{{dataList}}" emptycount='10' picheight='420px'>
+</emptyView>

@@ -1,0 +1,33 @@
+/* pages/mainClass/AllUserDetail/AllUserDetail.wxss */
+
+.sortImage{
+  width: 12px;
+  height: 12px;
+}
+
+.f-btn{
+  color: white;
+  background: transparent;
+  font-size: 15px;
+  line-height: normal;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.f-btn:after {
+  border: none
+}
+
+
+.bottomLayout {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.top_layout {
+  padding-bottom: 65px;
+}

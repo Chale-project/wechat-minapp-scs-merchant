@@ -1,0 +1,42 @@
+<!--pages/mainClass/HomeLanMuSet/HomeLanMuSet.wxml-->
+
+<!-- 全部分类 -->
+ <scroll-view class='allCaterviewstore' scroll-y="true" style="height:{{screenHeighth-50}}px"  bindscrolltolower="storescrolower">
+     <view class='topcater-itemstore' wx:for="{{subjectlistdata}}" data-idx="{{idx}}" wx:for-index="idx" wx:for-item="item" wx:key="{{idx}}" bindtap='topcatertap'>
+     
+     <van-swipe-cell id="swipe-cell" right-width="{{ 65 }}" async-close bind:close="onClose" data-idx="{{idx}}">
+  <van-cell-group>
+    <van-cell title="{{item.subjectName}}" value="已选{{item.sumNumber?item.sumNumber:0}}个商品" />
+  </van-cell-group>
+  <view slot="right" style='line-height:44px;background:#ff4444;color:#fff;width:65px;text-align:center'>删除</view>
+</van-swipe-cell>
+
+     </view>
+
+<view class="cu-load {{subjectscrollviewLoader?'loading':'over'}}" wx:if="{{subjectlistdata.length>0}}"></view>
+
+<emptyView
+      salelistArr = "{{subjectlistdata}}"
+      emptycount = '0'
+      picheight = '400px'>
+  </emptyView>    
+
+  </scroll-view>
+
+<!-- 添加子分类 -->
+<view class="addsecondcater" bindtap="addhomeSubjecttap">
+  <view class="delRight">+</view>
+  <view class="addRight">添加首页栏目</view>
+</view>
+
+  <!-- 新建父分类或子分类 -->
+<van-popup show="{{ addsubjectshow }}" bind:close="onaddsubjectClose">
+<view class="vanContentView">
+<view class="catertoptitle">新建栏目</view>
+<input class="shurucater" placeholder="请输入栏目名称"placeholder-class="placeholder" maxlength="10" bindinput="inputcatertap" value="{{catervalue}}"></input>
+<view class="cancleorsure">
+<view class="cancleview" bindtap="cancletap">取消</view>
+<view class="sureview" bindtap="suretap">确定</view>
+</view>
+</view>
+</van-popup>

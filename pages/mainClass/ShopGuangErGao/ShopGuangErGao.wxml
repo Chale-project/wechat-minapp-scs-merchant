@@ -1,0 +1,46 @@
+<!--pages/mainClass/ShopGuangErGao/ShopGuangErGao.wxml-->
+
+<view class='title-item' wx:for="{{navtitledata}}" data-idx="{{idx}}" wx:for-index="idx" wx:for-item="item" wx:key="{{idx}}">
+  <view class='topview'>
+    <view class='itemview'>广告{{idx+1}}</view>
+    <view class='delet' data-idx="{{idx}}" bindtap='deletitem' wx:if="{{navtitledata.length>1}}">
+    <view class="deletItemview">一</view>
+    <view class="deletItemText">删除</view>
+  </view>
+  </view>
+  <view class='imageall'>
+    <view class="emptyview" data-idx="{{idx}}" bindtap="uploadtap">
+        <image class='imageupload' wx:if="{{item.picPath.length<1}}"  src="/pages/images/addStore/Touploadpictures.png" binderror="avatarError" mode="aspectFit"></image>
+        <image class='imageview' wx:if="{{item.picPath.length>0}}" src="{{item.picPath}}" mode="aspectFill"></image>
+      </view>
+      <view class='productview' wx:if="{{item.goodsId}}">
+      <view class='lianjietitle'>链接到</view>
+      <view class='proview' data-idx="{{idx}}" >
+        <image class="userIconImg" src="{{item.goodsPic.length>0?item.goodsPic:'/pages/images/storeManager/productIcon.png'}}" data-idx="{{idx}}" mode="aspectFill"></image>
+        <view class="salerightviews">
+        <view class="productName">{{item.goodsName}}</view>
+        <view class="productPrice">¥{{item.goodsPrice/100}}</view>
+        </view>
+        <view class='genghuangview' data-idx="{{idx}}" bindtap='updateprotap'>更换</view>
+      </view>
+    </view>
+    <view class='productview' style="margin-top:5px;color:blue;text-align:center" data-idx="{{idx}}" bindtap='addGuangAddressTap' wx:else >+添加广告链接(选填)</view>
+
+  </view>
+</view>
+
+<view class='bottomview'>
+  <!-- <view class='addview' bindtap='additem'>添加广告</view> -->
+  <view class='addrightview' bindtap='additem'>
+    <view class="delRight">+</view>
+    <view class="addRight">添加广告</view>
+  </view>
+  <view class='saveview' bindtap='savetap' style='margin:10px 0'>保存</view>
+</view>
+
+<van-popup show="{{showGuangAddress}}" position="bottom" bind:close="onClose">
+  <view class='guangAddressView'>
+   <view class='address-item' wx:for="{{addresstitle}}" data-idx="{{idx}}" wx:for-index="idx" wx:for-item="item" wx:key="{{idx}}" style="margin-bottom:{{idx==0?'10px':'0px'}};color:{{idx==1?'red':'#000'}}" bindtap='addressitemtap'>{{item}}</view>
+   </view>
+</van-popup>
+

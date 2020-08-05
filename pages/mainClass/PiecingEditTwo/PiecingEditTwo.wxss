@@ -1,0 +1,14 @@
+/* pages/mainClass/PiecingEditTwo/PiecingEditTwo.wxss */
+.white_layout{
+  background-color: white;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 8px;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+.in_layout{
+  border: solid 1px #f1f1f1
+}

@@ -1,0 +1,16 @@
+<!--UserIntegralUsed/UserIntegralUsed.wxml-->
+<view class="flex flex-direction-row padding-top-xs padding-bottom-xs   bg-white">
+  <view class="flex flex-sub justify-center">积分</view>
+  <view class="flex flex-sub justify-center">使用时间</view>
+</view>
+<view class="line"></view>
+<block wx:for="{{dataList}}" wx:for-item="item" wx:key='item' wx-for-index='index'>
+  <view class="flex flex-direction-row padding-top padding-bottom   bg-white">
+    <view class="flex flex-sub justify-center">{{item.integralStr}}</view>
+    <view class="flex flex-sub justify-center">{{item.addDataTime}}</view>
+  </view>
+  <view class="line"></view>
+</block>
+
+ <emptyView salelistArr="{{dataList}}" emptycount='10' picheight='420px'>
+    </emptyView>

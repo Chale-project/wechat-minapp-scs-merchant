@@ -1,0 +1,42 @@
+<!--pages/StoreManager/CaterProList/CaterProList.wxml-->
+<!-- 列表 -->
+<!-- 分为上架和下架 -->
+<scroll-view scroll-y="true" class="productscrollview" bindscrolltolower="scrolower" style="height:{{screenHeighth}}px;width:100%">
+  <!-- 
+<view class='categoryclass'>
+ <view class='saleview' bindtap='saleviewtap' style="{{saleselect?'color: red':'color: #666'}}">出售中({{wheredata.put?wheredata.put:0}})</view>
+ <view class='pullproview' bindtap='pullproviewtap' style="{{saleselect?'color: #666':'color: red'}}">下架({{wheredata.out?wheredata.out:0}})</view>
+</view> -->
+
+  <!-- 添加列表信息-->
+  <!-- <checkbox-group bindchange="checkboxChange"> -->
+  <view class='sale-item' wx:for="{{salelistArr}}" data-idx="{{idx}}" wx:for-index="idx" wx:for-item="item" wx:key="{{idx}}" bindtap='checkboxChange' data-index='{{idx}}'>
+    <view class="checkchooseview" >
+    <image src='{{item.proSelecte?"/pages/images/icon_check.png":"/pages/images/icon_uncheck.png"}}' style='width:26px;height:26px;'></image>
+      <!-- <text class='{{item.proSelecte?"icon-roundcheck":"icon-round"}} text-lg {{item.proSelecte?"text-red":"text-grey"}}'  /> -->
+    </view>
+
+    <view class="rightitemview" style="{{saleselect?'':'width:100%;padding-left:15px'}}">
+      <image class="userIconImg" src="{{item.coverImage?item.coverImage:'/pages/images/storeManager/productIcon.png'}}" mode="aspectFill"> </image>
+      <view class='rightproview'>
+        <view class="productName">{{item.title}}</view>
+        <view class="productPrice">¥{{item.price/100}}</view>
+        <view class="addtimeview">添加时间 {{item.addDataTime}}</view>
+        <view class="totalsale">总销量 {{item.stockCount}} 库存 {{item.num}}</view>
+      </view>
+    </view>
+  </view>
+  <!-- </checkbox-group> -->
+  <!-- <view class="cu-load {{scrolowerLoad?'loading':'over'}}" wx:if="{{salelistArr.length>0}}"></view> -->
+  <emptyView salelistArr="{{salelistArr}}" emptycount='5' picheight='400px'>
+  </emptyView>
+
+</scroll-view>
+<!-- 
+<view class="bottomview" wx:if="{{showchooseview}}" hidden='true'>
+  <view class="checkchooseviews" bindtap="allchoosetap">
+    <checkbox class='round red' checked="{{isAllChoose}}" />
+  </view>
+  <view class="bottomsecview">全选 共{{chooseProduct.length}}件商品</view>
+  <view class="bottomsubview" bindtap="surechoosetap">保存</view>
+</view> -->

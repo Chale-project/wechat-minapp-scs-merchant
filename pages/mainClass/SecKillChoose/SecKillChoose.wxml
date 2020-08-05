@@ -1,0 +1,95 @@
+<!--pages/mainClass/SecKillChoose/SecKillChoose.wxml-->
+<!-- 列表分页 -->
+<view class="cu-bar search bg-white">
+    <view class="search-form round">
+      <text class="icon-search"></text>
+      <input type="text" placeholder="搜索商品名称" confirm-type="search" bindinput="searchnameinput" bindconfirm="searchbutton"></input>
+    </view>
+  </view>
+<scroll-view scroll-y="true" bindscrolltolower="scrolower" style="height:{{screenHeighth-50-50}}px;width:100%">
+<!-- 添加列表信息-->
+<radio-group style='width:100%'>
+ <view class='sale-item' wx:for="{{salelistArr}}" data-idx="{{idx}}" wx:for-index="idx" wx:for-item="item" wx:key="{{idx}}" >
+    <view class="checkchooseview">
+    <radio class='red' data-idx="{{idx}}" bindtap='checktap' checked="{{item.id==chooseid?true:''}}"></radio>
+    </view>
+    <view class="rightitemview">
+      <image class="userIconImg" src="{{item.coverImage.length>0?item.coverImage:'/pages/images/storeManager/productIcon.png'}}" binderror="avatarError" data-idx="{{idx}}" mode="aspectFill"></image>
+      <view class='rightallview'>
+        <view class='rightfirview'>
+          <view class="productName">{{item.title}}</view>
+        </view>
+        <view class='rightsecview'>
+          <view class="productPrice"><text> ¥ {{item.price}}</text></view>
+          <view class="guigename">
+          <!-- <view class='guigenamedetail'>{{item.specname.length>0?item.specname:item.goodsDescModelList[0].specificationItems}}</view> -->
+          </view>
+          <view class="totalsale">
+            总销量 <text>{{item.stockCount}}</text> 
+            <text style='padding-left:20px; color:#666'>库存 </text> 
+            <text>{{item.num}}</text></view>
+          </view>
+        </view>
+    </view>
+    <!-- <view class="xuanzeguige">
+      <view class='guigechoose' data-idx="{{idx}}" bindtap='chooseguigetap'>{{'选规格'}}</view>
+    </view> -->
+  </view>
+  </radio-group>
+
+<view class="cu-load {{scrolowerLoad?'loading':'over'}}" wx:if="{{salelistArr.length>0}}"></view>
+
+  <emptyView
+      salelistArr = "{{salelistArr}}"
+      emptycount = '5'
+      picheight = '400px'>
+  </emptyView>
+
+</scroll-view>
+
+<view class="bottomview" bindtap='nextBrnTap' hidden='{{guigeshow}}'>下一步</view>
+
+
+<!-- 选择规格 -->
+<van-popup show="{{ guigeshow }}" bind:close="onClose">
+  <view class="vanContentView">
+    <view class="catertoptitle van-ellipsis">{{chooseProduct.title}}</view>
+    <scroll-view scroll-y='true' class="guigecenterview">
+    <view class='guigenumview' wx:for="{{guigeInputArr}}" data-idx="{{idx}}" wx:for-index="idx" wx:for-item="item" wx:key="{{idx}}">
+        <view class="guigesingleview" data-idx="{{idx}}">
+          <view class='guigenameview'>{{item.specificationItems}}</view>
+          <view class='guigepriceview'>¥ {{item.descPrice}}</view>
+          <view class='lingshouview'>
+                <view style="{{item.seckillPrice?'color:#000':'color:#ccc'}};margin-left:5px;font-size:12px;margin-right:2px">¥ </view>
+                <input type='digit' class='guigesingleprice' placeholder-class="placeholder" placeholder='设置秒杀价' bindinput="guigepriceinput" data-idx="{{idx}}" value="{{item.seckillPrice}}"></input>
+                </view>
+                <input type='number' class='guigesingleprices' placeholder-class="placeholder" placeholder='设置活动库存' bindinput="guigenuminput" data-idx="{{idx}}" value="{{item.seckillNum}}"></input>
+
+        </view>
+      </view>
+    </scroll-view>
+    <view class="cancleorsure">
+    <view class="cancleview" bindtap="hideModal">取消</view>
+    <view class='guigeverlineview'></view>
+    <view class="sureview" bindtap="hideModalsure">下一步</view>
+    </view>
+  </view>
+</van-popup>
+
+
+ <!-- <view class="cu-modal center-modal {{guigeshow==true?'show':''}}" bindtap="hideModal">
+  <view class="cu-dialog" catchtap>
+    <view class="bg-white" style="color:#333;text-align:center;line-height:40px">选择规格</view>
+    <view class="grid col-4 padding-sm">
+      <view rrrwx:for="{{chooseProduct.goodsDescModelList}}" class="padding-xs" data-idx="{{idx}}" wx:for-index="idx" wx:for-item="item" wx:key="{{idx}}">
+        <button class="cu-btn {{!item.curcodestate?'bg-orange':'line-orange'}}" data-idx="{{idx}}" bindtap="ChooseCheckbox"> {{item.specificationItems}}
+        </button>
+      </view>
+    </view>
+    <view class="bottomselview bg-white">
+      <view class="cancleselview" bindtap="hideModal">取消</view>
+      <view class="sureselview" bindtap="hideModalsure">确定</view>
+    </view>
+
+  </view>
+</view> -->

@@ -1,0 +1,148 @@
+/* pages/mainClass/OrderSearchPage/OrderSearchPage.wxss */
+
+.layout_dialog {
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
+.top {
+  position: fixed;
+  width: 100%;
+  z-index: 5;
+}
+
+.layout2 {
+  position: fixed;
+  left: 0;
+  top: 55px;
+  right: 0;
+  z-index: 5;
+}
+
+.toplayout {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  z-index: 5;
+}
+
+.ListLine2 {
+  height: 6px;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 90px;
+  background-color: #fff;
+}
+
+.date-layout {
+  border-radius: 20px;
+  background-color: #f1f1f1;
+  margin-left: 15px;
+  height: 35px;
+  padding-left: 10px;
+  padding-right: 10px;
+  display: flex;
+  align-items: center;
+  margin-right: 15px;
+}
+
+.date-layout {
+  border-radius: 20px;
+  background-color: #f1f1f1;
+  height: 35px;
+  padding-left: 18px;
+  padding-right: 18px;
+  display: flex;
+  align-items: center;
+}
+
+.date-search {
+  display: flex;
+  background-color: #fff;
+  height: 35px;
+}
+
+.sendLayout {
+  align-items: center;
+  justify-content: center;
+  margin-top: 100px;
+  display: flex;
+}
+
+.bottomLayout {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin-left: 15px;
+  margin-right: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.imageDefault {
+  width: 100px;
+  height: 50px;
+}
+
+.receive_layout {
+  margin-bottom: 60px;
+}
+
+.allItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 40px;
+  background-color: white;
+}
+
+
+/* pages/mainClass/OrderManage/OrderManage.wxss */
+.layout_dialog{
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
+
+.sendLayout{
+  align-items: center;
+  justify-content: center;
+  margin-top: 100px;
+  display: flex;
+}
+
+
+.bottomLayout {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin-left: 15px;
+  margin-right: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.imageDefault{
+  width: 100px;
+  height: 50px;
+}
+
+.receive_layout{
+  margin-bottom: 60px;
+}
+
+.allItem{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 15px;
+  padding-right: 15px;
+  height: 45px;
+  background-color: white
+}

@@ -1,0 +1,32 @@
+<!--pages/mainClass/SecKill/SecKill.wxml-->
+
+<!-- <view class='choosetishi'>
+    <image class="tishipic" src="/pages/images/storeManager/tishipic.png" mode="aspectFill"></image>
+     <view class='tishiview'>海外清关商品暂时不支持秒杀,敬请谅解</view>
+</view> -->
+
+<scroll-view scroll-y="true" class="productscrollview" bindscrolltolower="scrolower" style="height:{{screenHeighth-50}}px;width:100%">
+
+<import src="/pages/mainClass/SecKillItem/SecKillItem.wxml"/>
+
+<van-tabs swipeable color='#C4091C' active="{{caterIndex}}" bind:change="onClickindex">
+  <van-tab title="全部">
+    <template is="SecKillItem" data="{{salelistArr:salelistArr,pageNumber:pageNumber,scrolowerLoad:scrolowerLoad}}" />
+  </van-tab>
+  <van-tab title="未开始">
+    <template is="SecKillItem" data="{{salelistArr:salelistArr,pageNumber:pageNumber,scrolowerLoad:scrolowerLoad}}" />
+  </van-tab>
+  <van-tab title="进行中">
+    <template is="SecKillItem" data="{{salelistArr:salelistArr,pageNumber:pageNumber,scrolowerLoad:scrolowerLoad}}" />
+  </van-tab>
+  <van-tab title="已结束">
+    <template is="SecKillItem" data="{{salelistArr:salelistArr,pageNumber:pageNumber,scrolowerLoad:scrolowerLoad}}" />
+  </van-tab>
+</van-tabs>
+
+<van-dialog id="van-dialog" />
+
+</scroll-view>
+
+
+<view class="bottomview icon-roundadd" bindtap='addSpeedTap'> 添加秒杀活动</view>

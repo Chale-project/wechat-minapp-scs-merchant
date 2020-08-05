@@ -1,0 +1,32 @@
+<!--pages/ShopsPower/ShopsJobManager/ShopsJobManager.wxml-->
+
+<scroll-view scroll-y="true" bindscrolltolower="scrolower" style="height:{{screenHeighth-50}}px;width:100%">
+
+<view class='account-item' wx:for="{{accountlistArr}}" data-idx="{{idx}}" wx:for-index="idx" wx:for-item="item" wx:key="{{idx}}" bindtap='jobmanager'>
+
+  <view class='topitem'>
+   <view class='userphoneview'>{{item.roleName}}</view>
+   <view class='userjobview'>权限:{{item.menuName?item.menuName:'无'}}</view>
+   <!-- /pages/images/addStore/addCaterEdit.png -->
+  </view>
+  <view class='verlineview'></view>
+  <view class='editview' data-idx="{{idx}}" bindtap='editejobtap'>
+    <image class="editimage" src='/pages/images/addStore/addCaterEdit.png'></image>
+  </view>
+  
+  <!-- <view class='icon-edit' data-idx="{{idx}}" bindtap='editejobtap'></view> -->
+  
+</view>
+
+<view class="cu-load {{scrolowerLoad?'loading':'over'}}" wx:if="{{accountlistArr.length>0}}"></view>
+
+ <emptyView
+      salelistArr = "{{accountlistArr}}"
+      emptycount = '5'
+      picheight = '400px'>
+  </emptyView>
+
+<view class='addjobview' bindtap='addnewjobtap'>+ 新建岗位</view>
+
+</scroll-view>
+

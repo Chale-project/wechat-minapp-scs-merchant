@@ -1,0 +1,40 @@
+<!--pages/ShopsPower/ShopsAccountEdit/ShopsAccountEdit.wxml-->
+<view class='topview' style='margin-bottom: 10px'>
+ <view>{{switchchecked?'启用':'禁用'}}</view>
+ <van-switch
+        checked="{{ switchchecked }}"
+        active-color="#07c160"
+        inactive-color="lightgray"
+        bind:change="onSwitchChange"
+      />
+</view>
+
+<view class='topview'>
+ <view style="width:100px">姓名</view>
+ <input type='text' class="iphoneinput" placeholder="请输入姓名" placeholder-class="placeholder" maxlength='10' value="{{name}}" bindinput="nametap" style='width:calc(100% - 100px);font-size:12px;text-align:right'></input>
+</view>
+<view class='topview'>
+ <view>登录名</view>
+ <view style="color:#ccc;font-size:12px">{{operatordic.userMobilePhone}}</view>
+</view>
+<view class='topview' bindtap='choosejobtap'>
+ <view style='width:100px'>岗位</view>
+ <view style="color:#ccc;font-size:12px;width:calc(100% - 100px);text-align:right">{{chooseRoleName}}</view>
+ <view class='icon-right'></view>
+</view>
+<view class='topview' bindtap='changepasswordtap'>
+ <view>修改密码</view>
+ <view class='icon-right'></view>
+</view>
+
+<view class='loginaccount'>
+    <view class='shopinfo'>是否接收店铺消息</view>
+    <van-switch
+        checked="{{ shopchecked }}"
+        active-color="#07c160"
+        inactive-color="lightgray"
+        bind:change="onSwitchChangesec"
+      />
+  </view>
+
+<view class='saveview' bindtap='savetap'>保存</view>

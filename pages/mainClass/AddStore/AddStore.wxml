@@ -1,0 +1,46 @@
+<!--pages/mainClass/AddStore/AddStore.wxml-->
+<view class="page">
+
+ <view class='student-item' wx:for="{{titledata}}" data-idx="{{idx}}" wx:for-index="idx" wx:for-item="item" wx:key="{{idx}}" bindtap="maptap">
+
+  <image class='iconImage' src="{{item.icon}}"></image>
+  <view class="studentName" style="{{showimagefilePath.length>0&&idx==1?'width:calc(100% - 100px)':'width:80px'}}">{{item.name}}</view>
+  <input placeholder="{{item.holder}}" maxlength="{{item.name=='客服电话'?'11':item.name=='邀请码'?'8':'20'}}" placeholder-class="placeholder" class="editInput" wx:if="{{idx>4||idx<1}}"  bindinput="inputnametap" type="{{item.name=='客服电话'?'number':''}}"></input>
+  <view class='tapview' wx:if="{{idx==1&&showimagefilePath.length<1}}" style="width: calc(100% - 150px)">选填</view>
+  <view class='tapview' wx:if="{{idx==2}}" style="width: calc(100% - 150px);color:{{currentSex=='必填'?'#ccc':'#000'}}" >{{currentSex}}</view>
+  <view class='tapview' wx:if="{{idx==3}}" style="width: calc(100% - 120px);color:{{shencity=='必填'?'#ccc':'#000'}}">{{shencity}}</view>
+  <view class='tapview' wx:if="{{idx==4}}" style="width: calc(100% - 120px);color:{{addressdetail=='必填'?'#ccc':'#000'}}">{{addressdetail}}</view>
+ 
+  <view wx:if="{{idx==1||idx==2}}" hidden="{{idx==1&&showimagefilePath.length>0?true:false}}" class="arrowRight icon-right"></view>
+  <image class="iconfile"  wx:if="{{idx==1}}" hidden="{{showimagefilePath.length>0?false:true}}" src="{{showimagefilePath}}" binderror="avatarError" mode="aspectFill"></image>
+
+</view>
+<view class='choosetishi'>
+    <image class="tishipic" src="/pages/images/storeManager/tishipic.png" mode="aspectFill"></image>
+     <view class='tishiview'>请联系业务员提供邀请码 !</view>
+</view>
+
+<view class="confirm-btn shadow-blur" style='background:#ff4444' bindtap='sureAddStoreTap'>确认创建</view>
+
+<!-- 性别选择 -->
+<van-popup show="{{ choosepicker }}" position="bottom" bind:close="onchooseYearCancel">
+<van-picker
+  show-toolbar
+  title="经营类目"
+  columns="{{ columns }}"
+  bind:cancel="onchooseYearCancel"
+  bind:confirm="onChooseYearConfirm"
+/>
+</van-popup>
+
+</view>
+
+<van-popup show="{{ addressshow }}" bind:close="addressonClose">
+  <view class="addressContentView">
+   <view class='addresspoptitle'>检测到您没有打开定位权限,是否去设置打开?</view>
+   <view class='bottomview'>
+    <button class='canclbutton' bindtap="addressonClose">取消</button>
+    <button class='surebutton' bindtap='surebuttontap'>确认</button>
+   </view>
+  </view>
+</van-popup>

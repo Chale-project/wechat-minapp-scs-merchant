@@ -1,0 +1,161 @@
+/* pages/mainClass/ShopGuangErGao/ShopGuangErGao.wxss */
+.title-item{
+  background: #fff;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+.topview {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.imageall {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.emptyview {
+  margin-top: 10px;
+  width: 300px;
+  height: 200px;
+  border: 2px dashed #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.imageupload {
+  width: 40px;
+  height: 40px;
+}
+.imageview {
+  width: 100%;
+  height: 100%;
+}
+.bottomview {
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+/* .addview {
+  line-height:30px;
+  border-radius:15px;
+  text-align:center;
+  width:100px;
+  margin-left:60%;
+  border:1px solid #333;
+} */
+.delet {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+.deletItemview {
+  width: 20px;
+  color: #ff4444;
+  border: 2px solid #ff4444;
+  border-radius: 13px;
+  text-align: center;
+  line-height: 16px;
+}
+.deletItemText {
+  text-align: right;
+  font-size: 14px;
+  padding-left: 5px;
+}
+.delRight {
+  width: 20px;
+  color: #000;
+  border: 2px solid #000;
+  border-radius: 13px;
+  text-align: center;
+  line-height: 16px;
+}
+.addrightview {
+  line-height:30px;
+  text-align:center;
+  width:100px;
+  margin-left:60%;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+.addRight {
+  text-align: right;
+  font-size: 14px;
+  padding-left: 5px;
+}
+.saveview {
+  line-height: 46px;
+  border-radius: 23px;
+  text-align: center;
+  width: 80%;
+  background: #ff4444;
+  color: #fff;
+  margin-top:20px;
+}
+/* 广告链接 */
+.guangAddressView{
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  flex-direction:column;
+}
+.address-item {
+  width: 100%;
+  height: 50px;
+  background: #fff;
+  border-bottom: 1px solid #f5f5f5;
+  line-height: 50px;
+  text-align: center;
+}
+/* 商品 */
+.productview {
+  background: #fff;
+  margin-top: 10px;
+  width: calc(100% - 20px);
+}
+.lianjietitle {
+  font-size: 12px;
+  color: #ccc;
+}
+.proview {
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+}
+.userIconImg {
+  width:40px;
+  height:40px;
+}
+.salerightviews {
+  width: calc(100% - 90px);
+  padding-left: 10px;
+}
+.productName {
+  color:#333;
+  font-size: 12px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2;
+  display:-webkit-box;
+}
+.productPrice {
+  color:red;
+  font-size: 10px;
+  margin-top: 2px;
+  font-weight: bold;
+}
+.genghuangview {
+  width: 50px;
+  text-align: center;
+  height: 20px;
+  line-height: 20px;
+  margin-top: 20px;
+  color: #fff;
+  background: #666;
+}

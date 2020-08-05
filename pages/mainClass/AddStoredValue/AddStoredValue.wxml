@@ -1,0 +1,62 @@
+<!--pages/mainClass/AddStoredValue/AddStoredValue.wxml-->
+
+<view class='margin-left margin-top margin-bottom'>
+  <text class='text-grey'>基本信息</text>
+</view>
+<view class="cu-form-group">
+  <view class="title">储值卡名称</view>
+  <input placeholder="必填，2-12个字" bindinput='name'></input>
+</view>
+
+<view class="cu-form-group" hidden='true'>
+  <view class="title">储值卡封面</view>
+  <input placeholder="默认背景"></input>
+</view>
+
+<view class="cu-form-group">
+  <view class="title">储值卡金额</view>
+  <input placeholder="必填，建议金额1-5000元" bindinput='cardMoney' type='digit'></input>
+</view>
+
+
+<view class='margin-left margin-top margin-bottom'>
+  <text class='text-grey'>充值赠送</text>
+</view>
+<view class="cu-form-group ">
+  <view class="title">赠送金额</view>
+  <input placeholder="选填，不填不赠送金额" bindinput='money' type='digit'></input>
+</view>
+
+<view class="cu-form-group ">
+  <view class="title">赠送积分</view>
+  <input placeholder="选填，不填不赠送积分" bindinput='integration' type='number'></input>
+</view>
+
+<view class="cu-form-group ">
+  <view class="title">赠优惠券</view>
+  <button class="cu-btn bg-main-color shadow sm text-white" bindtap='addCoupon'>添加优惠劵</button>
+</view>
+
+<block wx:if="{{dataList.length>0}}">
+  <block wx:for="{{dataList}}" wx:key="item" wx:for-index="index">
+    <view class='layout_outside'>
+      <view class='couponLayout'>
+        <view>
+          <image class='couponImage' src='/pages/images/coupons.png'></image>
+        </view>
+        <view class='couponDetail margin-right'>
+          <text class='text-lg text-black'>￥{{item.usedAmount/100}}</text>
+          <text class='text-sm margin-top-xs'>满￥{{item.meetAmount/100}}元可用</text>
+        </view>
+      </view>
+      <image class='couponDelete' src='/pages/images/delete.png' bindtap='deleteCoupon' data-item='{{index}}'></image>
+    </view>
+  </block>
+</block>
+<block wx:if="{{dataList.length<=0}}">
+
+</block>
+
+<view class="padding flex flex-direction">
+  <button class="cu-btn bg-main-color text-white lg" bindtap='createValue'>保存</button>
+</view>

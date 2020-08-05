@@ -1,0 +1,36 @@
+<import src="../common/head.wxml" />
+<import src="../common/foot.wxml" />
+<import src="/wxParse/wxParse.wxml" />
+<view class="pagecontainer">
+  <!-- <template is="head" data="{{title: 'editor'}}"/> -->
+  <view class="page-body">
+    <view class='wrapper'>
+      <!-- <view class='toolbar' bindtap="format">
+        <i class="iconfont icon-fengexian" bindtap="insertDivider"></i>
+        <i class="iconfont icon-charutupian" bindtap="insertImage"></i>
+      </view> -->
+      <view class='toolbar' bindtap="format">
+        <view class='addtpic-item' wx:for="{{popdata}}" data-idx="{{idx}}" wx:for-index="idx" wx:for-item="item" wx:key="{{idx}}" bindtap="textandpictap">
+          <image src="{{item.pic}}" class="addsinglepic"></image>
+          <view class="addsinglepro">{{item.title}}</view>
+        </view>
+      </view>
+
+      <editor id="editor" class="ql-container" placeholder="{{placeholder}}" showImgSize showImgToolbar showImgResize bindstatuschange="onStatusChange" read-only="{{readOnly}}" bindinput="editortap">
+      </editor>
+
+      <!-- <view>
+        <button bindtap="readOnlyChange">{{readOnly ? '可写':'只读'}}</button>
+      </view> -->
+    </view>
+  </view>
+
+  <template is="foot" />
+  <!-- 上一次保存的内容 -->
+  <!-- <view bindtap="setcontentstap">上次保存的内容可以通过这次重新输入替换</view> -->
+  <!-- <template is="wxParse" data="{{wxParseData:article.nodes}}"/> -->
+
+  <view class='savebrn' bindtap='savebtntap'>保存</view>
+
+
+</view>

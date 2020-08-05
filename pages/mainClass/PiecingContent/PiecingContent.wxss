@@ -1,0 +1,42 @@
+/* pages/mainClass/PiecingContent/PiecingContent.wxss */
+
+.rightTopLayout {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 3px;
+  z-index: 5;
+  background: #ff4444;
+  border-bottom-right-radius: 20px;
+  border-top-right-radius: 20px;
+  width: 50px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.item12{
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+
+.itemIMageLayout {
+  position: absolute;
+  background: #ff4444;
+  left: 0;
+  top: 10;
+  border-radius: 20px;
+  width: 40px;
+  height: 15px;
+  display: flex;
+  align-items: center;
+  z-index: 5;
+  justify-content: center;
+}

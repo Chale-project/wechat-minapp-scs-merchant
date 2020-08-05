@@ -1,0 +1,32 @@
+/* pages/mainClass/CodeSearchOrder/CodeSearchOrder.wxss */
+.receive_layout{
+  margin-bottom: 60px;
+}
+
+.bottomLayout {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+}
+
+.allItem{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 15px;
+  padding-right: 15px;
+  height: 45px;
+  background-color: white
+}
+
+.imageDefault{
+  width: 100px;
+  height: 50px;
+}
+
+.receive_layout{
+  /* margin-bottom: 60px; */
+}

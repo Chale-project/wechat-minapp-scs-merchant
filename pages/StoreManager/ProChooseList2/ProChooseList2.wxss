@@ -1,0 +1,101 @@
+/* pages/StoreManager/ProChooseList/ProChooseList.wxss */
+.fir-item {
+  margin-bottom: 10px;
+  background: #fff;
+}
+.rightcaterview {
+  display: flex;
+  flex-direction: row;
+}
+.checkchooseviewstore {
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.saveview {
+  width: 60%;
+  margin-left: 20%;
+  background: #ff4444;
+  color: #fff;
+  line-height: 46px;
+  text-align: center;
+  border-radius: 5px;
+}
+.bottomLayout {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  margin-left: 15px;
+  width: calc(100% - 30px);
+  flex-direction: row;
+}
+
+.onecater {
+  padding-left: 10px;
+  font: bold;
+  font-size: 15px;
+  color:#000;
+  max-width: 50%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.shouview {
+  padding-right: 10px;
+  color: #ccc;
+  margin-left:10px;
+  max-width:50%;
+  text-align:left;
+}
+.firstcater {
+  background: #fff;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  width: calc(100% - 50px);
+}
+.sec-item {
+  border-top: 1px solid #f5f5f5;
+  display: flex;
+  flex-direction: row;
+}
+.twocater {
+  color:#666;
+  max-width: 50%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  padding-left: 20px;
+}
+.twoshouview {
+  color:#ccc;
+  margin-left:10px;
+  max-width: 50%;
+  text-align:left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.secondcater {
+  width: calc(100% - 50px);
+  font-size: 15px;
+  height: 40px;
+  color: #666;
+  background: #fff;
+  display: flex;
+  align-items: center;
+}
+/* 空态图 */
+.emityLayout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.emityView1 {
+  height: 130px;
+  width: 139px;
+}
